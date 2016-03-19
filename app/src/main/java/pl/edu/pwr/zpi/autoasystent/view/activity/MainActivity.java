@@ -1,7 +1,9 @@
-package pl.edu.pwr.zpi.autoasystent;
+package pl.edu.pwr.zpi.autoasystent.view.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import pl.edu.pwr.zpi.autoasystent.R;
 
 public class MainActivity extends AppCompatActivity {
 
