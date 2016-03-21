@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
      >
@@ -52,7 +51,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/VIN"
         android:ems="13"
-        android:text="@string/vin_label"
+        android:hint="@string/vin_label"
         android:layout_marginLeft="10dp"
         android:layout_below="@+id/color_picker"
         android:layout_marginRight="10dp" />
@@ -60,7 +59,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/plate_label"
+        android:hint="@string/plate_label"
         android:gravity="right"
         android:id="@+id/licence_plate"
         android:layout_alignParentRight="true"
@@ -74,7 +73,7 @@
         android:inputType="number"
 
         android:id="@+id/capacity"
-        android:text="@string/capacity_label"
+        android:hint="@string/capacity_label"
         android:gravity="right"
         android:layout_below="@+id/VIN"
         android:layout_alignParentRight="true"
@@ -87,7 +86,7 @@
         android:inputType="numberDecimal"
         android:ems="4"
         android:id="@+id/power"
-        android:text="@string/power_label"
+        android:hint="@string/power_label"
         android:layout_below="@+id/VIN"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
@@ -98,7 +97,7 @@
         android:inputType="numberDecimal"
 
         android:id="@+id/start_mileage"
-        android:text="@string/mileage_label"
+        android:hint="@string/mileage_label"
         android:gravity="right"
 
         android:layout_below="@+id/capacity"
@@ -111,7 +110,7 @@
         android:inputType="numberDecimal"
         android:ems="4"
         android:id="@+id/production_year"
-        android:text="@string/year_label"
+        android:hint="@string/year_label"
         android:layout_below="@+id/capacity"
         android:layout_marginLeft="10dp" />
 
@@ -123,7 +122,7 @@
         android:lines="4"
         android:id="@+id/editText"
         android:gravity="top"
-        android:text="@string/description_label"
+        android:hint="@string/description_label"
         android:layout_below="@+id/production_year"
         android:layout_marginTop="60dp"
         android:layout_alignRight="@+id/start_mileage"
