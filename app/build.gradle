@@ -23,4 +23,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.rafalzajfert:android-logger:1.1.15'
+    compile 'com.github.QuadFlask:colorpicker:0.0.10'
 }
