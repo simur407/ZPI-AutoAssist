@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Auto Asystent</string>
+    <string name="vin_label">VIN</string>
+    <string name="plate_label">Nr rejestracyjny</string>
+    <string name="capacity_label">Pojemność</string>
+    <string name="power_label">Moc</string>
+    <string name="mileage_label">Przebieg</string>
+    <string name="year_label">Rok</string>
+    <string name="description_label">Opis samochodu</string>
+    <string name="make_label">Marka</string>
+    <string name="model_label">Model</string>
+    <string name="mot_label">Przegląd</string>
+    <string name="insurance_label">Ubezpiecznie</string>
+
+
 </resources>

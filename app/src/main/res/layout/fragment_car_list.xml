@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_paddingLeft="@dimen/list_horizontal_margin"
-    android:layout_paddingRight="@dimen/list_horizontal_margin"
+    android:paddingLeft="@dimen/list_horizontal_margin"
+    android:paddingRight="@dimen/list_horizontal_margin"
     android:scrollbarStyle="outsideOverlay"
     tools:listitem="@layout/item_car" />
