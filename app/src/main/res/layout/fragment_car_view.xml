@@ -102,7 +102,6 @@
         android:layout_height="wrap_content"
         tools:text="124 Spider"
         android:id="@+id/model_field"
-
         android:layout_alignParentRight="true"
         android:gravity="right"
         android:layout_below="@+id/make_field"
