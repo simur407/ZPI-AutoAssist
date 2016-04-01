@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:id="@+id/refuel_add_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="@string/refuel_add_label"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/refuel_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refuel_add_label"
+        android:hint="@string/date_label"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/refuel_mileage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refuel_date"
+        android:hint="@string/mileage_label"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/refuel_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refuel_mileage"
+        android:hint="@string/cost_label"
+        android:inputType="number" />
+
+
+    <EditText
+        android:id="@+id/refuel_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refuel_cost"
+        android:hint="@string/quantity_label"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/refuel_cost_per_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refuel_quantity"
+        android:hint="@string/cost_per_one_label"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/refuel_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refuel_cost_per_one"
+        android:gravity="top"
+        android:hint="@string/refuel_description_label"
+        android:inputType="textMultiLine"
+        android:lines="2" />
+</RelativeLayout>

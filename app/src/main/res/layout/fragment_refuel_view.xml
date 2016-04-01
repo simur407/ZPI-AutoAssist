@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/refuel_view_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="@string/refuel_view_label"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/refuel_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/refuel_view_label"
+        android:text="@string/date_label" />
+
+    <TextView
+        android:id="@+id/refuel_quantity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/refuel_date_label"
+        android:text="@string/quantity_label" />
+
+    <TextView
+        android:id="@+id/refuel_cost_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/refuel_quantity_label"
+        android:text="@string/cost_label" />
+
+    <TextView
+        android:id="@+id/refuel_cost_per_one_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/refuel_cost_label"
+        android:text="@string/cost_per_one_label" />
+
+    <TextView
+        android:id="@+id/refuel_mileage_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/refuel_cost_per_one_label"
+        android:text="@string/mileage_label" />
+
+    <TextView
+        android:id="@+id/refuel_description_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/refuel_mileage_label"
+        android:text="@string/refuel_description_label" />
+
+    <TextView
+        android:id="@+id/refuel_date_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/refuel_view_label"
+        android:gravity="right"
+        tools:text="22.15.2015"
+
+        />
+
+    <TextView
+        android:id="@+id/refuel_quantity_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/refuel_date_field"
+        android:gravity="right"
+        tools:text="22 L" />
+
+    <TextView
+        android:id="@+id/refuel_cost_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/refuel_quantity_field"
+        android:gravity="right"
+        tools:text="120,56 zł" />
+
+    <TextView
+        android:id="@+id/refuel_cost_per_one_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/refuel_cost_field"
+        android:gravity="right"
+        tools:text="4,66 zł" />
+
+    <TextView
+        android:id="@+id/refuel_mileage_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+
+        android:layout_below="@+id/refuel_cost_per_one_field"
+        android:gravity="right"
+        tools:text="210 000 km" />
+
+    <TextView
+        android:id="@+id/refuel_description_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/refuel_description_label"
+        tools:text="Statoil przy dworcu" />
+
+
+</RelativeLayout>

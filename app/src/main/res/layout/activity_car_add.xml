@@ -1,131 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-     >
+    android:orientation="vertical">
 
     <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/make_spinner"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/model_spinner"
+        android:layout_alignParentRight="true"
         android:layout_alignStart="@+id/model_spinner"
+        android:layout_gravity="center_horizontal"
         android:layout_marginRight="10dp" />
 
     <Spinner
+        android:id="@+id/model_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/model_spinner"
-        android:layout_below="@+id/make_spinner"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@+id/power"
+        android:layout_below="@+id/make_spinner"
+        android:layout_marginRight="10dp"
         android:layout_toEndOf="@+id/power"
-        android:layout_marginRight="10dp" />
+        android:layout_toRightOf="@+id/power" />
 
     <ImageView
+        android:id="@+id/car_image"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:id="@+id/car_image"
         android:layout_alignLeft="@+id/make_spinner"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/car_ico"/>
+        android:layout_alignParentTop="true"
+        android:src="@drawable/car_ico" />
 
     <ImageView
+        android:id="@+id/color_picker"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/color_picker"
-        android:layout_below="@+id/car_image"
-        android:layout_alignParentTop="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/car_image"
         android:layout_marginLeft="10dp"
-        android:src="@drawable/color_palette"/>
+        android:src="@drawable/color_palette" />
 
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/VIN"
-        android:ems="13"
-        android:hint="@string/vin_label"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/color_picker"
-        android:layout_marginRight="10dp" />
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/plate_label"
-        android:gravity="right"
+        android:layout_below="@+id/color_picker"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:ems="13"
+        android:hint="@string/vin_label" />
+
+    <EditText
         android:id="@+id/licence_plate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/model_spinner"
-        android:layout_marginRight="10dp" />
-
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-
-        android:id="@+id/capacity"
-        android:hint="@string/capacity_label"
+        android:layout_marginRight="10dp"
         android:gravity="right"
-        android:layout_below="@+id/VIN"
-        android:layout_alignParentRight="true"
+        android:hint="@string/plate_label" />
 
-        android:layout_marginRight="10dp" />
 
     <EditText
+        android:id="@+id/capacity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="4"
-        android:id="@+id/power"
-        android:hint="@string/power_label"
+
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/VIN"
+        android:layout_marginRight="10dp"
+        android:gravity="right"
+        android:hint="@string/capacity_label"
+
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:layout_marginLeft="10dp" />
+        android:layout_below="@+id/VIN"
+        android:layout_marginLeft="10dp"
+        android:ems="4"
+        android:hint="@string/power_label"
+        android:inputType="numberDecimal" />
+
     <EditText
+        android:id="@+id/start_mileage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
 
-        android:id="@+id/start_mileage"
-        android:hint="@string/mileage_label"
-        android:gravity="right"
-
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/capacity"
         android:layout_marginRight="10dp"
-        android:layout_alignParentRight="true" />
+
+        android:gravity="right"
+        android:hint="@string/mileage_label"
+        android:inputType="numberDecimal" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="4"
         android:id="@+id/production_year"
-        android:hint="@string/year_label"
-        android:layout_below="@+id/capacity"
-        android:layout_marginLeft="10dp" />
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="100"
-        android:lines="4"
+        android:layout_below="@+id/capacity"
+        android:layout_marginLeft="10dp"
+        android:ems="4"
+        android:hint="@string/year_label"
+        android:inputType="numberDecimal" />
+
+    <EditText
         android:id="@+id/editText"
-        android:gravity="top"
-        android:hint="@string/description_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/start_mileage"
+        android:layout_alignRight="@+id/start_mileage"
         android:layout_below="@+id/production_year"
         android:layout_marginTop="60dp"
-        android:layout_alignRight="@+id/start_mileage"
-        android:layout_alignEnd="@+id/start_mileage" />
+        android:ems="100"
+        android:gravity="top"
+        android:hint="@string/description_label"
+        android:inputType="textMultiLine"
+        android:lines="4" />
 
 </RelativeLayout>

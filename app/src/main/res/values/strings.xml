@@ -11,6 +11,18 @@
     <string name="model_label">Model</string>
     <string name="mot_label">Przegląd</string>
     <string name="insurance_label">Ubezpiecznie</string>
-
+    <string name="date_label">Data</string>
+    <string name="cost_label">Koszt</string>
+    <string name="garage_label">Warsztat</string>
+    <string name="servicesdone_label">Dokonane naprawy:</string>
+    <string name="quantity_label">Liczba litrów</string>
+    <string name="cost_per_one_label">Cena za litr</string>
+    <string name="refuel_description_label">Dodatkowe informacje:</string>
+    <string name="service_description_label">Dodatkowe informacje:</string>
+    <string name="different_maintenance_label">Inne:</string>
+    <string name="service_view_label">Informacje o przeglądzie</string>
+    <string name="refuel_view_label">Informacje o tankowaniu</string>
+    <string name="service_add_label">Dodawanie przeglądu</string>
+    <string name="refuel_add_label">Dodawanie tankowania</string>
 
 </resources>
