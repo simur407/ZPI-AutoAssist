@@ -46,6 +46,16 @@
         android:layout_below="@+id/refuel_cost"
         android:hint="@string/garage_label" />
 
+    <EditText
+        android:id="@+id/service_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/service_garage"
+        android:gravity="top"
+        android:hint="@string/service_description_label"
+        android:inputType="textMultiLine"
+        android:lines="2" />
+
     <TextView
         android:id="@+id/service_servicesdone"
         android:layout_width="wrap_content"
@@ -85,14 +95,5 @@
         android:layout_toEndOf="@+id/checkBox3"
         android:layout_toRightOf="@+id/checkBox3" />
 
-    <EditText
-        android:id="@+id/service_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/service_garage"
-        android:gravity="top"
-        android:hint="@string/service_description_label"
-        android:inputType="textMultiLine"
-        android:lines="2" />
 
 </RelativeLayout>
