@@ -24,5 +24,8 @@
     <string name="refuel_view_label">Informacje o tankowaniu</string>
     <string name="service_add_label">Dodawanie przeglądu</string>
     <string name="refuel_add_label">Dodawanie tankowania</string>
+    <string name="insurance_description_label">Opis (ubezpieczalnia)</string>
+    <string name="mot_description_label">Szczegóły</string>
+
 
 </resources>
