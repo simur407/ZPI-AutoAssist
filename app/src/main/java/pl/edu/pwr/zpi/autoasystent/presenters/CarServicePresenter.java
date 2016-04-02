@@ -18,5 +18,9 @@ public class CarServicePresenter {
         //TODO Save to database
     }
 
+    public void dataBoxClicked(int currentData) {
+        panel.showDataPicker(currentData);
+    }
+
 
 }

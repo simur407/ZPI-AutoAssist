@@ -17,7 +17,7 @@
 
     <EditText
         android:id="@+id/refuel_date"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/refuel_add_label"
         android:hint="@string/date_label"
@@ -25,7 +25,7 @@
 
     <EditText
         android:id="@+id/refuel_mileage"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/refuel_date"
         android:hint="@string/mileage_label"
@@ -33,7 +33,7 @@
 
     <EditText
         android:id="@+id/refuel_cost"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/refuel_mileage"
         android:hint="@string/cost_label"
@@ -42,7 +42,7 @@
 
     <EditText
         android:id="@+id/refuel_quantity"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/refuel_cost"
         android:hint="@string/quantity_label"
@@ -50,7 +50,7 @@
 
     <EditText
         android:id="@+id/refuel_cost_per_one"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/refuel_quantity"
         android:hint="@string/cost_per_one_label"
