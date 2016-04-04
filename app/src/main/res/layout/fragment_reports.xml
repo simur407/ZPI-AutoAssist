@@ -47,7 +47,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/report_make_button"
         android:text="@string/report_button_label"
-        android:layout_below="@+id/report_list" />
+        android:layout_below="@+id/report_list"
+        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>
