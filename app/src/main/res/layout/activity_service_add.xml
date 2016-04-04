@@ -67,9 +67,11 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView
+        android:id="@+id/service_add_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/item_service_done_jobs"/>
+        tools:listitem="@layout/item_service_done_jobs"
+        android:layout_below="@+id/service_servicesdone" />
 
 
 </RelativeLayout>

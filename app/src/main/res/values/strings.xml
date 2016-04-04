@@ -26,6 +26,8 @@
     <string name="refuel_add_label">Dodawanie tankowania</string>
     <string name="insurance_description_label">Opis (ubezpieczalnia)</string>
     <string name="mot_description_label">Szczegóły</string>
-
-
+    <string name="report_label">Raporty</string>
+    <string name="from_label">Od</string>
+    <string name="to_label">Do</string>
+    <string name="report_button_label">Generuj</string>
 </resources>

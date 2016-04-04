@@ -1,7 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
 import pl.edu.pwr.zpi.autoasystent.model.CarService;
-import pl.edu.pwr.zpi.autoasystent.view.activity.CarFuelPanel;
+import pl.edu.pwr.zpi.autoasystent.view.CarFuelPanel;
 
 /**
  * Created by Szymon on 2016-04-03.

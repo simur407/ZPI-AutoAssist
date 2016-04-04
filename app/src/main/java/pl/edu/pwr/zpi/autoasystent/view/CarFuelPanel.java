@@ -1,4 +1,4 @@
-package pl.edu.pwr.zpi.autoasystent.view.activity;
+package pl.edu.pwr.zpi.autoasystent.view;
 
 /**
  * Created by Szymon on 2016-04-03.
