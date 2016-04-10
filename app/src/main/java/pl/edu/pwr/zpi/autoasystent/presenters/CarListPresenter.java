@@ -3,6 +3,10 @@ package pl.edu.pwr.zpi.autoasystent.presenters;
 import android.view.View;
 import android.widget.AdapterView;
 
+import java.util.List;
+
+import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 
 /**
@@ -17,7 +21,8 @@ public class CarListPresenter {
     }
 
     public void setList() {
-        panel.setCarList(null);//TODO Database select
+        List<Car> cars = CarService.getInstance().getAllCars();
+        panel.setCarList(cars);
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {

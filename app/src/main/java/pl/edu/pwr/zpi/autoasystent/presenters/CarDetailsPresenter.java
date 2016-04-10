@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
+import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarDetailsPanel;
 
 /**
@@ -14,10 +16,9 @@ public class CarDetailsPresenter {
         this.panel = panel;
     }
 
-    public void setCar() {
-        //TODO get car from database
-        throw new UnsupportedOperationException();
-        //panel.setCar();
+    public void setCar(long carId) {
+        Car car = CarService.getInstance().findCarById(carId);
+        panel.setCar(car);
     }
 
     //TODO more!

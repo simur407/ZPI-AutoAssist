@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
+import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarEditPanel;
 
 /**
@@ -11,7 +13,8 @@ public class CarEditPresenter extends CarModifyPresenter{
         super(panel);
     }
 
-    public void setInitialData() {
-        ((CarEditPanel)panel).setInitialData(null);//TODO Database select
+    public void setInitialData(long carId) {
+        Car car = CarService.getInstance().findCarById(carId);
+        ((CarEditPanel)panel).setInitialData(car);
     }
 }

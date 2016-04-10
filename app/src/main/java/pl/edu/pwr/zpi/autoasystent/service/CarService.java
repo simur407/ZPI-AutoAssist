@@ -16,10 +16,10 @@ public class CarService {
     //Pisząc to myślcie jakie konkretnie zapytania do bazy będziecie kierować. I wpiszcie sobie <Nazwa modelu> i wcisnijcie CTRL+Spacja
     //Popatrzcie jakie macie metody tam. Zeby nie pałować się z query za każym razem :D
 
-    private CarService instance = null;
+    private static CarService instance = null;
 
     //Nie musi być singletonem, ale uznałem, że tak będzie bardziej pro i wygodniej ;)
-    public CarService getInstance() {
+    public static CarService getInstance() {
         if(instance == null) {
             instance = new CarService();
         }
