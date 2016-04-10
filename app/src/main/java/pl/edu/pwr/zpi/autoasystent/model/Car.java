@@ -34,6 +34,7 @@ public class Car extends SugarRecord {
      * Pusty konstruktor potrzebny dla SugarORMa!
      */
     public Car() {
+
     }
 
     //Po napisaniu wszystkich pól wciskasz Alt+Insert, Getters & Setters, zaznaczasz wszystkie pola i klikasz ok.

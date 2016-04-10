@@ -1,6 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
-import pl.edu.pwr.zpi.autoasystent.model.CarService;
+import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 import pl.edu.pwr.zpi.autoasystent.view.CarFuelPanel;
 
 /**
@@ -18,7 +18,7 @@ public class CarFuelPresenter {
         panel.showDataPicker(currentData);
     }
 
-    void saveService(CarService service) {
+    void saveService(CarMaintenance service) {
         //TODO Save to database
     }
 }

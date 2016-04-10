@@ -29,4 +29,51 @@ public class Refueling extends SugarRecord {
     public Refueling() {
     }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public Date getRefuelingDate() {
+        return refuelingDate;
+    }
+
+    public void setRefuelingDate(Date refuelingDate) {
+        this.refuelingDate = refuelingDate;
+    }
+
+    public int getRefuelingMileage() {
+        return refuelingMileage;
+    }
+
+    public void setRefuelingMileage(int refuelingMileage) {
+        this.refuelingMileage = refuelingMileage;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getRefuelnigCost() {
+        return refuelnigCost;
+    }
+
+    public void setRefuelnigCost(double refuelnigCost) {
+        this.refuelnigCost = refuelnigCost;
+    }
+
+    public String getRefuelingDescription() {
+        return refuelingDescription;
+    }
+
+    public void setRefuelingDescription(String refuelingDescription) {
+        this.refuelingDescription = refuelingDescription;
+    }
 }
