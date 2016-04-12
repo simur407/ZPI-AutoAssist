@@ -1,8 +1,11 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.model.Make;
+import pl.edu.pwr.zpi.autoasystent.model.Model;
 
 /**
  * Klasa wspomagająca zapis, odczyt, wyszukiwanie itp. z bazy. Serwis dla klasy {@link pl.edu.pwr.zpi.autoasystent.model.Car}
@@ -39,7 +42,17 @@ public class CarService {
     }
 
     public List<Car> getAllCars() {
-        return Car.listAll(Car.class);
+        //return Car.listAll(Car.class);
+        List<Car> temp = new ArrayList<>();
+        Car car = new Car();
+        Make make = new Make();
+        make.setMakeName("Opel");
+        Model model = new Model();
+        model.setMake(make);
+        model.setModelName("Astra");
+        car.setModel(model);
+        temp.add(car);
+        return temp;
     }
 
     public void deleteCar(Car car) {

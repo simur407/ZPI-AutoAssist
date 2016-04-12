@@ -1,7 +1,9 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class CarListPresenter {
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText((Context)panel, "Clicked " + position, Toast.LENGTH_SHORT).show();
         //TODO implement
     }
 

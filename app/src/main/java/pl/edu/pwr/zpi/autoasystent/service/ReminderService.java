@@ -23,8 +23,6 @@ public class ReminderService {
         Reminder.save(reminder);
     }
 
-    ;
-
     public void deleteReminder(Reminder reminder) {
         Reminder.delete(reminder);
     }

@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <ListView
+        android:id="@+id/car_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/list_horizontal_margin"
@@ -15,11 +16,12 @@
         tools:listitem="@layout/item_car" />
 
     <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
+        android:src="@drawable/plus"
         fab:fab_colorNormal="#FFFF0028"
         fab:fab_colorPressed="#9d001e"
         fab:fab_colorRipple="#FFFF0028"/>
