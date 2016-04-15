@@ -30,4 +30,5 @@
     <string name="from_label">Od</string>
     <string name="to_label">Do</string>
     <string name="report_button_label">Generuj</string>
+    <string name="save">Zapisz</string>
 </resources>
