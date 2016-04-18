@@ -36,7 +36,6 @@ public class MainActivity extends BaseActivity implements CarListPanel {
         ListView listView = (ListView) findViewById(R.id.car_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(onItemClickListener);
-        presenter.setList();
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab_main);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +44,12 @@ public class MainActivity extends BaseActivity implements CarListPanel {
                 presenter.onAddButtonClick(v);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.setList();
     }
 
     @Override

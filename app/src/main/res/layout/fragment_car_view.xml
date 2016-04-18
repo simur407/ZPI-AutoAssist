@@ -91,7 +91,6 @@
         android:layout_height="wrap_content"
         tools:text="Fiat"
         android:id="@+id/make_field"
-
         android:layout_alignParentRight="true"
         android:gravity="right"
         android:layout_below="@+id/color_viewer"
