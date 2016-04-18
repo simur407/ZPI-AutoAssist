@@ -45,6 +45,15 @@
         android:layout_marginLeft="10dp"
         android:src="@drawable/color_palette" />
 
+    <View
+        android:id="@+id/car_color"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_edge"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/color_picker"
+        android:layout_below="@id/car_image"/>
+
 
     <EditText
         android:id="@+id/VIN"
@@ -53,6 +62,7 @@
         android:layout_below="@+id/color_picker"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
         android:ems="13"
         android:hint="@string/vin_label" />
 
@@ -116,14 +126,13 @@
         android:inputType="numberDecimal" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:id="@+id/car_description"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/start_mileage"
         android:layout_alignRight="@+id/start_mileage"
         android:layout_below="@+id/production_year"
         android:layout_marginTop="60dp"
-        android:ems="100"
         android:gravity="top"
         android:hint="@string/description_label"
         android:inputType="textMultiLine"

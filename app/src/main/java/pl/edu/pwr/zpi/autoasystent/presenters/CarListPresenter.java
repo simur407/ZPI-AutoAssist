@@ -10,6 +10,7 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarAddActivity;
 
 /**
  * Created by Szymon on 2016-03-21.
@@ -33,8 +34,6 @@ public class CarListPresenter {
     }
 
     public void onAddButtonClick(View v) {
-        //TODO implement
-
-        panel.refreshList();
+        panel.startActivity(CarAddActivity.class, null);
     }
 }

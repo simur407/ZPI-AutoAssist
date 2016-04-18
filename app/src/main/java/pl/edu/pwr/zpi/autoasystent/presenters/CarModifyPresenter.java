@@ -1,7 +1,11 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
+import android.widget.Spinner;
+
 import com.flask.colorpicker.OnColorSelectedListener;
 
+import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarModifyPanel;
 
 /**
@@ -9,7 +13,7 @@ import pl.edu.pwr.zpi.autoasystent.view.CarModifyPanel;
  */
 public abstract class CarModifyPresenter implements OnColorSelectedListener {
 
-    CarModifyPanel panel;
+    protected CarModifyPanel panel;
 
     public CarModifyPresenter(CarModifyPanel panel) {
         this.panel = panel;
@@ -21,8 +25,9 @@ public abstract class CarModifyPresenter implements OnColorSelectedListener {
         //TODO Database connection
     }
 
-    public void saveCar() {
-        //TODO Database add
+    public void saveCar(Car car, Spinner make, Spinner model) {
+        //TODO connect make and model
+        CarService.getInstance().saveCar(car);
     }
 
     public void onCarPhotoClick() {

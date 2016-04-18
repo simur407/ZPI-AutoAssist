@@ -50,8 +50,12 @@ public class CarAdapter extends ArrayAdapter<Car> {
         }
 
         Car car = getItem(position);
-        holder.modelTextView.setText(car.getModel().getModelName());
-        holder.makeTextView.setText(car.getModel().getMake().getMakeName());
+        if(car.getModel() != null) {
+            holder.modelTextView.setText(car.getModel().getModelName());
+            holder.makeTextView.setText(car.getModel().getMake().getMakeName());
+        } else {
+            holder.modelTextView.setText(car.getLicencePlate());
+        }
         holder.carImageView.setImageResource(R.drawable.car_ico);
         return convertView;
     }
