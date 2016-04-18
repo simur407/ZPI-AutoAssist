@@ -30,4 +30,7 @@
     <string name="from_label">Od</string>
     <string name="to_label">Do</string>
     <string name="report_button_label">Generuj</string>
+    <string name="title_activity_activity_car">activity_car</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
