@@ -1,15 +1,14 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
-import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarAddActivity;
 
 /**
@@ -29,8 +28,9 @@ public class CarListPresenter {
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText((Context)panel, "Clicked " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText((Context)panel, "Clicked " + position, Toast.LENGTH_SHORT).show();
         //TODO implement
+        panel.startActivity(CarActivity.class, null);
     }
 
     public void onAddButtonClick(View v) {
