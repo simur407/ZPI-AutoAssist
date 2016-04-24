@@ -7,9 +7,9 @@ import pl.edu.pwr.zpi.autoasystent.model.Model;
  */
 public class ModelService {
 
-    private ModelService instance = null;
+    private static ModelService instance = null;
 
-    public ModelService getInstance() {
+    public static ModelService getInstance() {
         if (instance == null) {
             instance = new ModelService();
         }

@@ -8,9 +8,9 @@ import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 
 public class ServiceJobsService {
 
-    private ServiceJobsService instance = null;
+    private static ServiceJobsService instance = null;
 
-    public ServiceJobsService getInstance() {
+    public static ServiceJobsService getInstance() {
         if (instance == null) {
             instance = new ServiceJobsService();
         }

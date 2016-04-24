@@ -7,10 +7,10 @@ import pl.edu.pwr.zpi.autoasystent.model.Make;
  */
 public class MakeService {
 
-    private MakeService instance = null;
+    private static MakeService instance = null;
 
 
-    public MakeService getInstance() {
+    public static MakeService getInstance() {
         if (instance == null) {
             instance = new MakeService();
         }
@@ -27,5 +27,9 @@ public class MakeService {
 
     public void deleteMake(Make make) {
         Make.delete(make);
+    }
+
+    public boolean isEmpty() {
+        return false;
     }
 }

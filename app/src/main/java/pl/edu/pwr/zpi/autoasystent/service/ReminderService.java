@@ -7,9 +7,9 @@ import pl.edu.pwr.zpi.autoasystent.model.Reminder;
  */
 public class ReminderService {
 
-    private ReminderService instance = null;
+    private static ReminderService instance = null;
 
-    public ReminderService getInstance() {
+    public static ReminderService getInstance() {
         if (instance == null) {
             instance = new ReminderService();
         }
