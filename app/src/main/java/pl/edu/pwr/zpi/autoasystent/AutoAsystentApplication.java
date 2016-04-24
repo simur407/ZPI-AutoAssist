@@ -16,7 +16,7 @@ public class AutoAsystentApplication extends Application {
     public void onCreate() {
         super.onCreate();
         if(MakeService.getInstance().isEmpty()) {
-            
+
         }
     }
 }
