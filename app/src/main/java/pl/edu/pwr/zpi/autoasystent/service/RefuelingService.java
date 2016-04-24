@@ -13,10 +13,10 @@ import pl.edu.pwr.zpi.autoasystent.model.Refueling;
  */
 public class RefuelingService {
 
-    private static RefuelingService instance;
+    private static RefuelingService instance = null;
 
     public static RefuelingService getInstance() {
-        if(instance != null) {
+        if (instance == null) {
             instance = new RefuelingService();
         }
 
