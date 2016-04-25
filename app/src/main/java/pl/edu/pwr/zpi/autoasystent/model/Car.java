@@ -2,6 +2,7 @@ package pl.edu.pwr.zpi.autoasystent.model;
 
 import com.orm.SugarRecord;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -110,4 +111,5 @@ public class Car extends SugarRecord {
     public void setCarDescription(String carDescription) {
         this.carDescription = carDescription;
     }
+
 }

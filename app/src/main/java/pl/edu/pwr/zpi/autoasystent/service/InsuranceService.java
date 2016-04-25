@@ -2,8 +2,11 @@ package pl.edu.pwr.zpi.autoasystent.service;
 
 import com.orm.SugarRecord;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.model.Insurance;
 
 /**
@@ -37,6 +40,23 @@ public class InsuranceService {
 
     public void deleteInsurance(Insurance insurance) {
         Insurance.delete(insurance);
+    }
+
+    public Date getLatest(Car car) {
+        ArrayList<Insurance> insuranceList=(ArrayList<Insurance>)getAllInsurances();
+        Date insuranceDate=new Date(1);
+        for(Insurance insurance:insuranceList)
+        {
+            Date insuranceDateTemp=insurance.getInsuranceDate();
+            if (car.equals(insurance.getCar()))
+            {
+                if (insuranceDateTemp.compareTo(insuranceDate)==1)
+                {
+                    insuranceDate=insuranceDateTemp;
+                }
+            }
+        }
+        return insuranceDate;
     }
 }
     
