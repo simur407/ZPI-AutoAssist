@@ -32,6 +32,7 @@ public class ServiceJobsService {
          serviceJobs.setGarage("Mechanik");
          serviceJobs.setServiceCost(250.66);
          serviceJobs.setServiceDescription("fajnie było");
+         serviceJobs.setId(18L);
          return serviceJobs;
     }
 
