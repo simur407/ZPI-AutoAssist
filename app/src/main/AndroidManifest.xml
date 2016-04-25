@@ -10,13 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name=".view.activity.CarAddActivity"/>
+        <activity android:name=".view.activity.CarAddActivity" />
         <activity android:name=".view.activity.CarActivity" />
 
         <meta-data
@@ -26,6 +22,11 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="pl.edu.pwr.zpi" />
 
+        <activity android:name=".view.activity.RefuelingAddActivity"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
     </application>
 
 </manifest>
