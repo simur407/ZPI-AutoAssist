@@ -31,4 +31,6 @@
     <string name="to_label">Do</string>
     <string name="report_button_label">Generuj</string>
     <string name="save">Zapisz</string>
+    <string name="make">Marka</string>
+    <string name="model">Model</string>
 </resources>

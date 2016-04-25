@@ -2,13 +2,15 @@ package pl.edu.pwr.zpi.autoasystent.utils;
 
 import android.content.res.Resources;
 
-import com.rafalzajfert.androidlogger.Logger;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Make;
 import pl.edu.pwr.zpi.autoasystent.model.Model;
+import pl.edu.pwr.zpi.autoasystent.service.MakeService;
+import pl.edu.pwr.zpi.autoasystent.service.ModelService;
 
 /**
  * TODO Dokumentacja
@@ -20,22 +22,38 @@ public class MakeModelLoader {
 
     public static void load(Resources resources) {
         Scanner scanner = new Scanner(resources.openRawResource(R.raw.make_model));
-        scanner.next();//Pomijam nagłówek
-
-        Make make = new Make();
-        while(scanner.hasNext()) {
-            String row = scanner.next();
+        scanner.nextLine();//Pomijam nagłówek
+        List<Make> makes = new ArrayList<>();
+        List<Model> models = new ArrayList<>();
+        Make make = null;
+        while(scanner.hasNextLine()) {
+            String row = scanner.nextLine();
             String[] columns = row.split(",");
-            if(!columns[1].equals(make.getMakeName())) {
+            for (int i = 0; i < columns.length; i++) {
+                columns[i] = columns[i].replaceAll("\"", "");
+            }
+            if(make == null || !existsInList(makes, columns[1])) {
+                make = new Make();
                 make.setMakeName(columns[1]);
-                Make.save(make);
+                makes.add(make);
             }
 
             Model model = new Model();
             model.setModelName(columns[2]);
             model.setMake(make);
-            Model.save(model);
+            models.add(model);
         }
-        Logger.debug("Makes and models loaded successfully.");
+        MakeService.getInstance().saveMakeList(makes);
+        ModelService.getInstance().saveModelList(models);
+    }
+
+    private static boolean existsInList(List<Make> list, String name) {
+        for (Make m :
+                list) {
+            if (m.getMakeName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
+import java.util.List;
+
 import pl.edu.pwr.zpi.autoasystent.model.Make;
 
 /**
@@ -8,7 +10,6 @@ import pl.edu.pwr.zpi.autoasystent.model.Make;
 public class MakeService {
 
     private static MakeService instance = null;
-
 
     public static MakeService getInstance() {
         if (instance == null) {
@@ -30,6 +31,22 @@ public class MakeService {
     }
 
     public boolean isEmpty() {
-        return false;
+        return Make.count(Make.class) == 0;
+    }
+
+    public void saveMakeList(List<Make> makes) {
+        Make.saveInTx(makes);
+    }
+
+    public List<Make> getAllMakes() {
+        return Make.listAll(Make.class);
+    }
+
+    public Make findMakeByName(String makeName) {
+        List<Make> makes = Make.find(Make.class, "make_name = ?", makeName);
+        if (!makes.isEmpty()) {
+            return makes.get(0);
+        }
+        return null;
     }
 }

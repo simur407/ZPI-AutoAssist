@@ -30,4 +30,9 @@ public class Model extends SugarRecord {
     public void setMake(Make make) {
         this.make = make;
     }
+
+    @Override
+    public String toString() {
+        return modelName;
+    }
 }
