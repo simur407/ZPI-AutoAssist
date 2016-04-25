@@ -8,9 +8,9 @@ import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 
 public class ServiceJobsService {
 
-    private ServiceJobsService instance = null;
+    private static ServiceJobsService instance = null;
 
-    public ServiceJobsService getInstance() {
+    public static ServiceJobsService getInstance() {
         if (instance == null) {
             instance = new ServiceJobsService();
         }
@@ -26,7 +26,13 @@ public class ServiceJobsService {
     }
 
      public ServiceJobs findServiceById(long id) {
-        return ServiceJobs.findById(ServiceJobs.class, id);
+         // return ServiceJobs.findById(ServiceJobs.class, id);
+         //TODO usunąć to poniżej
+         ServiceJobs serviceJobs = new ServiceJobs();
+         serviceJobs.setGarage("Mechanik");
+         serviceJobs.setServiceCost(250.66);
+         serviceJobs.setServiceDescription("fajnie było");
+         return serviceJobs;
     }
 
     public java.util.List<ServiceJobs> getAllServices() {

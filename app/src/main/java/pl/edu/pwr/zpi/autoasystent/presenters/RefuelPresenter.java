@@ -36,8 +36,10 @@ public class RefuelPresenter {
 
 
     public void onAddButtonClick(View v) {
+        //TODO implement
         //    panel.startActivity(RefuelAddActivity.class, null);
-        panel.startActivity(RefuelViewActivity.class, null);
+        // panel.startActivity(RefuelViewActivity.class, null);
+        // panel.startActivity(ServiceJobsActivity.class, Uri.parse());
     }
 }
 
