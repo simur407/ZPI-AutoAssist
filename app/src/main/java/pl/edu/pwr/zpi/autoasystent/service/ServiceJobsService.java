@@ -29,7 +29,7 @@ public class ServiceJobsService {
          // return ServiceJobs.findById(ServiceJobs.class, id);
          //TODO usunąć to poniżej
          ServiceJobs serviceJobs = new ServiceJobs();
-         serviceJobs.setGarage("Mechanik");
+         serviceJobs.setServiceGarage("Mechanik");
          serviceJobs.setServiceCost(250.66);
          serviceJobs.setServiceDescription("fajnie było");
          serviceJobs.setId(18L);

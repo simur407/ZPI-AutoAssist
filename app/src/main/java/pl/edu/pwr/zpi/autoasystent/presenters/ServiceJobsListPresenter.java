@@ -11,6 +11,7 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.service.ServiceJobsService;
 import pl.edu.pwr.zpi.autoasystent.view.ServiceJobsPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.ServiceActivity;
 import pl.edu.pwr.zpi.autoasystent.view.activity.ServiceJobsActivity;
 
 /**
@@ -35,7 +36,6 @@ public class ServiceJobsListPresenter {
     }
 
     public void onAddButtonClick(View v) {
-        //TODO implement
-        // panel.startActivity(ServiceActivity.class, null);
+        panel.startActivity(ServiceActivity.class, null);
     }
 }

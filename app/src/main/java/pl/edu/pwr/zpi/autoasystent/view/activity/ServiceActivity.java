@@ -1,19 +1,12 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import java.sql.Time;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import pl.edu.pwr.zpi.autoasystent.R;
-import pl.edu.pwr.zpi.autoasystent.model.RefersTo;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.view.CarServiceAddPanel;
 
@@ -57,7 +50,7 @@ public class ServiceActivity extends BaseActivity implements CarServiceAddPanel{
 //        RefersTo refersTo = new RefersTo();
 
 //        service.setServiceDate(date.getText()));
-        service.setServiceDate(Calendar.getInstance().getTime());
+        //service.setServiceDate(Calendar.getInstance().getTime());
         service.setServiceMileage(Integer.parseInt(mileage.getText().toString()));
         service.setServiceCost(Double.parseDouble(cost.getText().toString()));
         service.setServiceGarage(garage.getText().toString());
