@@ -19,9 +19,9 @@ public class Refueling extends SugarRecord {
 
     private int refuelingMileage;
 
-    private int quantity;
+    private double quantity;
 
-    private double refuelnigCost;
+    private double refuelingCost;
 
     private String refuelingDescription;
 
@@ -53,20 +53,20 @@ public class Refueling extends SugarRecord {
         this.refuelingMileage = refuelingMileage;
     }
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
-    public double getRefuelnigCost() {
-        return refuelnigCost;
+    public double getRefuelingCost() {
+        return refuelingCost;
     }
 
-    public void setRefuelnigCost(double refuelnigCost) {
-        this.refuelnigCost = refuelnigCost;
+    public void setRefuelingCost(double refuelingCost) {
+        this.refuelingCost = refuelingCost;
     }
 
     public String getRefuelingDescription() {

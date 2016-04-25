@@ -13,10 +13,10 @@ import pl.edu.pwr.zpi.autoasystent.model.Refueling;
  */
 public class RefuelingService {
 
-    private static RefuelingService instance;
+    private static RefuelingService instance = null;
 
     public static RefuelingService getInstance() {
-        if(instance != null) {
+        if (instance == null) {
             instance = new RefuelingService();
         }
 
@@ -31,7 +31,12 @@ public class RefuelingService {
     }
 
     public Refueling findRefuelingById(long id) {
-        return Refueling.findById(Refueling.class, id);
+        // return Refueling.findById(Refueling.class, id);
+        Refueling refueling = new Refueling();
+        refueling.setQuantity(50.5);
+        refueling.setRefuelingCost(50.55);
+        refueling.setId(18L);
+        return refueling;
     }
 
     public void deleteRefueling(Refueling refueling) {

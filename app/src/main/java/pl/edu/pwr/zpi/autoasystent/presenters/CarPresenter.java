@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import pl.edu.pwr.zpi.autoasystent.view.CarPanel;
 import pl.edu.pwr.zpi.autoasystent.view.fragment.RefuelListFragment;
-import pl.edu.pwr.zpi.autoasystent.view.fragment.RefuelViewFragment;
+import pl.edu.pwr.zpi.autoasystent.view.fragment.ServiceJobsListFragment;
 
 /**
  * TODO Dokumentacja
@@ -25,7 +25,7 @@ public class CarPresenter {
     public void setFragments() {
         LinkedList<Fragment> fragmentLinkedList = new LinkedList<>();
         fragmentLinkedList.add(new RefuelListFragment());
-        fragmentLinkedList.add(new RefuelViewFragment());
+        fragmentLinkedList.add(new ServiceJobsListFragment());
         panel.setFragments(fragmentLinkedList);
     }
 }
