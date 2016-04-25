@@ -47,9 +47,11 @@ public class RefuelAdapter extends ArrayAdapter<Refueling> {
 
         Refueling refueling = getItem(position);
 
-        holder.dateTextView.setText(refueling.getRefuelingDate().toString());
-        holder.quantityTextView.setText(refueling.getQuantity());
-        holder.costTextView.setText(((Double) refueling.getRefuelnigCost()).toString());
+        if (refueling.getRefuelingDate() != null) {
+            holder.dateTextView.setText(refueling.getRefuelingDate().toString());
+        }
+        holder.quantityTextView.setText(String.valueOf(refueling.getQuantity()) + " L");
+        holder.costTextView.setText(((Double) refueling.getRefuelingCost()).toString() + " zł");
 
 
         return convertView;

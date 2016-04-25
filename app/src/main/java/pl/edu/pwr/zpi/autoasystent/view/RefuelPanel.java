@@ -13,4 +13,5 @@ public interface RefuelPanel {
     void setRefuelList(List<Refueling> refuelingList);
 
     void startActivity(Class<?> clazz, Uri additionalData);
+
 }
