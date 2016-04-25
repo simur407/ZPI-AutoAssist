@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/service_mileage"
         android:hint="@string/cost_label"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/service_garage"

@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.CarAddActivity"/>
+        <activity android:name=".view.activity.CarAddActivity" />
         <activity android:name=".view.activity.CarActivity" />
         <activity android:name=".view.activity.RefuelViewActivity" />
         <activity android:name=".view.activity.ServiceJobsActivity" />
@@ -28,6 +28,7 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="pl.edu.pwr.zpi" />
 
+        <activity android:name=".view.activity.ServiceActivity"></activity>
     </application>
 
 </manifest>

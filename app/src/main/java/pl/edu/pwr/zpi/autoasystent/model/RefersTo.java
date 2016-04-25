@@ -10,5 +10,22 @@ public class RefersTo {
     private CarMaintenance maintenance;
 
     public RefersTo() {
+
+    }
+
+    public ServiceJobs getService() {
+        return service;
+    }
+
+    public void setService(ServiceJobs service) {
+        this.service = service;
+    }
+
+    public CarMaintenance getMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(CarMaintenance maintenance) {
+        this.maintenance = maintenance;
     }
 }
