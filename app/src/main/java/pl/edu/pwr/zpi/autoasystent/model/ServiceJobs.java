@@ -47,7 +47,7 @@ public class ServiceJobs extends SugarRecord {
         this.serviceCost = serviceCost;
     }
 
-    public void setGarage(String garage) {
+    public void setServiceGarage(String garage) {
         this.garage = garage;
     }
 

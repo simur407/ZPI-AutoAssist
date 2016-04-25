@@ -5,19 +5,19 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/refuel_date"
+        android:id="@+id/service_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         tools:text="20.05.2015" />
 
     <TextView
-        android:id="@+id/refuel_mileage"
+        android:id="@+id/service_mileage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         tools:text="211 000 km"
-        android:layout_below="@+id/refuel_date" />
+        android:layout_below="@+id/service_date" />
 
     <TextView
         android:id="@+id/refuel_cost"

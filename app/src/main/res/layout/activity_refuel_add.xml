@@ -16,7 +16,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/refuel_date"
+        android:id="@+id/service_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/refuel_add_label"
@@ -24,10 +24,10 @@
         android:inputType="date" />
 
     <EditText
-        android:id="@+id/refuel_mileage"
+        android:id="@+id/service_mileage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/refuel_date"
+        android:layout_below="@+id/service_date"
         android:hint="@string/mileage_label"
         android:inputType="number" />
 
@@ -35,7 +35,7 @@
         android:id="@+id/refuel_cost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/refuel_mileage"
+        android:layout_below="@+id/service_mileage"
         android:hint="@string/cost_label"
         android:inputType="number" />
 
