@@ -18,4 +18,20 @@ public class RefersTo extends SugarRecord {
         this.service = service;
         this.maintenance = maintenance;
     }
+
+    public ServiceJobs getService() {
+        return service;
+    }
+
+    public void setService(ServiceJobs service) {
+        this.service = service;
+    }
+
+    public CarMaintenance getMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(CarMaintenance maintenance) {
+        this.maintenance = maintenance;
+    }
 }
