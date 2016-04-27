@@ -19,6 +19,13 @@ public class Insurance extends SugarRecord {
 
     }
 
+    public Insurance(Car car, Date insuranceDate, String insuranceDescription, double insuranceCost) {
+        this.car = car;
+        this.insuranceDate = insuranceDate;
+        this.insuranceDescription = insuranceDescription;
+        this.insuranceCost = insuranceCost;
+    }
+
     public Car getCar() {
         return car;
     }

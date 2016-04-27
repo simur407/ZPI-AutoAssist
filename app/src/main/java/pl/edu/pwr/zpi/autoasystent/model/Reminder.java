@@ -18,6 +18,13 @@ public class Reminder extends SugarRecord {
 
     }
 
+    public Reminder(Car car, Date reminderDate, String reminderDesription, String title) {
+        this.car = car;
+        this.reminderDate = reminderDate;
+        this.reminderDesription = reminderDesription;
+        this.title = title;
+    }
+
     public Car getCar() {
         return car;
     }

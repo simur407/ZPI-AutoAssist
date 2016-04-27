@@ -18,6 +18,12 @@ public class Mot extends SugarRecord {
 
     }
 
+    public Mot(Car car, Date motDate, String motDescription) {
+        this.car = car;
+        this.motDate = motDate;
+        this.motDescription = motDescription;
+    }
+
     public Car getCar() {
         return car;
     }

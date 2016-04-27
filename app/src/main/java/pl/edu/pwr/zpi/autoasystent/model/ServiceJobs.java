@@ -23,6 +23,15 @@ public class ServiceJobs extends SugarRecord {
     public ServiceJobs() {
     }
 
+    public ServiceJobs(Car car, Date serviceDate, double serviceCost, String garage, int serviceMileage, String serviceDescription) {
+        this.car = car;
+        this.serviceDate = serviceDate;
+        this.serviceCost = serviceCost;
+        this.garage = garage;
+        this.serviceMileage = serviceMileage;
+        this.serviceDescription = serviceDescription;
+    }
+
     public Car getCar() {
         return car;
     }

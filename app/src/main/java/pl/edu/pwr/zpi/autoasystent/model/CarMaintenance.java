@@ -13,6 +13,10 @@ public class CarMaintenance extends SugarRecord {//Zmieniłem nazwe bo kłuciła
 
     }
 
+    public CarMaintenance(String maintenanceName) {
+        this.maintenanceName = maintenanceName;
+    }
+
     public String getMaintenanceName() {
         return maintenanceName;
     }

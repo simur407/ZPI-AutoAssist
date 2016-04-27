@@ -13,4 +13,9 @@ public class RefersTo extends SugarRecord {
 
     public RefersTo() {
     }
+
+    public RefersTo(ServiceJobs service, CarMaintenance maintenance) {
+        this.service = service;
+        this.maintenance = maintenance;
+    }
 }
