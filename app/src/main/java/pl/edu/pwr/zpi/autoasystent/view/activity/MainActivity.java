@@ -14,6 +14,7 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarListPresenter;
+import pl.edu.pwr.zpi.autoasystent.presenters.TransferPresenter;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.CarAdapter;
 
@@ -50,6 +51,8 @@ public class MainActivity extends BaseActivity implements CarListPanel {
     protected void onResume() {
         super.onResume();
         presenter.setList();
+        TransferPresenter.saveFile(this, false, "lel.csv");
+        TransferPresenter.saveFile(this, true, "lel.csv");
     }
 
     @Override

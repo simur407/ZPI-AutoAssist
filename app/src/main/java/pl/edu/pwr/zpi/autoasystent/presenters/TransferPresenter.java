@@ -32,7 +32,7 @@ import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
  */
 public class TransferPresenter {
 
-    private final static String fileDirName = "/pl.edu.pwr.zpi.autoasystent";
+    private final static String fileDirName = "/autoasystent";
     private final static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static boolean isThereExternal() {
@@ -146,7 +146,9 @@ public class TransferPresenter {
                 {
                     file = new File(context.getFilesDir(), fileDirName);
                 }
+                if(!file.exists()) file.mkdirs();
                 file = new File(file, filename);
+                if(!file.exists()) file.createNewFile();
                 PrintWriter writer=new PrintWriter(new BufferedWriter(new FileWriter(file, false)));
                 writer.println("car");
                 for(Car c:Car.listAll(Car.class))
