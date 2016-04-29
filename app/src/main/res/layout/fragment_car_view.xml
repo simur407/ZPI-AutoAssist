@@ -129,7 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="90 KM"
-        android:id="@+id/garage_field"
+        android:id="@+id/power_field"
 
         android:layout_alignParentRight="true"
         android:gravity="right"
@@ -144,7 +144,7 @@
 
         android:layout_alignParentRight="true"
         android:gravity="right"
-        android:layout_below="@+id/garage_field"
+        android:layout_below="@+id/power_field"
         />
 
     <TextView

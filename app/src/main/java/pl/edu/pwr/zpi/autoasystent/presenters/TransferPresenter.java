@@ -1,6 +1,5 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
-import android.app.Service;
 import android.content.Context;
 import android.os.Environment;
 
@@ -181,7 +180,7 @@ public class TransferPresenter {
                     temp.add(Integer.toString(Car.listAll(Car.class).indexOf(r.getCar())));
                     temp.add(dateToString(r.getRefuelingDate()));
                     temp.add(Integer.toString(r.getRefuelingMileage()));
-                    temp.add(Integer.toString(r.getQuantity()));
+                    temp.add(Double.toString(r.getQuantity()));
                     temp.add(Double.toString(r.getRefuelingCost()));
                     temp.add(r.getRefuelingDescription());
                     writer.println(joinData(temp));

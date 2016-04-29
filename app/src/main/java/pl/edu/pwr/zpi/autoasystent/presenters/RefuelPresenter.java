@@ -10,6 +10,7 @@ import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.service.RefuelingService;
 import pl.edu.pwr.zpi.autoasystent.view.RefuelPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.RefuelViewActivity;
+import pl.edu.pwr.zpi.autoasystent.view.activity.RefuelingAddActivity;
 
 /**
  * Created by Marek on 24.04.2016.
@@ -37,7 +38,7 @@ public class RefuelPresenter {
 
     public void onAddButtonClick(View v) {
         //TODO implement
-        //    panel.startActivity(RefuelAddActivity.class, null);
+        panel.startActivity(RefuelingAddActivity.class, null);
         // panel.startActivity(RefuelViewActivity.class, null);
         // panel.startActivity(ServiceJobsActivity.class, Uri.parse());
     }
