@@ -71,9 +71,8 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     @Override
     public void setCarData(Car car) {
 
-        //TODO jak beda marki i modele to wystarczy to odkomentować
-        //makeField.setText(car.getModel().getMake().getMakeName());
-        //modelField.setText(car.getModel().getModelName());
+        makeField.setText(car.getModel().getMake().getMakeName());
+        modelField.setText(car.getModel().getModelName());
         yearField.setText((new SimpleDateFormat("yyyy")).format(car.getProductionYear()));
         powerField.setText(Integer.toString(car.getPower()));
         plateField.setText(car.getLicencePlate());

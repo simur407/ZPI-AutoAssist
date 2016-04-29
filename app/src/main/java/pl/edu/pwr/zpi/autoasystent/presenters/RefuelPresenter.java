@@ -37,10 +37,8 @@ public class RefuelPresenter {
 
 
     public void onAddButtonClick(View v) {
-        //TODO implement
+        //TODO implement - chyba jest, nie?
         panel.startActivity(RefuelingAddActivity.class, null);
-        // panel.startActivity(RefuelViewActivity.class, null);
-        // panel.startActivity(ServiceJobsActivity.class, Uri.parse());
-    }
+      }
 }
 
