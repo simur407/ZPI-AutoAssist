@@ -13,6 +13,10 @@ public class Make extends SugarRecord {
 
     }
 
+    public Make(String makeName) {
+        this.makeName = makeName;
+    }
+
     public String getMakeName() {
         return makeName;
     }

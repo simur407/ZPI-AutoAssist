@@ -19,15 +19,11 @@ public class RefuelingService {
         if (instance == null) {
             instance = new RefuelingService();
         }
-
         return instance;
     }
 
     private RefuelingService() {
-    }
 
-    public void addRefueling(Refueling refueling) {
-        Refueling.save(refueling);
     }
 
     public Refueling findRefuelingById(long id) {
@@ -50,5 +46,9 @@ public class RefuelingService {
     public List<Refueling> getRefuelingsByDate(Date from, Date to) {
         return Refueling.find(Refueling.class, "refueling_date BETWEEN ? AND ?",
                 String.valueOf(from.getTime()), String.valueOf(to.getTime()));
+    }
+
+    public void saveRefueling(Refueling refueling) {
+        Refueling.save(refueling);
     }
 }

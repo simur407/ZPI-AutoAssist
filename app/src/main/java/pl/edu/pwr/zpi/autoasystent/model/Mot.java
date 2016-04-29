@@ -1,11 +1,13 @@
 package pl.edu.pwr.zpi.autoasystent.model;
 
+import com.orm.SugarRecord;
+
 import java.util.Date;
 
 /**
  * Created by Marcin on 11.04.2016.
  */
-public class Mot {
+public class Mot extends SugarRecord {
 
     private Car car;
     private Date motDate;
@@ -14,6 +16,12 @@ public class Mot {
     public Mot()
     {
 
+    }
+
+    public Mot(Car car, Date motDate, String motDescription) {
+        this.car = car;
+        this.motDate = motDate;
+        this.motDescription = motDescription;
     }
 
     public Car getCar() {

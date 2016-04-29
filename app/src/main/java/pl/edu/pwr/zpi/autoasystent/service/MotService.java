@@ -1,8 +1,12 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.model.Mot;
 
 /**
  * Created by Marcin on 11.04.2016.
@@ -21,20 +25,37 @@ public class MotService {
 
     }
 
-    public void saveCar(Car car) {
-        Car.save(car);
+    public void saveMot(Mot mot) {
+        Mot.save(mot);
     }
 
-    public Car findCarById(long id) {
-        return Car.findById(Car.class, id);
+    public Mot findMotById(long id) {
+        return Mot.findById(Mot.class, id);
     }
 
-    public List<Car> getAllCars() {
-        return Car.listAll(Car.class);
+    public List<Mot> getAllMots() {
+        return Mot.listAll(Mot.class);
     }
 
-    public void deleteCar(Car car) {
-        Car.delete(car);
+    public void deleteMot(Mot mot) {
+        Mot.delete(mot);
+    }
+    
+    public Date getLatest(Car car) {
+        ArrayList<Mot> motList=(ArrayList<Mot>)getAllMots();
+        Date motDate=new Date(1);
+        for(Mot mot:motList)
+        {
+            Date motDateTemp=mot.getMotDate();
+            if (car.equals(mot.getCar()))
+            {
+                if (motDateTemp.compareTo(motDate)==1)
+                {
+                    motDate=motDateTemp;
+                }
+            }
+        }
+        return motDate;
     }
 }
 

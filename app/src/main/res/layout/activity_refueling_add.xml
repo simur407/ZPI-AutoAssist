@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/service_date"
         android:hint="@string/mileage_label"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/service_cost"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/service_mileage"
         android:hint="@string/cost_label"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
 
     <EditText
@@ -46,21 +46,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/service_cost"
         android:hint="@string/quantity_label"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
-    <EditText
-        android:id="@+id/refuel_cost_per_one"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/refuel_quantity"
-        android:hint="@string/cost_per_one_label"
-        android:inputType="number" />
 
     <EditText
         android:id="@+id/refuel_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/refuel_cost_per_one"
+        android:layout_below="@+id/refuel_quantity"
         android:gravity="top"
         android:hint="@string/refuel_description_label"
         android:inputType="textMultiLine"

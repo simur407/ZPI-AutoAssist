@@ -14,6 +14,11 @@ public class Model extends SugarRecord {
 
     }
 
+    public Model(Make make, String modelName) {
+        this.make = make;
+        this.modelName = modelName;
+    }
+
     public String getModelName() {
         return modelName;
     }

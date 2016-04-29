@@ -2,6 +2,7 @@ package pl.edu.pwr.zpi.autoasystent.model;
 
 import com.orm.SugarRecord;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -35,6 +36,18 @@ public class Car extends SugarRecord {
      */
     public Car() {
 
+    }
+
+    public Car(Model model, String VIN, Date productionYear, String licencePlate, int capacity, String color, int power, int startMileage, String carDescription) {
+        this.model = model;
+        this.VIN = VIN;
+        this.productionYear = productionYear;
+        this.licencePlate = licencePlate;
+        this.capacity = capacity;
+        this.color = color;
+        this.power = power;
+        this.startMileage = startMileage;
+        this.carDescription = carDescription;
     }
 
     //Po napisaniu wszystkich pól wciskasz Alt+Insert, Getters & Setters, zaznaczasz wszystkie pola i klikasz ok.
@@ -110,4 +123,6 @@ public class Car extends SugarRecord {
     public void setCarDescription(String carDescription) {
         this.carDescription = carDescription;
     }
+
+
 }

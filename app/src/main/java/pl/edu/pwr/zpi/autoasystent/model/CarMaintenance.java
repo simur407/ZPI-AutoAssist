@@ -5,12 +5,16 @@ import com.orm.SugarRecord;
 /**
  * Created by Szymon on 2016-04-02.
  */
-public class CarMaintenance extends SugarRecord {//Zmieniłem nazwe bo kłuciła się z serwisem ;)
+public class CarMaintenance extends SugarRecord {//Zmieniłem nazwe bo kłóciła się z serwisem ;)
 
     private String maintenanceName;
 
     public CarMaintenance() {
 
+    }
+
+    public CarMaintenance(String maintenanceName) {
+        this.maintenanceName = maintenanceName;
     }
 
     public String getMaintenanceName() {
