@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <ListView
+        android:id="@+id/list_service"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/list_horizontal_margin"
@@ -22,5 +23,6 @@
         android:layout_margin="16dp"
         fab:fab_colorNormal="#FFFF0028"
         fab:fab_colorPressed="#9d001e"
-        fab:fab_colorRipple="#FFFF0028" />
+        fab:fab_colorRipple="#FFFF0028"
+        android:src="@drawable/plus"/>
 </FrameLayout>

@@ -6,14 +6,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
+import com.rafalzajfert.androidlogger.Logger;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -36,9 +39,14 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
     private GradientDrawable carColorDrawable;
     private CarAddPresenter presenter;
-    private Spinner make, model;
+    private AutoCompleteTextView make, model;
     private EditText plate, vin, power, year, capacity, mileage, description;
     private int color;
+    private ArrayAdapter<Make> makeAdapter;
+    private ArrayAdapter<Model> modelAdapter;
+
+    private Make selectedMake;
+    private Model selectedModel;
 
 
 
@@ -57,8 +65,20 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
             }
         });
 
-        make = (Spinner) findViewById(R.id.make_spinner);
-        model = (Spinner) findViewById(R.id.model_spinner);
+        make = (AutoCompleteTextView) findViewById(R.id.make_edittext);
+        makeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
+        make.setAdapter(makeAdapter);
+        make.setOnItemClickListener(selectMakeListener);
+
+        model = (AutoCompleteTextView) findViewById(R.id.model_edittext);
+        model.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                selectedModel = (Model) parent.getItemAtPosition(position);
+            }
+        });
+        modelAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line);
+        model.setAdapter(modelAdapter);
         plate = (EditText) findViewById(R.id.licence_plate);
         vin = (EditText) findViewById(R.id.VIN);
         power = (EditText) findViewById(R.id.power);
@@ -68,7 +88,7 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         description = (EditText) findViewById(R.id.car_description);
 
         presenter = new CarAddPresenter(this);
-        presenter.setSpinners();
+        presenter.setMakeSpinner();
     }
 
     @Override
@@ -79,7 +99,6 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //TODO obsluzyc zapis
         switch(item.getItemId()) {
             case R.id.action_save: saveCar();
             default: super.onOptionsItemSelected(item);
@@ -99,7 +118,18 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
                 .MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).getTime());
         car.setStartMileage(Integer.valueOf(mileage.getText().toString()));
 
-        presenter.saveCar(car, make, model);
+
+        if(selectedMake == null) {
+             selectedMake = new Make();
+             selectedMake.setMakeName(make.getText().toString().toUpperCase());
+        }
+
+        if(selectedModel == null) {
+            selectedModel = new Model();
+            selectedModel.setModelName(model.getText().toString().toUpperCase());
+        }
+
+        presenter.saveCar(car, selectedMake, selectedModel);
         finish();
     }
 
@@ -123,12 +153,17 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
     @Override
     public void setMakeSpinner(List<Make> makeList) {
-
+        makeAdapter.addAll(makeList);
+        makeAdapter.notifyDataSetChanged();
+        Logger.debug(makeAdapter.getCount());
     }
 
     @Override
     public void setModelSpinner(List<Model> modelList) {
-
+        modelAdapter.clear();
+        modelAdapter.addAll(modelList);
+        modelAdapter.notifyDataSetChanged();
+        Logger.debug(modelAdapter.getCount());
     }
 
     @Override
@@ -140,4 +175,12 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
     public void setColor(int color) {
             carColorDrawable.setColor(color);
     }
+
+    private AdapterView.OnItemClickListener selectMakeListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            presenter.onMakeSelected(parent, view, position, id);
+            selectedMake = (Make) parent.getItemAtPosition(position);
+        }
+    };
 }

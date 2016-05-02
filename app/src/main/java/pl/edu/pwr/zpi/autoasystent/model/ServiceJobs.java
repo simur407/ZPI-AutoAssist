@@ -1,6 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.model;
 
 import com.orm.SugarRecord;
+
 import java.util.Date;
 
 /**
@@ -56,11 +57,14 @@ public class ServiceJobs extends SugarRecord {
         this.serviceCost = serviceCost;
     }
 
-    public void setGarage(String garage) {
+    public void setServiceGarage(String garage) {
         this.garage = garage;
     }
 
     public String getGarage() {
+        if (garage == null) {
+            return "-";
+        }
         return garage;
     }
 
@@ -77,6 +81,9 @@ public class ServiceJobs extends SugarRecord {
     }
 
     public String getServiceDescription() {
+        if (serviceDescription == null) {
+            return "-";
+        }
         return serviceDescription;
     }
 

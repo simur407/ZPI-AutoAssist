@@ -8,9 +8,9 @@ import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 
 public class CarMaintenanceService {
 
-    private CarMaintenanceService instance = null;
+    private static CarMaintenanceService instance = null;
 
-    public CarMaintenanceService getInstance() {
+    public static CarMaintenanceService getInstance() {
         if (instance == null) {
             instance = new CarMaintenanceService();
         }

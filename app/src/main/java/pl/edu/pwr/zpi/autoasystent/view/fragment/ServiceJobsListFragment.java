@@ -16,31 +16,29 @@ import com.melnykov.fab.FloatingActionButton;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
-import pl.edu.pwr.zpi.autoasystent.model.Refueling;
-import pl.edu.pwr.zpi.autoasystent.presenters.RefuelPresenter;
-import pl.edu.pwr.zpi.autoasystent.view.RefuelPanel;
-import pl.edu.pwr.zpi.autoasystent.view.adapter.RefuelAdapter;
+import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
+import pl.edu.pwr.zpi.autoasystent.presenters.ServiceJobsListPresenter;
+import pl.edu.pwr.zpi.autoasystent.view.ServiceJobsPanel;
+import pl.edu.pwr.zpi.autoasystent.view.adapter.ServiceJobsAdapter;
 
 /**
- * Created by Marek on 18.04.2016.
+ * Created by Marek on 25.04.2016.
  */
-public class RefuelListFragment extends Fragment implements RefuelPanel, TabFragment {
-    private RefuelPresenter presenter;
-    private RefuelAdapter adapter;
+public class ServiceJobsListFragment extends Fragment implements ServiceJobsPanel, TabFragment {
+    private ServiceJobsListPresenter presenter;
+    private ServiceJobsAdapter adapter;
 
-    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_refuel_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_service_list, container, false);
 
+        presenter = new ServiceJobsListPresenter(this);
+        adapter = new ServiceJobsAdapter(this.getActivity());
 
-        presenter = new RefuelPresenter(this);
-        adapter = new RefuelAdapter(this.getActivity());
-
-        ListView listView = (ListView) view.findViewById(R.id.refuel_list);
+        ListView listView = (ListView) view.findViewById(R.id.list_service);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(onItemClickListener);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fab_refuel);
+        FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fab_service);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,11 +50,9 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
 
     }
 
-
-    public void setRefuelList(List<Refueling> refuelingList) {
-        adapter.setItems(refuelingList);
+    public void setServiceJobsList(List<ServiceJobs> serviceJobsList) {
+        adapter.setItems(serviceJobsList);
     }
-
 
     public void onResume() {
         super.onResume();
@@ -64,9 +60,8 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
     }
 
     public String getTabName() {
-        return "Tankowania";
+        return "Serwisy";
     }
-
 
     public void refreshList() {
         adapter.notifyDataSetChanged();
@@ -75,6 +70,7 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
             presenter.onListItemClick(parent, view, position, id);
         }
     };
@@ -88,4 +84,3 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
         startActivity(intent);
     }
 }
-

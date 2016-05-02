@@ -12,6 +12,7 @@ public class RefersTo extends SugarRecord {
     private CarMaintenance maintenance;
 
     public RefersTo() {
+
     }
 
     public RefersTo(ServiceJobs service, CarMaintenance maintenance) {

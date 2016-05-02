@@ -4,31 +4,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/make_spinner"
+    <AutoCompleteTextView
+        android:id="@+id/make_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/model_spinner"
+        android:layout_alignLeft="@+id/model_edittext"
         android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/model_spinner"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginRight="10dp" />
+        android:layout_alignStart="@+id/model_edittext"
+        android:layout_marginRight="10dp"
+        android:hint="@string/make"/>
 
-    <Spinner
-        android:id="@+id/model_spinner"
+    <AutoCompleteTextView
+        android:id="@+id/model_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/make_spinner"
+        android:layout_below="@+id/make_edittext"
         android:layout_marginRight="10dp"
         android:layout_toEndOf="@+id/power"
-        android:layout_toRightOf="@+id/power" />
+        android:layout_toRightOf="@+id/power"
+        android:hint="@string/model"/>
 
     <ImageView
         android:id="@+id/car_image"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_alignLeft="@+id/make_spinner"
+        android:layout_alignLeft="@+id/make_edittext"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -71,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/model_spinner"
+        android:layout_below="@+id/model_edittext"
         android:layout_marginRight="10dp"
         android:gravity="right"
         android:hint="@string/plate_label" />

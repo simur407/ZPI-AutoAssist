@@ -1,5 +1,8 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
+import java.util.List;
+
+import pl.edu.pwr.zpi.autoasystent.model.Make;
 import pl.edu.pwr.zpi.autoasystent.model.Model;
 
 /**
@@ -7,9 +10,9 @@ import pl.edu.pwr.zpi.autoasystent.model.Model;
  */
 public class ModelService {
 
-    private ModelService instance = null;
+    private static ModelService instance = null;
 
-    public ModelService getInstance() {
+    public static ModelService getInstance() {
         if (instance == null) {
             instance = new ModelService();
         }
@@ -20,11 +23,19 @@ public class ModelService {
 
     }
 
-    public void SaveModel(Model model) {
+    public void saveModel(Model model) {
         Model.save(model);
     }
 
-    public void DeleteModel(Model model) {
+    public void deleteModel(Model model) {
         Model.delete(model);
+    }
+
+    public void saveModelList(List<Model> models) {
+        Model.saveInTx(models);
+    }
+
+    public List<Model> getModelsByMake(Make make) {
+        return Model.find(Model.class, "make = ?", String.valueOf(make.getId()));
     }
 }
