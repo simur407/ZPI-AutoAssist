@@ -11,6 +11,7 @@ import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 
 /**
  * Created by Marek on 24.04.2016.
@@ -48,7 +49,7 @@ public class RefuelAdapter extends ArrayAdapter<Refueling> {
         Refueling refueling = getItem(position);
 
         if (refueling.getRefuelingDate() != null) {
-            holder.dateTextView.setText(refueling.getRefuelingDate().toString());
+            holder.dateTextView.setText(DateUtils.dateToString(refueling.getRefuelingDate()));
         }
         holder.quantityTextView.setText(String.valueOf(refueling.getQuantity()) + " L");
         holder.costTextView.setText(((Double) refueling.getRefuelingCost()).toString() + " zł");

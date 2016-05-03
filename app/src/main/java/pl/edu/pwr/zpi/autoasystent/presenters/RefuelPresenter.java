@@ -23,7 +23,6 @@ public class RefuelPresenter {
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //Toast.makeText((Context)panel, "Clicked " + position, Toast.LENGTH_SHORT).show();
         //TODO implement
         //  panel.startActivity(RefuelActivity.class, null);
         panel.startActivity(RefuelViewActivity.class, Uri.parse(((Refueling) parent.getItemAtPosition(position)).getId().toString()));
@@ -31,7 +30,6 @@ public class RefuelPresenter {
 
     public void setList() {
         List<Refueling> refuelings = RefuelingService.getInstance().getAllRefuelings();
-        refuelings.add(RefuelingService.getInstance().findRefuelingById(1)); //TODO Wywalic
         panel.setRefuelList(refuelings);
     }
 

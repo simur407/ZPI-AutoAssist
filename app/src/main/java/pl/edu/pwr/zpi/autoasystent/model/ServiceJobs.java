@@ -5,7 +5,7 @@ import com.orm.SugarRecord;
 import java.util.Date;
 
 /**
- * Created by Szymon on 2016-04-02.
+ * Ogólna wizyta u mechanika.
  */
 public class ServiceJobs extends SugarRecord {
 

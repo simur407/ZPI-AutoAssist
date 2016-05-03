@@ -6,11 +6,21 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import pl.edu.pwr.zpi.autoasystent.R;
-import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
-import pl.edu.pwr.zpi.autoasystent.view.CarServiceAddPanel;
+import com.rafalzajfert.androidlogger.Logger;
 
-public class ServiceActivity extends BaseActivity implements CarServiceAddPanel{
+import java.text.ParseException;
+import java.util.List;
+
+import pl.edu.pwr.zpi.autoasystent.R;
+import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
+import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
+import pl.edu.pwr.zpi.autoasystent.presenters.AddServicePresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
+import pl.edu.pwr.zpi.autoasystent.view.CarAddServicePanel;
+
+public class AddServiceActivity extends BaseActivity implements CarAddServicePanel {
+
+    private AddServicePresenter presenter;
 
     private EditText date, mileage, cost, garage, description;
     private ListView list;
@@ -19,6 +29,8 @@ public class ServiceActivity extends BaseActivity implements CarServiceAddPanel{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_add);
+
+        presenter = new AddServicePresenter(this);
 
         date = (EditText) findViewById(R.id.service_date);
         mileage = (EditText) findViewById(R.id.service_mileage);
@@ -48,9 +60,11 @@ public class ServiceActivity extends BaseActivity implements CarServiceAddPanel{
     private void saveService() {
         ServiceJobs service = new ServiceJobs();
 //        RefersTo refersTo = new RefersTo();
-
-//        service.setServiceDate(date.getText()));
-        //service.setServiceDate(Calendar.getInstance().getTime());
+        try {
+            service.setServiceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN));
+        } catch (ParseException e) {
+            Logger.error(e);
+        }
         service.setServiceMileage(Integer.parseInt(mileage.getText().toString()));
         service.setServiceCost(Double.parseDouble(cost.getText().toString()));
         service.setServiceGarage(garage.getText().toString());
@@ -61,7 +75,22 @@ public class ServiceActivity extends BaseActivity implements CarServiceAddPanel{
 //        for(String element : serviceList)
 //            refersTo.getMaintenance().setMaintenanceName(element.toString());
 //        }
-
+        presenter.saveService(service);
         finish();
+    }
+
+    @Override
+    public void setMaintanaceList(List<CarMaintenance> maintenances) {
+
+    }
+
+    @Override
+    public void showDataPicker(int currentData) {
+
+    }
+
+    @Override
+    public void setCurrentData() {
+
     }
 }

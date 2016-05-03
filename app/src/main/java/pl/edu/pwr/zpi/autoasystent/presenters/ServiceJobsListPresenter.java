@@ -11,7 +11,7 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.service.ServiceJobsService;
 import pl.edu.pwr.zpi.autoasystent.view.ServiceJobsPanel;
-import pl.edu.pwr.zpi.autoasystent.view.activity.ServiceActivity;
+import pl.edu.pwr.zpi.autoasystent.view.activity.AddServiceActivity;
 import pl.edu.pwr.zpi.autoasystent.view.activity.ServiceJobsActivity;
 
 /**
@@ -31,11 +31,10 @@ public class ServiceJobsListPresenter {
 
     public void setList() {
         List<ServiceJobs> serviceJobs = ServiceJobsService.getInstance().getAllServices();
-        serviceJobs.add(ServiceJobsService.getInstance().findServiceById(1)); //TODO Wywalic
         panel.setServiceJobsList(serviceJobs);
     }
 
     public void onAddButtonClick(View v) {
-        panel.startActivity(ServiceActivity.class, null);
+        panel.startActivity(AddServiceActivity.class, null);
     }
 }

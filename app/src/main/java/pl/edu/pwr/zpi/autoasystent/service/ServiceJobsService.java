@@ -25,15 +25,8 @@ public class ServiceJobsService {
         ServiceJobs.save(service);
     }
 
-     public ServiceJobs findServiceById(long id) {
-         // return ServiceJobs.findById(ServiceJobs.class, id);
-         //TODO usunąć to poniżej
-         ServiceJobs serviceJobs = new ServiceJobs();
-         serviceJobs.setServiceGarage("Mechanik");
-         serviceJobs.setServiceCost(250.66);
-         serviceJobs.setServiceDescription("fajnie było");
-         serviceJobs.setId(18L);
-         return serviceJobs;
+    public ServiceJobs findServiceById(long id) {
+          return ServiceJobs.findById(ServiceJobs.class, id);
     }
 
     public java.util.List<ServiceJobs> getAllServices() {

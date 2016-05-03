@@ -3,7 +3,7 @@ package pl.edu.pwr.zpi.autoasystent.model;
 import com.orm.SugarRecord;
 
 /**
- * Created by Szymon on 2016-04-02.
+ * Konkretna naprawa przy wizycie u mechanika.
  */
 public class CarMaintenance extends SugarRecord {//Zmieniłem nazwe bo kłóciła się z serwisem ;)
 

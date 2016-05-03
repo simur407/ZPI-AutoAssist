@@ -16,7 +16,6 @@ public class RefuelingAddPresenter {
     }
 
     public void saveRefueling(Refueling refueling) {
-        //TODO connect make and model
         RefuelingService.getInstance().saveRefueling(refueling);
     }
 }

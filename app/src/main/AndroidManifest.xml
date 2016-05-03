@@ -20,7 +20,7 @@
         <activity android:name=".view.activity.RefuelViewActivity" />
         <activity android:name=".view.activity.ServiceJobsActivity" />
         <activity android:name=".view.activity.RefuelingAddActivity"/>
-        <activity android:name=".view.activity.ServiceActivity"/>
+        <activity android:name=".view.activity.AddServiceActivity"/>
 
         <meta-data
             android:name="DATABASE"
