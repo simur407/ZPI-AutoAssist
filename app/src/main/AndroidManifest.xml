@@ -21,6 +21,10 @@
         <activity android:name=".view.activity.ServiceJobsActivity" />
         <activity android:name=".view.activity.RefuelingAddActivity"/>
         <activity android:name=".view.activity.ServiceActivity"/>
+        <activity android:name=".view.activity.ReportFuelActivity" />
+        <activity android:name=".view.activity.ReportServicesActivity" />
+        <activity android:name=".view.activity.ReportSummaryActivity" />
+
 
         <meta-data
             android:name="DATABASE"

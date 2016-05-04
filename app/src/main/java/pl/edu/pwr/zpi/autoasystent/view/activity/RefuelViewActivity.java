@@ -12,7 +12,6 @@ import pl.edu.pwr.zpi.autoasystent.view.RefuelViewPanel;
 /**
  * Created by Marek on 18.04.2016.
  */
-//TODO to nie jest tabfragment
 public class RefuelViewActivity extends BaseActivity implements RefuelViewPanel {
     TextView date;
     TextView quantity;
