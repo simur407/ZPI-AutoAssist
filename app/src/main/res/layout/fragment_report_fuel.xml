@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin">
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/report_fuel_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/report_fuel"
-        android:textAlignment="center"
-        android:id="@+id/report_fuel_label" />
+        android:textAlignment="center" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +19,10 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
 
             <TextView
                 android:id="@+id/report_fuel_average_label"
@@ -33,8 +34,8 @@
                 android:id="@+id/report_fuel_average_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/report_fuel_average_label"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/report_fuel_average_label"
                 android:gravity="right"
                 tools:text="33l/100km" />
 
@@ -42,15 +43,15 @@
                 android:id="@+id/report_fuel_per_day_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/report_fuel_per_day"
-                android:layout_below="@id/report_fuel_average_field" />
+                android:layout_below="@id/report_fuel_average_field"
+                android:text="@string/report_fuel_per_day" />
 
             <TextView
                 android:id="@+id/report_fuel_per_day_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/report_fuel_per_day_label"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/report_fuel_per_day_label"
                 android:gravity="right"
                 tools:text="8 l" />
 
@@ -58,15 +59,15 @@
                 android:id="@+id/report_fuel_per_month_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/report_fuel_per_month"
-                android:layout_below="@id/report_fuel_per_day_field" />
+                android:layout_below="@id/report_fuel_per_day_field"
+                android:text="@string/report_fuel_per_month" />
 
             <TextView
                 android:id="@+id/report_fuel_per_month_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/report_fuel_per_month_label"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/report_fuel_per_month_label"
                 android:gravity="right"
                 tools:text="160 l" />
 
@@ -74,15 +75,15 @@
                 android:id="@+id/report_fuel_overall_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/report_fuel_overall"
-                android:layout_below="@id/report_fuel_per_month_field" />
+                android:layout_below="@id/report_fuel_per_month_field"
+                android:text="@string/report_fuel_overall" />
 
             <TextView
                 android:id="@+id/report_fuel_overall_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/report_fuel_overall_label"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/report_fuel_overall_label"
                 android:gravity="right"
                 tools:text="330l" />
 
@@ -90,15 +91,15 @@
                 android:id="@+id/report_fuel_cost_per_day_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/report_fuel_cost_per_day"
-                android:layout_below="@id/report_fuel_overall_field" />
+                android:layout_below="@id/report_fuel_overall_field"
+                android:text="@string/report_fuel_cost_per_day" />
 
             <TextView
                 android:id="@+id/report_fuel_cost_per_day_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/report_fuel_cost_per_day_label"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/report_fuel_cost_per_day_label"
                 android:gravity="right"
                 tools:text="32 zł" />
 
@@ -106,15 +107,15 @@
                 android:id="@+id/report_fuel_cost_per_month_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/report_fuel_cost_per_month"
-                android:layout_below="@id/report_fuel_cost_per_day_field" />
+                android:layout_below="@id/report_fuel_cost_per_day_field"
+                android:text="@string/report_fuel_cost_per_month" />
 
             <TextView
                 android:id="@+id/report_fuel_cost_per_month_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/report_fuel_cost_per_month_label"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/report_fuel_cost_per_month_label"
                 android:gravity="right"
                 tools:text="400 zł" />
 
@@ -122,15 +123,15 @@
                 android:id="@+id/report_fuel_cost_overall_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/report_fuel_cost_overall"
-                android:layout_below="@id/report_fuel_cost_per_month_field" />
+                android:layout_below="@id/report_fuel_cost_per_month_field"
+                android:text="@string/report_fuel_cost_overall" />
 
             <TextView
                 android:id="@+id/report_fuel_cost_overall_field"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/report_fuel_cost_overall_label"
                 android:layout_alignParentRight="true"
+                android:layout_below="@id/report_fuel_cost_overall_label"
                 android:gravity="right"
                 tools:text="630 zł" />
         </RelativeLayout>

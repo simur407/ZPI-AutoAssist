@@ -5,6 +5,8 @@ import android.view.View;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.view.ReportsPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.ReportFuelActivity;
+import pl.edu.pwr.zpi.autoasystent.view.activity.ReportServicesActivity;
+import pl.edu.pwr.zpi.autoasystent.view.activity.ReportSummaryActivity;
 
 /**
  * Created by Marek on 02.05.2016.
@@ -20,14 +22,15 @@ public class ReportsPresenter {
 
         switch (checkedId) {
             case R.id.report_radio_fuel:
+                //TODO implement
                 panel.startActivity(ReportFuelActivity.class, null);
                 break;
             case R.id.report_radio_services:
-                //  if (checked)
+                panel.startActivity(ReportServicesActivity.class, null);
                 // TODO implement
                 break;
             case R.id.report_radio_summary:
-                //   if (checked)
+                panel.startActivity(ReportSummaryActivity.class, null);
                 // TODO implement
                 break;
             case R.id.report_radio_fuel_chart:

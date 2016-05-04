@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -50,5 +52,14 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
 
     public String getTabName() {
         return "Raporty";
+    }
+
+
+    public void startActivity(Class<?> clazz, Uri additionalData) {
+        Intent intent = new Intent(this.getContext(), clazz);
+        if (additionalData != null) {
+            intent.setData(additionalData);
+        }
+        startActivity(intent);
     }
 }
