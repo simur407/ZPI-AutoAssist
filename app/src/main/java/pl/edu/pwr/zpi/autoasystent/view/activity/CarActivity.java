@@ -20,13 +20,16 @@ public class CarActivity extends BaseActivity implements CarPanel {
     private ViewPager viewPager;
     private CarPresenter presenter;
 
+    public static String ID_KEY = "id";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
+        long carId = Long.valueOf(getIntent().getData().toString());
         presenter = new CarPresenter(this);
-        presenter.setFragments();
+        presenter.setFragments(carId);
         viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(fragmentAdapter);
 
@@ -38,4 +41,6 @@ public class CarActivity extends BaseActivity implements CarPanel {
     public void setFragments(List<Fragment> fragments) {
         fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
     }
+
+
 }

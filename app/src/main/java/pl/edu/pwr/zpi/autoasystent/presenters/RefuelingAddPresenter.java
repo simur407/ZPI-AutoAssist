@@ -1,21 +1,25 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.RefuelingService;
-import pl.edu.pwr.zpi.autoasystent.view.activity.RefuelingAddActivity;
+import pl.edu.pwr.zpi.autoasystent.view.RefuelingAddPanel;
 
 /**
  * Created by Marcin on 25.04.2016.
  */
 public class RefuelingAddPresenter {
 
-    RefuelingAddActivity activity;
+    private RefuelingAddPanel panel;
+    private long carId;
 
-    public RefuelingAddPresenter(RefuelingAddActivity activity) {
-        this.activity=activity;
+    public RefuelingAddPresenter(RefuelingAddPanel panel, long carId) {
+        this.panel = panel;
+        this.carId = carId;
     }
 
     public void saveRefueling(Refueling refueling) {
+        refueling.setCar(CarService.getInstance().findCarById(carId));
         RefuelingService.getInstance().saveRefueling(refueling);
     }
 }

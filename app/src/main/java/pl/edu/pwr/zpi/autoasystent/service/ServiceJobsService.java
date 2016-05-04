@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
+import java.util.List;
+
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 
 /**
@@ -29,8 +31,12 @@ public class ServiceJobsService {
           return ServiceJobs.findById(ServiceJobs.class, id);
     }
 
-    public java.util.List<ServiceJobs> getAllServices() {
+    public List<ServiceJobs> getAllServices() {
         return ServiceJobs.listAll(ServiceJobs.class);
+    }
+
+    public List<ServiceJobs> getAllServicesByCarId(long carId) {
+        return ServiceJobs.find(ServiceJobs.class, "car = ?", String.valueOf(carId));
     }
 
     public void deleteService(ServiceJobs service) {

@@ -38,6 +38,10 @@ public class RefuelingService {
         return Refueling.listAll(Refueling.class);
     }
 
+    public List<Refueling> getAllRefuelingsByCarId(long carId) {
+        return Refueling.find(Refueling.class, "car = ?", String.valueOf(carId));
+    }
+
     public List<Refueling> getRefuelingsByDate(Date from, Date to) {
         return Refueling.find(Refueling.class, "refueling_date BETWEEN ? AND ?",
                 String.valueOf(from.getTime()), String.valueOf(to.getTime()));

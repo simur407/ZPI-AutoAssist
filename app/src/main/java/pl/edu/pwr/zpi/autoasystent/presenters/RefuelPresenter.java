@@ -16,10 +16,12 @@ import pl.edu.pwr.zpi.autoasystent.view.activity.RefuelingAddActivity;
  * Created by Marek on 24.04.2016.
  */
 public class RefuelPresenter {
-    RefuelPanel panel;
+    private RefuelPanel panel;
+    private long carId;
 
-    public RefuelPresenter(RefuelPanel panel) {
+    public RefuelPresenter(RefuelPanel panel, long carId) {
         this.panel = panel;
+        this.carId = carId;
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -29,14 +31,13 @@ public class RefuelPresenter {
     }
 
     public void setList() {
-        List<Refueling> refuelings = RefuelingService.getInstance().getAllRefuelings();
+        List<Refueling> refuelings = RefuelingService.getInstance().getAllRefuelingsByCarId(carId);
         panel.setRefuelList(refuelings);
     }
 
 
     public void onAddButtonClick(View v) {
-        //TODO implement - chyba jest, nie?
-        panel.startActivity(RefuelingAddActivity.class, null);
+        panel.startActivity(RefuelingAddActivity.class, Uri.parse(String.valueOf(carId)));
       }
 }
 

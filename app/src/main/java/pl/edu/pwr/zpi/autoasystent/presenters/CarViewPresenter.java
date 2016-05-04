@@ -1,9 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
-import java.util.Date;
-
 import pl.edu.pwr.zpi.autoasystent.model.Car;
-import pl.edu.pwr.zpi.autoasystent.model.Model;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
 
 /**
@@ -17,7 +14,7 @@ public class CarViewPresenter {
         this.panel=panel;
     }
 
-    public void setCarData(int carId) {
+    public void setCarData(long carId) {
         panel.setCarData(Car.findById(Car.class, carId));
     }
 }

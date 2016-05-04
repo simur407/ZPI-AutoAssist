@@ -18,10 +18,12 @@ import pl.edu.pwr.zpi.autoasystent.view.activity.ServiceJobsActivity;
  * Created by Marek on 25.04.2016.
  */
 public class ServiceJobsListPresenter {
-    ServiceJobsPanel panel;
+    private ServiceJobsPanel panel;
+    private long carId;
 
-    public ServiceJobsListPresenter(ServiceJobsPanel panel) {
+    public ServiceJobsListPresenter(ServiceJobsPanel panel, long carId) {
         this.panel = panel;
+        this.carId = carId;
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -30,7 +32,7 @@ public class ServiceJobsListPresenter {
     }
 
     public void setList() {
-        List<ServiceJobs> serviceJobs = ServiceJobsService.getInstance().getAllServices();
+        List<ServiceJobs> serviceJobs = ServiceJobsService.getInstance().getAllServicesByCarId(carId);
         panel.setServiceJobsList(serviceJobs);
     }
 

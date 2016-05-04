@@ -5,17 +5,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.text.DateFormat;
+import com.rafalzajfert.androidlogger.Logger;
+
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.presenters.RefuelingAddPresenter;
-import pl.edu.pwr.zpi.autoasystent.service.CarService;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
+import pl.edu.pwr.zpi.autoasystent.view.RefuelingAddPanel;
 
-public class RefuelingAddActivity extends BaseActivity {
+public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPanel {
 
     protected TextView dateField;
     protected TextView mileageField;
@@ -23,21 +23,21 @@ public class RefuelingAddActivity extends BaseActivity {
     protected TextView quantityField;
     protected TextView descriptionField;
     protected RefuelingAddPresenter presenter;
-    protected int carId;
+    protected long carId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refueling_add);
-        //TODO odczytać carId z innego miejsca i dodać date pickera
-        carId=1;
-        dateField=(TextView)findViewById(R.id.refuel_date);
-        mileageField=(TextView)findViewById(R.id.refuel_mileage);
-        costField=(TextView)findViewById(R.id.refuel_cost);
-        quantityField=(TextView)findViewById(R.id.refuel_quantity);
-        descriptionField=(TextView)findViewById(R.id.refuel_description);
+        //TODO dodać date pickera
+        carId = Long.valueOf(getIntent().getData().toString());
+        dateField = (TextView) findViewById(R.id.refuel_date);
+        mileageField = (TextView) findViewById(R.id.refuel_mileage);
+        costField = (TextView) findViewById(R.id.refuel_cost);
+        quantityField = (TextView) findViewById(R.id.refuel_quantity);
+        descriptionField = (TextView) findViewById(R.id.refuel_description);
 
-        presenter = new RefuelingAddPresenter(this);
+        presenter = new RefuelingAddPresenter(this, carId);
 
     }
 
@@ -49,32 +49,28 @@ public class RefuelingAddActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_save: saveRefueling();
-            default: super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_save:
+                saveRefueling();
+            default:
+                super.onOptionsItemSelected(item);
         }
         return true;
     }
 
-    public void saveRefueling()
-    {
-        Refueling refueling=new Refueling();
-        refueling.setCar(CarService.getInstance().findCarById(carId));
+    public void saveRefueling() {
+        Refueling refueling = new Refueling();
         refueling.setQuantity(Integer.parseInt(quantityField.getText().toString()));
         refueling.setRefuelingCost(Double.parseDouble(costField.getText().toString()));
         refueling.setRefuelingMileage(Integer.parseInt(mileageField.getText().toString()));
         refueling.setRefuelingDescription(descriptionField.getText().toString());
-
-        String dateString=dateField.getText().toString();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         try {
-            Date date = df.parse(dateString);
-            refueling.setRefuelingDate(date);
-            presenter.saveRefueling(refueling);
-            finish();
+            refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_PATTERN));
         } catch (ParseException e) {
-            e.printStackTrace();
+            Logger.error(e);
         }
+        presenter.saveRefueling(refueling);
+        finish();
 
     }
 }

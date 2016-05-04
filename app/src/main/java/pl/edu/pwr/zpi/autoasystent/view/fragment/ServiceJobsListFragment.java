@@ -19,6 +19,7 @@ import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.presenters.ServiceJobsListPresenter;
 import pl.edu.pwr.zpi.autoasystent.view.ServiceJobsPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.ServiceJobsAdapter;
 
 /**
@@ -31,7 +32,8 @@ public class ServiceJobsListFragment extends Fragment implements ServiceJobsPane
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_service_list, container, false);
 
-        presenter = new ServiceJobsListPresenter(this);
+        long carId = getArguments().getLong(CarActivity.ID_KEY);
+        presenter = new ServiceJobsListPresenter(this, carId);
         adapter = new ServiceJobsAdapter(this.getActivity());
 
         ListView listView = (ListView) view.findViewById(R.id.list_service);

@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
-import com.rafalzajfert.androidlogger.Logger;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -155,7 +154,6 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
     public void setMakeSpinner(List<Make> makeList) {
         makeAdapter.addAll(makeList);
         makeAdapter.notifyDataSetChanged();
-        Logger.debug(makeAdapter.getCount());
     }
 
     @Override
@@ -163,7 +161,6 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         modelAdapter.clear();
         modelAdapter.addAll(modelList);
         modelAdapter.notifyDataSetChanged();
-        Logger.debug(modelAdapter.getCount());
     }
 
     @Override

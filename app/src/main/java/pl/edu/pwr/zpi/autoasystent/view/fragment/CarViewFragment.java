@@ -8,20 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
-import pl.edu.pwr.zpi.autoasystent.model.Insurance;
-import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 
 /**
  * Created by Marcin on 25.04.2016.
@@ -37,7 +32,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     protected TextView capacityField;
     protected TextView motField;
     protected TextView insuranceField;
-    protected int carId;
+    protected long carId;
 
     @Override
     public String getTabName() {
@@ -50,7 +45,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         View view = inflater.inflate(R.layout.fragment_car_view, container, false);
 
         //TODO wczytać carId
-        carId=1;
+        carId=getArguments().getLong(CarActivity.ID_KEY);
         CarViewPresenter presenter=new CarViewPresenter(this);
 
         makeField = (TextView)view.findViewById(R.id.make_field);
