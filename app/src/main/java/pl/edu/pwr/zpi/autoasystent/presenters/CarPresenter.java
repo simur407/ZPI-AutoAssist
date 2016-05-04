@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import pl.edu.pwr.zpi.autoasystent.view.CarPanel;
 import pl.edu.pwr.zpi.autoasystent.view.fragment.CarViewFragment;
 import pl.edu.pwr.zpi.autoasystent.view.fragment.RefuelListFragment;
+import pl.edu.pwr.zpi.autoasystent.view.fragment.ReportsFragment;
 import pl.edu.pwr.zpi.autoasystent.view.fragment.ServiceJobsListFragment;
 
 /**
@@ -28,6 +29,7 @@ public class CarPresenter {
         fragmentLinkedList.add(new CarViewFragment());
         fragmentLinkedList.add(new RefuelListFragment());
         fragmentLinkedList.add(new ServiceJobsListFragment());
+        fragmentLinkedList.add(new ReportsFragment());
         panel.setFragments(fragmentLinkedList);
     }
 }

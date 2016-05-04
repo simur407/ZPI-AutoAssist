@@ -33,6 +33,31 @@
     <string name="save">Zapisz</string>
     <string name="make">Marka</string>
     <string name="model">Model</string>
+    <string name="report_fuel">Zużycie paliwa</string>
+    <string name="report_fuel_average">Średnie zużycie paliwa</string>
+    <string name="report_fuel_per_day">Dzienne zużycie paliwa</string>
+    <string name="report_fuel_per_month">Miesięczne zużycie paliwa</string>
+    <string name="report_fuel_overall">Łączne zużycie paliwa</string>
+    <string name="report_fuel_cost_per_day">Dzienny koszt paliwa</string>
+    <string name="report_fuel_cost_per_month">Miesięczny koszt paliwa</string>
+    <string name="report_fuel_cost_overall">Łączny koszt paliwa</string>
+    <string name="report_services">Serwisy</string>
+    <string name="report_services_count">Liczba serwisów</string>
+    <string name="report_services_cost_overall">Łączny koszt serwisów</string>
+    <string name="report_services_cost_average">Średni koszt serwisu</string>
+    <string name="report_services_cost_per_month">Miesięczny koszt serwisów</string>
+    <string name="report_summary">Podsumowanie</string>
+    <string name="report_summary_cost_overall">Łączny koszt</string>
+    <string name="report_summary_cost_per_month">Miesięczny koszt</string>
+    <string name="report_summary_mileage_overall">Przejechanych kilometrów</string>
+    <string name="report_summary_mileage_per_month">Przebieg miesięczny</string>
+    <string name="report_summary_to_mot">Liczba dni do przeglądu technicznego</string>
+    <string name="report_summary_to_insurance">Liczba dni do końca ubezpieczenia</string>
+    <string name="report_fuel_chart">Wykres zużycia paliwa</string>
+    <string name="report_summary_chart">Wykres kosztów całkowitych</string>
+    <string name="currency_symbol">zł</string>
+    <string name="quantity_symbol">l</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
