@@ -49,7 +49,6 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
     private Model selectedModel;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,38 +98,73 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_save: saveCar();
-            default: super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_save:
+                saveCar();
+            default:
+                super.onOptionsItemSelected(item);
         }
         return true;
     }
 
     private void saveCar() {
+        int error = 0;
         Car car = new Car();
         car.setLicencePlate(plate.getText().toString());
         car.setVIN(vin.getText().toString());
-        car.setCapacity(Integer.valueOf(capacity.getText().toString()));
+        if (capacity.getText().toString().length() < 1) {
+            error = 1;
+            capacity.setError(getString(R.string.error));
+        } else {
+            car.setCapacity(Integer.valueOf(capacity.getText().toString()));
+        }
         car.setCarDescription(description.getText().toString());
         car.setColor(Integer.toHexString(color));
-        car.setPower(Integer.valueOf(power.getText().toString()));
-        car.setProductionYear(new GregorianCalendar(Integer.valueOf(year.getText().toString()), Calendar.getInstance().get(Calendar
-                .MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).getTime());
-        car.setStartMileage(Integer.valueOf(mileage.getText().toString()));
-
-
-        if(selectedMake == null) {
-             selectedMake = new Make();
-             selectedMake.setMakeName(make.getText().toString().toUpperCase());
+        if (power.getText().toString().length() < 1) {
+            error = 1;
+            power.setError(getString(R.string.error));
+        } else {
+            car.setPower(Integer.valueOf(power.getText().toString()));
+        }
+        if (year.getText().toString().length() < 1) {
+            error = 1;
+            year.setError(getString(R.string.error));
+        } else {
+            car.setProductionYear(new GregorianCalendar(Integer.valueOf(year.getText().toString()), Calendar.getInstance().get(Calendar
+                    .MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).getTime());
+        }
+        if (mileage.getText().toString().length() < 1) {
+            error = 1;
+            mileage.setError(getString(R.string.error));
+        } else {
+            car.setStartMileage(Integer.valueOf(mileage.getText().toString()));
         }
 
-        if(selectedModel == null) {
-            selectedModel = new Model();
-            selectedModel.setModelName(model.getText().toString().toUpperCase());
+
+        if (selectedMake == null) {
+            if (make.getText().toString().length() < 1) {
+                error = 1;
+                make.setError(getString(R.string.error));
+            } else {
+                selectedMake = new Make();
+                selectedMake.setMakeName(make.getText().toString().toUpperCase());
+            }
         }
 
-        presenter.saveCar(car, selectedMake, selectedModel);
-        finish();
+        if (selectedModel == null) {
+
+            if (model.length() < 1) {
+                error = 1;
+                model.setError(getString(R.string.error));
+            } else {
+                selectedModel = new Model();
+                selectedModel.setModelName(model.getText().toString().toUpperCase());
+            }
+        }
+        if (error == 0) {
+            presenter.saveCar(car, selectedMake, selectedModel);
+            finish();
+        }
     }
 
     @Override
@@ -173,7 +207,7 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
     @Override
     public void setColor(int color) {
-            carColorDrawable.setColor(color);
+        carColorDrawable.setColor(color);
     }
 
     private AdapterView.OnItemClickListener selectMakeListener = new AdapterView.OnItemClickListener() {
