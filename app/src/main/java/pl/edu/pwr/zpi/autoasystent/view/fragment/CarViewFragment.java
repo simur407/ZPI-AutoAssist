@@ -8,20 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
-import pl.edu.pwr.zpi.autoasystent.model.Insurance;
-import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
+import pl.edu.pwr.zpi.autoasystent.view.dialog.InsuranceAddDialog;
 
 /**
  * Created by Marcin on 25.04.2016.
@@ -62,6 +57,12 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         capacityField = (TextView)view.findViewById(R.id.capacity_field);
         motField = (TextView)view.findViewById(R.id.mot_field);
         insuranceField = (TextView)view.findViewById(R.id.insurance_field);
+        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new InsuranceAddDialog(getActivity()).show();
+            }
+        });
 
         presenter.setCarData(carId);
 

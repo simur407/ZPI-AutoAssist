@@ -205,7 +205,13 @@
         android:gravity="right"
         android:layout_below="@+id/mot_field"
         />
-
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/insurance_label"
+        android:text="TEST"/>
 </RelativeLayout>
+
     </ScrollView>
 </RelativeLayout>
