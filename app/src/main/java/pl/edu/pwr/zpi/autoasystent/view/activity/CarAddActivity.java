@@ -108,33 +108,33 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
     }
 
     private void saveCar() {
-        int error = 0;
+        boolean error = false;
         Car car = new Car();
         car.setLicencePlate(plate.getText().toString());
         car.setVIN(vin.getText().toString());
-        if (capacity.getText().toString().length() < 1) {
-            error = 1;
+        if (capacity.length() < 1) {
+            error = true;
             capacity.setError(getString(R.string.error));
         } else {
             car.setCapacity(Integer.valueOf(capacity.getText().toString()));
         }
         car.setCarDescription(description.getText().toString());
         car.setColor(Integer.toHexString(color));
-        if (power.getText().toString().length() < 1) {
-            error = 1;
+        if (power.length() < 1) {
+            error = true;
             power.setError(getString(R.string.error));
         } else {
             car.setPower(Integer.valueOf(power.getText().toString()));
         }
-        if (year.getText().toString().length() < 1) {
-            error = 1;
+        if (year.length() < 1) {
+            error = true;
             year.setError(getString(R.string.error));
         } else {
             car.setProductionYear(new GregorianCalendar(Integer.valueOf(year.getText().toString()), Calendar.getInstance().get(Calendar
                     .MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).getTime());
         }
-        if (mileage.getText().toString().length() < 1) {
-            error = 1;
+        if (mileage.length() < 1) {
+            error = true;
             mileage.setError(getString(R.string.error));
         } else {
             car.setStartMileage(Integer.valueOf(mileage.getText().toString()));
@@ -142,8 +142,8 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
 
         if (selectedMake == null) {
-            if (make.getText().toString().length() < 1) {
-                error = 1;
+            if (make.length() < 1) {
+                error = true;
                 make.setError(getString(R.string.error));
             } else {
                 selectedMake = new Make();
@@ -154,14 +154,14 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         if (selectedModel == null) {
 
             if (model.length() < 1) {
-                error = 1;
+                error = true;
                 model.setError(getString(R.string.error));
             } else {
                 selectedModel = new Model();
                 selectedModel.setModelName(model.getText().toString().toUpperCase());
             }
         }
-        if (error == 0) {
+        if (!error) {
             presenter.saveCar(car, selectedMake, selectedModel);
             finish();
         }

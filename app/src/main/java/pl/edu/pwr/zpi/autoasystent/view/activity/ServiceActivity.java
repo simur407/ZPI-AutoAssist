@@ -47,12 +47,23 @@ public class ServiceActivity extends BaseActivity implements CarServiceAddPanel{
 
     private void saveService() {
         ServiceJobs service = new ServiceJobs();
+        boolean error = false;
 //        RefersTo refersTo = new RefersTo();
-
+//TODO
 //        service.setServiceDate(date.getText()));
         //service.setServiceDate(Calendar.getInstance().getTime());
-        service.setServiceMileage(Integer.parseInt(mileage.getText().toString()));
-        service.setServiceCost(Double.parseDouble(cost.getText().toString()));
+        if (mileage.length() < 1) {
+            error = true;
+            mileage.setError(getString(R.string.error));
+        } else {
+            service.setServiceMileage(Integer.parseInt(mileage.getText().toString()));
+        }
+        if (cost.length() < 1) {
+            error = true;
+            cost.setError(getString(R.string.error));
+        } else {
+            service.setServiceCost(Double.parseDouble(cost.getText().toString()));
+        }
         service.setServiceGarage(garage.getText().toString());
         service.setServiceDescription(description.getText().toString());
 
@@ -61,7 +72,8 @@ public class ServiceActivity extends BaseActivity implements CarServiceAddPanel{
 //        for(String element : serviceList)
 //            refersTo.getMaintenance().setMaintenanceName(element.toString());
 //        }
-
+        if (!error) {
         finish();
+        }
     }
 }
