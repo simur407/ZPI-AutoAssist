@@ -11,6 +11,7 @@ import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 
 /**
  * Created by Marek on 25.04.2016.
@@ -46,7 +47,7 @@ public class ServiceJobsAdapter extends ArrayAdapter<ServiceJobs> {
         ServiceJobs serviceJobs = getItem(position);
 
         if (serviceJobs.getServiceDate() != null) {
-            holder.dateTextView.setText(serviceJobs.getServiceDate().toString());
+            holder.dateTextView.setText(DateUtils.dateToString(serviceJobs.getServiceDate()));
         }
         holder.costTextView.setText(String.valueOf(serviceJobs.getServiceCost()) + " zł");
         holder.mileageTextView.setText(String.valueOf(serviceJobs.getServiceMileage()) + " km");
