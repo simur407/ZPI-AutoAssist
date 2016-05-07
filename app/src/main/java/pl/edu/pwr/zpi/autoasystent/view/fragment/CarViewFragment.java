@@ -18,7 +18,6 @@ import pl.edu.pwr.zpi.autoasystent.service.MotService;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.InsuranceAddDialog;
-import pl.edu.pwr.zpi.autoasystent.view.dialog.MotAddDialog;
 
 /**
  * Created by Marcin on 25.04.2016.
@@ -63,12 +62,6 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
             @Override
             public void onClick(View v) {
                 new InsuranceAddDialog(getActivity()).show();
-            }
-        });
-        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new MotAddDialog(getActivity()).show();
             }
         });
 

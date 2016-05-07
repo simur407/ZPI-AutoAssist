@@ -1,19 +1,26 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.presenters.RefuelingAddPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.view.RefuelingAddPanel;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
+import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
 public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPanel {
 
@@ -80,6 +87,9 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
             refueling.setRefuelingMileage(Integer.parseInt(mileageField.getText().toString()));
         }
         refueling.setRefuelingDescription(descriptionField.getText().toString());
+
+        String dateString=dateField.getText().toString();
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         try {
             refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_PATTERN));
         } catch (ParseException e) {
@@ -89,5 +99,22 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
             presenter.saveRefueling(refueling);
             finish();
         }
+    }
+
+    public void onStart(){
+        super.onStart();
+
+        EditText txtDate=(EditText)findViewById(R.id.refuel_date);
+        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            public void onFocusChange(View view, boolean hasfocus){
+                if(hasfocus){
+                    DateDialog dialog=new DateDialog(view);
+
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    dialog.show(ft, "Wybierz datę");
+                }
+            }
+
+        });
     }
 }

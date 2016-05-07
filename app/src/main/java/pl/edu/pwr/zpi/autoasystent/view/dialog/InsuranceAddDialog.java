@@ -58,4 +58,6 @@ public class InsuranceAddDialog extends CustomViewDialog implements InsuranceAdd
     public String getTabName() {
         return "Ubezpieczenia";
     }
+
+
 }
