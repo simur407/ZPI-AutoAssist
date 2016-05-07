@@ -58,6 +58,7 @@
     <string name="currency_symbol">zł</string>
     <string name="quantity_symbol">l</string>
     <string name="error">Pole obowiązkowe</string>
+    <string name="error_value">Nieprawidłowa wartość</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

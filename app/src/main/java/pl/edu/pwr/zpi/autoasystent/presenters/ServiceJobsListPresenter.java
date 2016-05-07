@@ -37,6 +37,6 @@ public class ServiceJobsListPresenter {
     }
 
     public void onAddButtonClick(View v) {
-        panel.startActivity(AddServiceActivity.class, null);
+        panel.startActivity(AddServiceActivity.class, Uri.parse(String.valueOf(carId)));
     }
 }

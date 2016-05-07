@@ -39,6 +39,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_add);
 
+        carId = Long.valueOf(getIntent().getData().toString());
         date = (EditText) findViewById(R.id.service_date);
         mileage = (EditText) findViewById(R.id.service_mileage);
         cost = (EditText) findViewById(R.id.service_cost);
@@ -49,7 +50,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
         list = (ListView) findViewById(R.id.service_add_list);
 
-        presenter = new AddServicePresenter(this);
+        presenter = new AddServicePresenter(this, carId);
     }
 
     @Override
@@ -60,7 +61,6 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //TODO obsluzyc zapis
         switch(item.getItemId()) {
             case R.id.action_save: saveService();
             default: super.onOptionsItemSelected(item);
@@ -72,11 +72,12 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         ServiceJobs service = new ServiceJobs();
         boolean error = false;
 //        RefersTo refersTo = new RefersTo();
-        try {
-            service.setServiceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN));
-        } catch (ParseException e) {
-            Logger.error(e);
-        }
+
+        //TODO Obsługa przekroczenia wartości zmiennych
+
+        //TODO Coś się dzieje z focusem datepickera po błędnym uzupełnieniu
+
+
         if (mileage.length() < 1) {
             error = true;
             mileage.setError(getString(R.string.error));
@@ -89,20 +90,23 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         } else {
             service.setServiceCost(Double.parseDouble(cost.getText().toString()));
         }
+        if (date.length() < 1) {
+            error = true;
+            date.setError(getString(R.string.error));
+        } else {
+            // Date picker
+            try {
+                service.setServiceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN));
+            } catch (ParseException e) {
+                Logger.error(e);
+            }
+            // !Date picker
+        }
+
         service.setServiceGarage(garage.getText().toString());
         service.setServiceDescription(description.getText().toString());
 
-        String dateString = date.getText().toString();
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        try {
-            Date date = df.parse(dateString);
-            service.setServiceDate(date);
-            presenter.saveService(service);
-            finish();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        //TODO Lista napraw
 //        ArrayList<String> serviceList = new ArrayList<String>();
 //
 //        for(String element : serviceList)

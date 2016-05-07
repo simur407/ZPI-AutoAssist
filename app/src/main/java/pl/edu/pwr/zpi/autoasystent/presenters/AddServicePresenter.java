@@ -1,6 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.ServiceJobsService;
 import pl.edu.pwr.zpi.autoasystent.view.CarAddServicePanel;
 
@@ -9,13 +10,16 @@ import pl.edu.pwr.zpi.autoasystent.view.CarAddServicePanel;
  */
 public class AddServicePresenter {
 
-    CarAddServicePanel panel;
+    private CarAddServicePanel panel;
+    private long carId;
 
-    public AddServicePresenter(CarAddServicePanel panel) {
+    public AddServicePresenter(CarAddServicePanel panel, long carId) {
         this.panel = panel;
+        this.carId = carId;
     }
 
     public void saveService(ServiceJobs service) {
+        service.setCar(CarService.getInstance().findCarById(carId));
         ServiceJobsService.getInstance().saveService(service);
     }
 

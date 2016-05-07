@@ -35,7 +35,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refueling_add);
-        //TODO dodać date pickera
+
         carId = Long.valueOf(getIntent().getData().toString());
         dateField = (TextView) findViewById(R.id.refuel_date);
         mileageField = (TextView) findViewById(R.id.refuel_mileage);
@@ -67,11 +67,14 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
     public void saveRefueling() {
         boolean error = false;
         Refueling refueling = new Refueling();
+
+        //TODO Obsługa przekroczenia wartości zmiennych
+
         if (quantityField.length() < 1) {
             error = true;
             quantityField.setError(getString(R.string.error));
         } else {
-            refueling.setQuantity(Integer.parseInt(quantityField.getText().toString()));
+            refueling.setQuantity(Double.parseDouble(quantityField.getText().toString()));
         }
         if (costField.length() < 1) {
             error = true;
@@ -86,14 +89,21 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
             refueling.setRefuelingMileage(Integer.parseInt(mileageField.getText().toString()));
         }
         refueling.setRefuelingDescription(descriptionField.getText().toString());
-
-        String dateString = dateField.getText().toString();
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-        try {
-            refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_PATTERN));
-        } catch (ParseException e) {
-            Logger.error(e);
+        if (dateField.length() < 1) {
+            error = true;
+            dateField.setError(getString(R.string.error));
+        } else {
+            // Date picker
+//            String dateString = dateField.getText().toString();
+//            DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+            try {
+                refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_PATTERN));
+            } catch (ParseException e) {
+                Logger.error(e);
+            }
+            // !Date picker
         }
+
         if (!error) {
             presenter.saveRefueling(refueling);
             finish();
