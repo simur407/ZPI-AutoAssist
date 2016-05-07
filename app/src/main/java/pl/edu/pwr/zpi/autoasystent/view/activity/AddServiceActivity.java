@@ -1,7 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,34 +9,30 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.rafalzajfert.androidlogger.Logger;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.rafalzajfert.androidlogger.Logger;
-
-import java.text.ParseException;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
-import pl.edu.pwr.zpi.autoasystent.presenters.CarServicePresenter;
-import pl.edu.pwr.zpi.autoasystent.presenters.ServiceJobsAddPresenter;
-import pl.edu.pwr.zpi.autoasystent.view.CarServiceAddPanel;
-import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 import pl.edu.pwr.zpi.autoasystent.presenters.AddServicePresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarAddServicePanel;
+import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
 public class AddServiceActivity extends BaseActivity implements CarAddServicePanel {
 
 
     protected EditText date, mileage, cost, garage, description;
     protected ListView list;
+    protected long carId;
 
-    protected ServiceJobsAddPresenter presenter;
+    protected AddServicePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +49,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
         list = (ListView) findViewById(R.id.service_add_list);
 
-        presenter = new ServiceJobsAddPresenter(this);
+        presenter = new AddServicePresenter(this);
     }
 
     @Override
@@ -101,7 +97,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         try {
             Date date = df.parse(dateString);
             service.setServiceDate(date);
-            presenter.saveServiceJob(service);
+            presenter.saveService(service);
             finish();
         } catch (ParseException e) {
             e.printStackTrace();
@@ -118,14 +114,14 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         }
     }
 
-    public void onStart(){
+    public void onStart() {
         super.onStart();
 
-        EditText txtDate=(EditText)findViewById(R.id.service_date);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener(){
-            public void onFocusChange(View view, boolean hasfocus){
-                if(hasfocus){
-                    DateDialog dialog=new DateDialog(view);
+        EditText txtDate = (EditText) findViewById(R.id.service_date);
+        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean hasfocus) {
+                if (hasfocus) {
+                    DateDialog dialog = new DateDialog(view);
 
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     dialog.show(ft, "Wybierz datę");
@@ -134,7 +130,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
         });
     }
-}
+
 
     @Override
     public void setMaintanaceList(List<CarMaintenance> maintenances) {

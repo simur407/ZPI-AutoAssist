@@ -3,7 +3,6 @@ package pl.edu.pwr.zpi.autoasystent.view.dialog;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.View;
@@ -18,9 +17,11 @@ import java.util.Calendar;
 @SuppressLint("ValidFragment")
 public class DateDialog extends DialogFragment implements DatePickerDialog.OnDateSetListener {
     EditText date;
-    public DateDialog(View view){
-        date=(EditText)view;
+
+    public DateDialog(View view) {
+        date = (EditText) view;
     }
+
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
 
@@ -40,7 +41,6 @@ public class DateDialog extends DialogFragment implements DatePickerDialog.OnDat
         String pickedDate = day + "." + (month + 1) + "." + year;
         date.setText(pickedDate);
     }
-
 
 
 }
