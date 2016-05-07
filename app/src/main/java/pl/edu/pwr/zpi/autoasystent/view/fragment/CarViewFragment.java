@@ -16,9 +16,9 @@ import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.InsuranceAddDialog;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.MotAddDialog;
-import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 
 /**
  * Created by Marcin on 25.04.2016.

@@ -11,7 +11,9 @@ public class InsuranceAddPresenter {
 
     InsuranceAddDialog dialog;
 
-    public InsuranceAddPresenter(InsuranceAddDialog dialog) { this.dialog = dialog; }
+    public InsuranceAddPresenter(InsuranceAddDialog dialog) {
+        this.dialog = dialog;
+    }
 
     public void saveInsurance(Insurance insurance) {
 

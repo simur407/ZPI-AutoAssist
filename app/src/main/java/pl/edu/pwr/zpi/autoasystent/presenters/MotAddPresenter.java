@@ -11,7 +11,9 @@ public class MotAddPresenter {
 
     MotAddDialog dialog;
 
-    public MotAddPresenter(MotAddDialog dialog) { this.dialog = dialog; }
+    public MotAddPresenter(MotAddDialog dialog) {
+        this.dialog = dialog;
+    }
 
     public void saveMot(Mot mot) {
 

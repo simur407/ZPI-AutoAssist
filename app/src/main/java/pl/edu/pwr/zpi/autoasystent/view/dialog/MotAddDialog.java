@@ -15,12 +15,14 @@ import pl.edu.pwr.zpi.autoasystent.view.fragment.TabFragment;
 /**
  * Created by argo on 07 maj.
  */
-public class MotAddDialog extends CustomViewDialog implements MotAddPanel, TabFragment{
+public class MotAddDialog extends CustomViewDialog implements MotAddPanel, TabFragment {
 
     private EditText date, description;
     protected MotAddPresenter presenter;
 
-    public MotAddDialog (Context context) { super(context); }
+    public MotAddDialog(Context context) {
+        super(context);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
