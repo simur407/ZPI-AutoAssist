@@ -1,8 +1,11 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -14,6 +17,7 @@ import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.presenters.RefuelingAddPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
+import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
 public class RefuelingAddActivity extends BaseActivity {
 
@@ -66,7 +70,7 @@ public class RefuelingAddActivity extends BaseActivity {
         refueling.setRefuelingDescription(descriptionField.getText().toString());
 
         String dateString=dateField.getText().toString();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
         try {
             Date date = df.parse(dateString);
             refueling.setRefuelingDate(date);
@@ -76,5 +80,22 @@ public class RefuelingAddActivity extends BaseActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void onStart(){
+        super.onStart();
+
+        EditText txtDate=(EditText)findViewById(R.id.refuel_date);
+        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            public void onFocusChange(View view, boolean hasfocus){
+                if(hasfocus){
+                    DateDialog dialog=new DateDialog(view);
+
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    dialog.show(ft, "Wybierz datę");
+                }
+            }
+
+        });
     }
 }
