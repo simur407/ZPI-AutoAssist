@@ -9,9 +9,9 @@ import pl.edu.pwr.zpi.autoasystent.view.dialog.InsuranceAddDialog;
  */
 public class InsuranceAddPresenter {
 
-    InsuranceAddDialog fragment;
+    InsuranceAddDialog dialog;
 
-    public InsuranceAddPresenter(InsuranceAddDialog fragment) { this.fragment = fragment; }
+    public InsuranceAddPresenter(InsuranceAddDialog dialog) { this.dialog = dialog; }
 
     public void saveInsurance(Insurance insurance) {
 
