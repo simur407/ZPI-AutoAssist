@@ -31,7 +31,7 @@ public class CarListPresenter {
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Car car = (Car)parent.getItemAtPosition(position);
+        Car car = (Car) parent.getItemAtPosition(position);
         Logger.debug(car);
         panel.startActivity(CarActivity.class, Uri.parse(String.valueOf(car.getId())));
     }

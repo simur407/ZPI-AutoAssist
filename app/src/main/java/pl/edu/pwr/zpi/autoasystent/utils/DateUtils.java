@@ -35,6 +35,7 @@ public class DateUtils {
 
     /**
      * Konwertuje {@link String} z datą wg. podanego patternu.
+     *
      * @throws ParseException
      */
     public static Date stringToDate(String dateString, String pattern) throws ParseException {

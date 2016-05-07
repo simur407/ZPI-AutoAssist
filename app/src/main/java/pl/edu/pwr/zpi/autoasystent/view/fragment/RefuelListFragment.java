@@ -34,7 +34,7 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_refuel_list, container, false);
 
-        carId=getArguments().getLong(CarActivity.ID_KEY);
+        carId = getArguments().getLong(CarActivity.ID_KEY);
 
         presenter = new RefuelPresenter(this, carId);
         adapter = new RefuelAdapter(this.getActivity());

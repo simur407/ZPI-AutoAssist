@@ -28,11 +28,12 @@ import pl.edu.pwr.zpi.autoasystent.view.adapter.ServiceJobsAdapter;
 public class ServiceJobsListFragment extends Fragment implements ServiceJobsPanel, TabFragment {
     private ServiceJobsListPresenter presenter;
     private ServiceJobsAdapter adapter;
+    private long carId;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_service_list, container, false);
 
-        long carId = getArguments().getLong(CarActivity.ID_KEY);
+        carId = getArguments().getLong(CarActivity.ID_KEY);
         presenter = new ServiceJobsListPresenter(this, carId);
         adapter = new ServiceJobsAdapter(this.getActivity());
 

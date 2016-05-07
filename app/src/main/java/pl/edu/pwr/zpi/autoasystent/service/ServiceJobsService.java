@@ -28,7 +28,7 @@ public class ServiceJobsService {
     }
 
     public ServiceJobs findServiceById(long id) {
-          return ServiceJobs.findById(ServiceJobs.class, id);
+        return ServiceJobs.findById(ServiceJobs.class, id);
     }
 
     public List<ServiceJobs> getAllServices() {

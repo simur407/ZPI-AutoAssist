@@ -45,7 +45,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         View view = inflater.inflate(R.layout.fragment_car_view, container, false);
 
         //TODO wczytać carId
-        carId=getArguments().getLong(CarActivity.ID_KEY);
+        carId = getArguments().getLong(CarActivity.ID_KEY);
         CarViewPresenter presenter=new CarViewPresenter(this);
 
         makeField = (TextView)view.findViewById(R.id.make_field);
