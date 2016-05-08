@@ -15,7 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.CarAddActivity" />
+        <activity android:name=".view.activity.CarModifyActivity" />
         <activity android:name=".view.activity.CarActivity" />
         <activity android:name=".view.activity.RefuelViewActivity" />
         <activity android:name=".view.activity.ServiceJobsActivity" />

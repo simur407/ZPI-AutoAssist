@@ -26,19 +26,19 @@ import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.model.Make;
 import pl.edu.pwr.zpi.autoasystent.model.Model;
-import pl.edu.pwr.zpi.autoasystent.presenters.CarAddPresenter;
-import pl.edu.pwr.zpi.autoasystent.view.CarAddPanel;
+import pl.edu.pwr.zpi.autoasystent.presenters.CarModifyPresenter;
+import pl.edu.pwr.zpi.autoasystent.view.CarModifyPanel;
 
 /**
- * TODO Dokumentacja
+ * Dodaje lub edytuje samochód w zalezności od tego czy zostało przeakzane ID samochodu przez Uri.
  *
  * @author Szymon Bartczak
  * @date 2016-04-15
  */
-public class CarAddActivity extends BaseActivity implements CarAddPanel {
+public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
 
     private GradientDrawable carColorDrawable;
-    private CarAddPresenter presenter;
+    private CarModifyPresenter presenter;
     private AutoCompleteTextView make, model;
     private EditText plate, vin, power, year, capacity, mileage, description;
     private int color;
@@ -48,6 +48,8 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
     private Make selectedMake;
     private Model selectedModel;
 
+    //Używany przy edycji.
+    private Car car;
 
 
     @Override
@@ -87,8 +89,11 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         mileage = (EditText) findViewById(R.id.start_mileage);
         description = (EditText) findViewById(R.id.car_description);
 
-        presenter = new CarAddPresenter(this);
+        presenter = new CarModifyPresenter(this);
         presenter.setMakeSpinner();
+        if (getIntent().getData() != null) {
+            presenter.setInitialData(Long.valueOf(getIntent().getData().toString()));
+        }
     }
 
     @Override
@@ -99,15 +104,19 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_save: saveCar();
-            default: super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_save:
+                saveCar();
+            default:
+                super.onOptionsItemSelected(item);
         }
         return true;
     }
 
     private void saveCar() {
-        Car car = new Car();
+        if (car == null) {
+            car = new Car();
+        }
         car.setLicencePlate(plate.getText().toString());
         car.setVIN(vin.getText().toString());
         car.setCapacity(Integer.valueOf(capacity.getText().toString()));
@@ -119,12 +128,12 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         car.setStartMileage(Integer.valueOf(mileage.getText().toString()));
 
 
-        if(selectedMake == null) {
-             selectedMake = new Make();
-             selectedMake.setMakeName(make.getText().toString().toUpperCase());
+        if (selectedMake == null) {
+            selectedMake = new Make();
+            selectedMake.setMakeName(make.getText().toString().toUpperCase());
         }
 
-        if(selectedModel == null) {
+        if (selectedModel == null) {
             selectedModel = new Model();
             selectedModel.setModelName(model.getText().toString().toUpperCase());
         }
@@ -136,14 +145,14 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
     @Override
     public void showColorPicker() {
         ColorPickerDialogBuilder
-                .with(CarAddActivity.this)
+                .with(CarModifyActivity.this)
                 .setTitle("Wybierz kolor")
                 .wheelType(ColorPickerView.WHEEL_TYPE.CIRCLE)
                 .density(12)
                 .setPositiveButton("OK", new ColorPickerClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i, Integer[] integers) {
-                        Toast.makeText(CarAddActivity.this, "Color: " + Integer.toHexString(i), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CarModifyActivity.this, "Color: " + Integer.toHexString(i), Toast.LENGTH_SHORT).show();
                         presenter.onColorSelected(i);
                     }
                 })
@@ -173,7 +182,7 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
     @Override
     public void setColor(int color) {
-            carColorDrawable.setColor(color);
+        carColorDrawable.setColor(color);
     }
 
     private AdapterView.OnItemClickListener selectMakeListener = new AdapterView.OnItemClickListener() {
@@ -183,4 +192,25 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
             selectedMake = (Make) parent.getItemAtPosition(position);
         }
     };
+
+    @Override
+    public void setInitialData(Car car) {
+        this.car = car;
+        if (car.getModel() != null) {
+            if (car.getModel().getMake() != null) {
+                make.setText(car.getModel().getMake().getMakeName());
+            }
+            model.setText(car.getModel().getModelName());
+        }
+
+        plate.setText(car.getLicencePlate());
+        vin.setText(car.getVIN());
+        power.setText(String.valueOf(car.getPower()));
+        GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
+        calendar.setTime(car.getProductionYear());
+        year.setText(String.valueOf(calendar.get(Calendar.YEAR)));
+        capacity.setText(String.valueOf(car.getCapacity()));
+        mileage.setText(String.valueOf(car.getStartMileage()));
+        description.setText(car.getCarDescription());
+    }
 }

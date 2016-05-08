@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <AutoCompleteTextView
@@ -12,7 +16,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignStart="@+id/model_edittext"
         android:layout_marginRight="10dp"
-        android:hint="@string/make"/>
+        android:hint="@string/make"
+        android:imeOptions="actionNext"/>
 
     <AutoCompleteTextView
         android:id="@+id/model_edittext"
@@ -23,7 +28,8 @@
         android:layout_marginRight="10dp"
         android:layout_toEndOf="@+id/power"
         android:layout_toRightOf="@+id/power"
-        android:hint="@string/model"/>
+        android:hint="@string/model"
+        android:imeOptions="actionNext"/>
 
     <ImageView
         android:id="@+id/car_image"
@@ -65,7 +71,8 @@
         android:layout_marginRight="10dp"
         android:layout_centerHorizontal="true"
         android:ems="13"
-        android:hint="@string/vin_label" />
+        android:hint="@string/vin_label"
+        android:imeOptions="actionNext"/>
 
     <EditText
         android:id="@+id/licence_plate"
@@ -75,7 +82,8 @@
         android:layout_below="@+id/model_edittext"
         android:layout_marginRight="10dp"
         android:gravity="right"
-        android:hint="@string/plate_label" />
+        android:hint="@string/plate_label"
+        android:imeOptions="actionNext"/>
 
 
     <EditText
@@ -88,7 +96,7 @@
         android:layout_marginRight="10dp"
         android:gravity="right"
         android:hint="@string/capacity_label"
-
+        android:imeOptions="actionNext"
         android:inputType="number" />
 
     <EditText
@@ -101,13 +109,14 @@
         android:layout_marginLeft="10dp"
         android:ems="4"
         android:hint="@string/power_label"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:imeOptions="actionNext"/>
 
     <EditText
         android:id="@+id/start_mileage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:imeOptions="actionNext"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/capacity"
         android:layout_marginRight="10dp"
@@ -124,7 +133,8 @@
         android:layout_marginLeft="10dp"
         android:ems="4"
         android:hint="@string/year_label"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:imeOptions="actionNext"/>
 
     <EditText
         android:id="@+id/car_description"
@@ -137,6 +147,7 @@
         android:gravity="top"
         android:hint="@string/description_label"
         android:inputType="textMultiLine"
-        android:lines="4" />
+        android:lines="4"/>
 
 </RelativeLayout>
+</ScrollView>

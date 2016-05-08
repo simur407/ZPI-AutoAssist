@@ -19,7 +19,7 @@ import pl.edu.pwr.zpi.autoasystent.view.CarModifyPanel;
 /**
  * Created by Szymon on 2016-03-21.
  */
-public abstract class CarModifyPresenter implements OnColorSelectedListener {
+public class CarModifyPresenter implements OnColorSelectedListener {
 
     protected CarModifyPanel panel;
 
@@ -61,5 +61,10 @@ public abstract class CarModifyPresenter implements OnColorSelectedListener {
         Make make = ((Make)parent.getAdapter().getItem(position));
         List<Model> models = ModelService.getInstance().getModelsByMake(make);
         panel.setModelSpinner(models);
+    }
+
+    public void setInitialData(long carId) {
+        Car car = CarService.getInstance().findCarById(carId);
+        panel.setInitialData(car);
     }
 }
