@@ -11,10 +11,7 @@ import android.widget.ListView;
 
 import com.rafalzajfert.androidlogger.Logger;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
@@ -61,9 +58,11 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.action_save: saveService();
-            default: super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_save:
+                saveService();
+            default:
+                super.onOptionsItemSelected(item);
         }
         return true;
     }
@@ -81,9 +80,14 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         if (mileage.length() < 1) {
             error = true;
             mileage.setError(getString(R.string.error));
+        } else if (mileage.length() > 9) {
+
+            error = true;
+            mileage.setError(getString(R.string.error_value));
         } else {
             service.setServiceMileage(Integer.parseInt(mileage.getText().toString()));
         }
+
         if (cost.length() < 1) {
             error = true;
             cost.setError(getString(R.string.error));

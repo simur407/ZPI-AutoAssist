@@ -10,9 +10,7 @@ import android.widget.TextView;
 
 import com.rafalzajfert.androidlogger.Logger;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
@@ -68,8 +66,6 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         boolean error = false;
         Refueling refueling = new Refueling();
 
-        //TODO Obsługa przekroczenia wartości zmiennych
-
         if (quantityField.length() < 1) {
             error = true;
             quantityField.setError(getString(R.string.error));
@@ -85,6 +81,10 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         if (mileageField.length() < 1) {
             error = true;
             mileageField.setError(getString(R.string.error));
+        } else if (mileageField.length() > 9) {
+
+            error = true;
+            mileageField.setError(getString(R.string.error_value));
         } else {
             refueling.setRefuelingMileage(Integer.parseInt(mileageField.getText().toString()));
         }
