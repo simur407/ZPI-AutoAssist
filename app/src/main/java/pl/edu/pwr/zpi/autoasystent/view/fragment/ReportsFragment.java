@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.presenters.ReportsPresenter;
 import pl.edu.pwr.zpi.autoasystent.view.ReportsPanel;
+import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
 /**
  * Created by Marek on 02.05.2016.
@@ -38,6 +40,30 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 presenter.onRadioButtonClicked(checkedId);
             }
+        });
+
+        fromDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean hasfocus) {
+                if (hasfocus) {
+                    DateDialog dialog = new DateDialog(view);
+
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft, "Wybierz datę");
+                }
+            }
+
+        });
+
+        toDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean hasfocus) {
+                if (hasfocus) {
+                    DateDialog dialog = new DateDialog(view);
+
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft, "Wybierz datę");
+                }
+            }
+
         });
 
         button.setOnClickListener(new Button.OnClickListener() {

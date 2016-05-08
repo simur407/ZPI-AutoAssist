@@ -114,6 +114,9 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         if (capacity.length() < 1) {
             error = true;
             capacity.setError(getString(R.string.error));
+        } else if (capacity.length() > 8) {
+            error = true;
+            capacity.setError(getString(R.string.error_value));
         } else {
             car.setCapacity(Integer.valueOf(capacity.getText().toString()));
         }
@@ -122,12 +125,18 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         if (power.length() < 1) {
             error = true;
             power.setError(getString(R.string.error));
+        } else if (power.length() > 6) {
+            error = true;
+            power.setError(getString(R.string.error_value));
         } else {
             car.setPower(Integer.valueOf(power.getText().toString()));
         }
         if (year.length() < 1) {
             error = true;
             year.setError(getString(R.string.error));
+        } else if (year.length() > 4) {
+            error = true;
+            year.setError(getString(R.string.error_value));
         } else {
             car.setProductionYear(new GregorianCalendar(Integer.valueOf(year.getText().toString()), Calendar.getInstance().get(Calendar
                     .MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).getTime());
@@ -135,6 +144,9 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         if (mileage.length() < 1) {
             error = true;
             mileage.setError(getString(R.string.error));
+        } else if (mileage.length() > 9) {
+            error = true;
+            mileage.setError(getString(R.string.error_value));
         } else {
             car.setStartMileage(Integer.valueOf(mileage.getText().toString()));
         }
