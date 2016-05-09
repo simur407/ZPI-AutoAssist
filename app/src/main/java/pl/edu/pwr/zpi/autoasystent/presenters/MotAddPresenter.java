@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
+import java.util.Date;
+
 import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
@@ -21,5 +23,9 @@ public class MotAddPresenter {
     public void saveMot(Mot mot) {
         mot.setCar(CarService.getInstance().findCarById(carId));
         MotService.getInstance().saveMot(mot);
+    }
+
+    public void showDateDialog(Date date) {
+        panel.showDateDialog(date);
     }
 }

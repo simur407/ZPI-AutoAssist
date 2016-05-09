@@ -1,15 +1,19 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
+import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Insurance;
@@ -37,6 +41,17 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
         date = (EditText) findViewById(R.id.insurance_date);
         cost = (EditText) findViewById(R.id.insurance_cost);
         description = (EditText) findViewById(R.id.insurance_description);
+
+        date.setInputType(InputType.TYPE_NULL);
+
+        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean hasfocus) {
+                if (hasfocus) {
+                    presenter.showDatePicker(new Date());//TODO temporary date
+                }
+            }
+
+        });
     }
 
 
@@ -81,20 +96,18 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
         }
     }
 
-    public void onStart() {
-        super.onStart();
-
-        EditText txtDate = (EditText) findViewById(R.id.insurance_date);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    DateDialog dialog = new DateDialog(view);
-
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    dialog.show(ft, "Wybierz datę");
-                }
+    @Override
+    public void showDatePicker(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                //TODO Pattern
+                InsuranceAddActivity.this.date.setText(dayOfMonth+"." +monthOfYear + "." +year);
             }
-
         });
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
     }
 }

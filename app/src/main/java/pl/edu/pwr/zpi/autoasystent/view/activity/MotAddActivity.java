@@ -1,6 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
 import android.app.AlarmManager;
+import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +9,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Mot;
@@ -38,6 +42,15 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         presenter = new MotAddPresenter(this, carId);
         date = (EditText) findViewById(R.id.mot_date);
         description = (EditText) findViewById(R.id.mot_description);
+
+        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean hasfocus) {
+                if (hasfocus) {
+                    presenter.showDateDialog(new Date());
+                }
+            }
+
+        });
     }
 
     @Override
@@ -67,26 +80,22 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         }
 
         mot.setMotDescription(description.getText().toString());
-
+        createReminder();
         presenter.saveMot(mot);
         finish();
     }
 
-    public void onStart() {
-        super.onStart();
-
-        EditText txtDate = (EditText) findViewById(R.id.mot_date);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    DateDialog dialog = new DateDialog(view);
-
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    dialog.show(ft, "Wybierz datę");
-                }
+    @Override
+    public void showDateDialog(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                MotAddActivity.this.date.setText(dayOfMonth+"." +monthOfYear + "." +year);//TODO CHANGE
             }
-
         });
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
     }
 
     public void createReminder() {
@@ -94,6 +103,9 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
         PendingIntent pIntent = PendingIntent.getService(this, 0, intent, 0);
 
-    }
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2016, 5, 9, 19, 20);
 
+        manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pIntent);
+    }
 }

@@ -1,5 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.view;
 
+import java.util.Date;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
@@ -12,9 +13,9 @@ public interface CarAddServicePanel {
 
     /**
      * Pokazuje dialog do wyboru daty przeglądu.
-     * @param currentData wybrana aktualnie data w milisekundach.
+     * @param date wybrana aktualnie data.
      */
-    void showDataPicker(int currentData);
+    void showDataPicker(Date date);
 
     /**
      * Ustawia aktualną datę na samym początku.

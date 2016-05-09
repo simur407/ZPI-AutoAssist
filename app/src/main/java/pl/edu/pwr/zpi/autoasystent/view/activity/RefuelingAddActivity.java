@@ -1,16 +1,18 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
+import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
@@ -42,6 +44,14 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         descriptionField = (TextView) findViewById(R.id.refuel_description);
 
         presenter = new RefuelingAddPresenter(this, carId);
+
+        dateField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean hasfocus) {
+                if (hasfocus) {
+
+                }
+            }
+        });
 
     }
 
@@ -110,20 +120,17 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         }
     }
 
-    public void onStart() {
-        super.onStart();
-
-        EditText txtDate = (EditText) findViewById(R.id.refuel_date);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    DateDialog dialog = new DateDialog(view);
-
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    dialog.show(ft, "Wybierz datę");
-                }
+    @Override
+    public void showDatePicker(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                RefuelingAddActivity.this.dateField.setText(dayOfMonth+"." +monthOfYear + "." +year);
             }
-
         });
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
     }
 }
