@@ -53,13 +53,15 @@ public class MainActivity extends BaseActivity implements CarListPanel {
     @Override
     protected void onResume() {
         super.onResume();
-        presenter.setList();
+
         //TransferPresenter.saveFile(this, false, "lel.csv");
         TransferPresenter.saveFile(this, true, "lel.csv");
         TransferPresenter.loadFile(this, true, "lel.csv", true);
 
         List<Car> kurczak=Car.listAll(Car.class);
         Toast.makeText(this, "Kurczak", Toast.LENGTH_SHORT).show();
+
+        presenter.setList();
     }
 
     @Override
