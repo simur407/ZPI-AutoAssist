@@ -25,6 +25,8 @@
         <activity android:name=".view.activity.ReportSummaryActivity" />
 
         <activity android:name=".view.activity.AddServiceActivity" />
+        <activity android:name=".view.activity.InsuranceAddActivity" />
+        <activity android:name=".view.activity.MotAddActivity" />
 
         <meta-data
             android:name="DATABASE"

@@ -131,10 +131,11 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         } else {
             car.setPower(Integer.valueOf(power.getText().toString()));
         }
+        Calendar calendar = Calendar.getInstance();
         if (year.length() < 1) {
             error = true;
             year.setError(getString(R.string.error));
-        } else if (year.length() > 4) {
+        } else if (year.length() > 4 || Integer.valueOf(year.getText().toString()) > calendar.get(Calendar.YEAR)) {
             error = true;
             year.setError(getString(R.string.error_value));
         } else {

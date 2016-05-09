@@ -1,22 +1,25 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
+
 import pl.edu.pwr.zpi.autoasystent.model.Insurance;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
-import pl.edu.pwr.zpi.autoasystent.view.dialog.InsuranceAddDialog;
+import pl.edu.pwr.zpi.autoasystent.view.InsuranceAddPanel;
 
 /**
- * Created by argo on 06 maj.
+ * Created by Marek on 09.05.2016.
  */
 public class InsuranceAddPresenter {
+    private InsuranceAddPanel panel;
+    private long carId;
 
-    InsuranceAddDialog dialog;
-
-    public InsuranceAddPresenter(InsuranceAddDialog dialog) {
-        this.dialog = dialog;
+    public InsuranceAddPresenter(InsuranceAddPanel panel, long carId) {
+        this.panel = panel;
+        this.carId = carId;
     }
 
     public void saveInsurance(Insurance insurance) {
-
+        insurance.setCar(CarService.getInstance().findCarById(carId));
         InsuranceService.getInstance().saveInsurance(insurance);
     }
 }
