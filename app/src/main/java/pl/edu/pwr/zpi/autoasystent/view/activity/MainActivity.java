@@ -6,9 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
@@ -52,7 +55,11 @@ public class MainActivity extends BaseActivity implements CarListPanel {
         super.onResume();
         presenter.setList();
         //TransferPresenter.saveFile(this, false, "lel.csv");
-        //TransferPresenter.saveFile(this, true, "lel.csv");
+        TransferPresenter.saveFile(this, true, "lel.csv");
+        TransferPresenter.loadFile(this, true, "lel.csv", true);
+
+        List<Car> kurczak=Car.listAll(Car.class);
+        Toast.makeText(this, "Kurczak", Toast.LENGTH_SHORT).show();
     }
 
     @Override

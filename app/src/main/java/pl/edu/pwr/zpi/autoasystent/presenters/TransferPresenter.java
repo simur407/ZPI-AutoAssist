@@ -134,6 +134,7 @@ public class TransferPresenter {
                         car.setStartMileage(Integer.parseInt(list.get(7)));
                         car.setCarDescription(list.get(8));
                         carList.add(car);
+                        car.save();
                     }
 
                     while (!(line = reader.readLine()).equals("refueling"))
@@ -143,6 +144,7 @@ public class TransferPresenter {
                         mot.setCar(carList.get(Integer.parseInt(list.get(0))));
                         mot.setMotDate(stringToDate(list.get(1)));
                         mot.setMotDescription(list.get(2));
+                        mot.save();
                     }
 
                     while (!(line = reader.readLine()).equals("insurance"))
@@ -155,6 +157,7 @@ public class TransferPresenter {
                         refueling.setQuantity(Double.parseDouble(list.get(3)));
                         refueling.setRefuelingCost(Double.parseDouble(list.get(4)));
                         refueling.setRefuelingDescription(list.get(5));
+                        refueling.save();
                     }
 
                     while (!(line = reader.readLine()).equals("reminder"))
@@ -165,6 +168,7 @@ public class TransferPresenter {
                         insurance.setInsuranceDate(stringToDate(list.get(1)));
                         insurance.setInsuranceDescription(list.get(2));
                         insurance.setInsuranceCost(Double.parseDouble(list.get(3)));
+                        insurance.save();
                     }
 
                     while (!(line = reader.readLine()).equals("serviceJobs"))
@@ -175,6 +179,7 @@ public class TransferPresenter {
                         reminder.setReminderDate(stringToDate(list.get(1)));
                         reminder.setReminderDesription(list.get(2));
                         reminder.setTitle(list.get(3));
+                        reminder.save();
                     }
 
                     while (!(line = reader.readLine()).equals("carMaintenance"))
@@ -188,6 +193,7 @@ public class TransferPresenter {
                         serviceJobs.setServiceMileage(Integer.parseInt(list.get(4)));
                         serviceJobs.setServiceDescription(list.get(5));
                         serviceJobsList.add(serviceJobs);
+                        serviceJobs.save();
                     }
 
                     while (!(line = reader.readLine()).equals("refersTo"))
@@ -196,6 +202,7 @@ public class TransferPresenter {
                         CarMaintenance carMaintenance=new CarMaintenance();
                         carMaintenance.setMaintenanceName(list.get(0));
                         carMaintenanceList.add(carMaintenance);
+                        carMaintenance.save();
                     }
 
                     while ((line = reader.readLine()) != null)
@@ -204,6 +211,7 @@ public class TransferPresenter {
                         RefersTo refersTo=new RefersTo();
                         refersTo.setService(serviceJobsList.get(Integer.parseInt(list.get(0))));
                         refersTo.setMaintenance(carMaintenanceList.get(Integer.parseInt(list.get(1))));
+                        refersTo.save();
                     }
                 }
 
