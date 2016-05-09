@@ -90,13 +90,11 @@
                 android:id="@+id/capacity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/VIN"
                 android:layout_marginRight="10dp"
                 android:gravity="right"
                 android:hint="@string/capacity_label"
-
                 android:inputType="number" />
 
             <EditText
@@ -109,20 +107,18 @@
                 android:layout_marginLeft="10dp"
                 android:ems="4"
                 android:hint="@string/power_label"
-                android:inputType="numberDecimal" />
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/start_mileage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/capacity"
                 android:layout_marginRight="10dp"
-
                 android:gravity="right"
                 android:hint="@string/mileage_label"
-                android:inputType="numberDecimal" />
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/production_year"
@@ -132,7 +128,7 @@
                 android:layout_marginLeft="10dp"
                 android:ems="4"
                 android:hint="@string/year_label"
-                android:inputType="numberDecimal" />
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/car_description"

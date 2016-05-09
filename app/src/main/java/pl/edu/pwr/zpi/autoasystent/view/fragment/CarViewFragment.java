@@ -87,8 +87,8 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         plateField.setText(car.getLicencePlate());
         vinField.setText(car.getVIN());
         capacityField.setText(Integer.toString(car.getCapacity()));
-        motField.setText((new SimpleDateFormat("yyyy")).format(MotService.getInstance().getLatest(car)));
-        insuranceField.setText((new SimpleDateFormat("yyyy")).format(InsuranceService.getInstance().getLatest(car)));
+        motField.setText((new SimpleDateFormat("dd.MM.yyyy")).format(MotService.getInstance().getLatest(car)));
+        insuranceField.setText((new SimpleDateFormat("dd.MM.yyyy")).format(InsuranceService.getInstance().getLatest(car)));
 
     }
 
