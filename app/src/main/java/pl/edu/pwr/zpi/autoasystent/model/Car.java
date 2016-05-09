@@ -2,12 +2,11 @@ package pl.edu.pwr.zpi.autoasystent.model;
 
 import com.orm.SugarRecord;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Model samochodu.
- *
+ * <p/>
  * Created by Szymon on 2016-03-19.
  */
 public class Car extends SugarRecord {
@@ -31,6 +30,7 @@ public class Car extends SugarRecord {
     private int startMileage;
 
     private String carDescription;
+
     /**
      * Pusty konstruktor potrzebny dla SugarORMa!
      */
@@ -124,5 +124,12 @@ public class Car extends SugarRecord {
         this.carDescription = carDescription;
     }
 
-
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Car) {
+            return getId() == ((Car) o).getId();
+        } else {
+            return super.equals(o);
+        }
+    }
 }

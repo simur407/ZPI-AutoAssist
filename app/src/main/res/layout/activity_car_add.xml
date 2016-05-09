@@ -1,142 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <AutoCompleteTextView
-        android:id="@+id/make_edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/model_edittext"
-        android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/model_edittext"
-        android:layout_marginRight="10dp"
-        android:hint="@string/make"/>
-
-    <AutoCompleteTextView
-        android:id="@+id/model_edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/make_edittext"
-        android:layout_marginRight="10dp"
-        android:layout_toEndOf="@+id/power"
-        android:layout_toRightOf="@+id/power"
-        android:hint="@string/model"/>
-
-    <ImageView
-        android:id="@+id/car_image"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignLeft="@+id/make_edittext"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/car_ico" />
-
-    <ImageView
-        android:id="@+id/color_picker"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="false"
-        android:layout_below="@+id/car_image"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/color_palette" />
-
-    <View
-        android:id="@+id/car_color"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:background="@drawable/rounded_edge"
-        android:layout_marginLeft="8dp"
-        android:layout_toRightOf="@id/color_picker"
-        android:layout_below="@id/car_image"/>
-
-
-    <EditText
-        android:id="@+id/VIN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/color_picker"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_centerHorizontal="true"
-        android:ems="13"
-        android:hint="@string/vin_label" />
-
-    <EditText
-        android:id="@+id/licence_plate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/model_edittext"
-        android:layout_marginRight="10dp"
-        android:gravity="right"
-        android:hint="@string/plate_label" />
-
-
-    <EditText
-        android:id="@+id/capacity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/VIN"
-        android:layout_marginRight="10dp"
-        android:gravity="right"
-        android:hint="@string/capacity_label"
-
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/power"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:layout_below="@+id/VIN"
-        android:layout_marginLeft="10dp"
-        android:ems="4"
-        android:hint="@string/power_label"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/start_mileage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/capacity"
-        android:layout_marginRight="10dp"
-
-        android:gravity="right"
-        android:hint="@string/mileage_label"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/production_year"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/capacity"
-        android:layout_marginLeft="10dp"
-        android:ems="4"
-        android:hint="@string/year_label"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/car_description"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/start_mileage"
-        android:layout_alignRight="@+id/start_mileage"
-        android:layout_below="@+id/production_year"
-        android:layout_marginTop="60dp"
-        android:gravity="top"
-        android:hint="@string/description_label"
-        android:inputType="textMultiLine"
-        android:lines="4" />
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <AutoCompleteTextView
+                android:id="@+id/make_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/model_edittext"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/model_edittext"
+                android:layout_marginRight="10dp"
+                android:hint="@string/make" />
+
+            <AutoCompleteTextView
+                android:id="@+id/model_edittext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/make_edittext"
+                android:layout_marginRight="10dp"
+                android:layout_toEndOf="@+id/power"
+                android:layout_toRightOf="@+id/power"
+                android:hint="@string/model" />
+
+            <ImageView
+                android:id="@+id/car_image"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_alignLeft="@+id/make_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/car_ico" />
+
+            <ImageView
+                android:id="@+id/color_picker"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="false"
+                android:layout_below="@+id/car_image"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/color_palette" />
+
+            <View
+                android:id="@+id/car_color"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_below="@id/car_image"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/color_picker"
+                android:background="@drawable/rounded_edge" />
+
+
+            <EditText
+                android:id="@+id/VIN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/color_picker"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:ems="13"
+                android:hint="@string/vin_label" />
+
+            <EditText
+                android:id="@+id/licence_plate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/model_edittext"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:hint="@string/plate_label" />
+
+
+            <EditText
+                android:id="@+id/capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/VIN"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:hint="@string/capacity_label"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="false"
+                android:layout_below="@+id/VIN"
+                android:layout_marginLeft="10dp"
+                android:ems="4"
+                android:hint="@string/power_label"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/start_mileage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/capacity"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:hint="@string/mileage_label"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/production_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/capacity"
+                android:layout_marginLeft="10dp"
+                android:ems="4"
+                android:hint="@string/year_label"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/car_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/start_mileage"
+                android:layout_alignRight="@+id/start_mileage"
+                android:layout_below="@+id/production_year"
+                android:layout_marginTop="40dp"
+                android:gravity="top"
+                android:hint="@string/description_label"
+                android:inputType="textMultiLine"
+                android:lines="3" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

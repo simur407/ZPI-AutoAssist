@@ -19,6 +19,7 @@ import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.presenters.RefuelPresenter;
 import pl.edu.pwr.zpi.autoasystent.view.RefuelPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.RefuelAdapter;
 
 /**
@@ -27,13 +28,15 @@ import pl.edu.pwr.zpi.autoasystent.view.adapter.RefuelAdapter;
 public class RefuelListFragment extends Fragment implements RefuelPanel, TabFragment {
     private RefuelPresenter presenter;
     private RefuelAdapter adapter;
+    private long carId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_refuel_list, container, false);
 
+        carId = getArguments().getLong(CarActivity.ID_KEY);
 
-        presenter = new RefuelPresenter(this);
+        presenter = new RefuelPresenter(this, carId);
         adapter = new RefuelAdapter(this.getActivity());
 
         ListView listView = (ListView) view.findViewById(R.id.refuel_list);

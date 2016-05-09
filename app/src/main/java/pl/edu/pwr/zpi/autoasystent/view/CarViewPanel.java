@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view;
 
+import android.net.Uri;
+
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 
 /**
@@ -7,4 +9,6 @@ import pl.edu.pwr.zpi.autoasystent.model.Car;
  */
 public interface CarViewPanel {
     public void setCarData(Car car);
+
+    void startActivity(Class<?> clazz, Uri additionalData);
 }
