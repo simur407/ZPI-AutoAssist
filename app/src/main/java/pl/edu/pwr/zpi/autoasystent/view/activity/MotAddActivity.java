@@ -1,5 +1,8 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
@@ -17,6 +20,7 @@ import pl.edu.pwr.zpi.autoasystent.presenters.MotAddPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.view.MotAddPanel;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
+import pl.edu.pwr.zpi.autoasystent.view.service.TestService;
 
 /**
  * Created by Marek on 09.05.2016.
@@ -83,6 +87,13 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
             }
 
         });
+    }
+
+    public void createReminder() {
+        Intent intent = new Intent(this, TestService.class);
+        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        PendingIntent pIntent = PendingIntent.getService(this, 0, intent, 0);
+
     }
 
 }
