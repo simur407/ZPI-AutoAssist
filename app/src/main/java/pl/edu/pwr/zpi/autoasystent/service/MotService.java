@@ -1,6 +1,5 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,7 +48,7 @@ public class MotService {
             Date motDateTemp=mot.getMotDate();
             if (car.equals(mot.getCar()))
             {
-                if (motDateTemp.compareTo(motDate)==1)
+                if (motDateTemp.compareTo(motDate) > 0)
                 {
                     motDate=motDateTemp;
                 }
