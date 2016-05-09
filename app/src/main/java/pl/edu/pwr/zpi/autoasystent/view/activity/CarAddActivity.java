@@ -111,31 +111,29 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
         Car car = new Car();
         car.setLicencePlate(plate.getText().toString());
         car.setVIN(vin.getText().toString());
-        if (capacity.length() < 1) {
-            error = true;
-            capacity.setError(getString(R.string.error));
-        } else if (capacity.length() > 8) {
-            error = true;
-            capacity.setError(getString(R.string.error_value));
-        } else {
-            car.setCapacity(Integer.valueOf(capacity.getText().toString()));
+        if (capacity.length() > 1) {
+            if (Integer.valueOf(capacity.getText().toString()) < 200) {
+                error = true;
+                capacity.setError(getString(R.string.error_value));
+            } else {
+                car.setCapacity(Integer.valueOf(capacity.getText().toString()));
+            }
         }
         car.setCarDescription(description.getText().toString());
         car.setColor(Integer.toHexString(color));
-        if (power.length() < 1) {
-            error = true;
-            power.setError(getString(R.string.error));
-        } else if (power.length() > 6) {
-            error = true;
-            power.setError(getString(R.string.error_value));
-        } else {
-            car.setPower(Integer.valueOf(power.getText().toString()));
+        if (power.length() > 1) {
+            if (Integer.valueOf(capacity.getText().toString()) < 5) {
+                error = true;
+                power.setError(getString(R.string.error_value));
+            } else {
+                car.setPower(Integer.valueOf(power.getText().toString()));
+            }
         }
         Calendar calendar = Calendar.getInstance();
         if (year.length() < 1) {
             error = true;
             year.setError(getString(R.string.error));
-        } else if (year.length() > 4 || Integer.valueOf(year.getText().toString()) > calendar.get(Calendar.YEAR)) {
+        } else if (year.length() > 4 || Integer.valueOf(year.getText().toString()) > calendar.get(Calendar.YEAR) || Integer.valueOf(year.getText().toString()) < 1800) {
             error = true;
             year.setError(getString(R.string.error_value));
         } else {

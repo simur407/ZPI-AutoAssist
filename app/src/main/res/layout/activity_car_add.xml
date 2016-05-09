@@ -63,6 +63,16 @@
                 android:layout_toRightOf="@id/color_picker"
                 android:background="@drawable/rounded_edge" />
 
+            <EditText
+                android:id="@+id/licence_plate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/model_edittext"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:inputType="textCapCharacters"
+                android:hint="@string/plate_label" />
 
             <EditText
                 android:id="@+id/VIN"
@@ -72,19 +82,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:inputType="textCapCharacters"
                 android:ems="13"
                 android:hint="@string/vin_label" />
-
-            <EditText
-                android:id="@+id/licence_plate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/model_edittext"
-                android:layout_marginRight="10dp"
-                android:gravity="right"
-                android:hint="@string/plate_label" />
-
 
             <EditText
                 android:id="@+id/capacity"

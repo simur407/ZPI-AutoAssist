@@ -60,13 +60,13 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         capacityField = (TextView) view.findViewById(R.id.capacity_field);
         motField = (TextView) view.findViewById(R.id.mot_field);
         insuranceField = (TextView) view.findViewById(R.id.insurance_field);
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.add_insurance_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onInsuranceButtonClick(v);
             }
         });
-        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.add_mot_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onMotButtonClick(v);

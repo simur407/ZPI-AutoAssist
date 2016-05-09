@@ -60,8 +60,8 @@
     <string name="quantity_symbol">l</string>
     <string name="error">Pole obowiązkowe</string>
     <string name="error_value">Nieprawidłowa wartość</string>
-
-
+    <string name="add_insurance_button_label">Uaktualnij datę OC</string>
+    <string name="add_mot_button_label">Dodaj przegląd techniczny</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
