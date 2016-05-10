@@ -23,6 +23,7 @@ public class MotAddPresenter {
     public void saveMot(Mot mot) {
         mot.setCar(CarService.getInstance().findCarById(carId));
         MotService.getInstance().saveMot(mot);
+        panel.createReminder();
     }
 
     public void showDateDialog(Date date) {

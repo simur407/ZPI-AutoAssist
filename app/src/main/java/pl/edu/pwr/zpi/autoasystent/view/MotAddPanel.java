@@ -7,4 +7,5 @@ import java.util.Date;
  */
 public interface MotAddPanel {
     void showDateDialog(Date date);
+    void createReminder();
 }

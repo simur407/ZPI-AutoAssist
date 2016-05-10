@@ -1,9 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
@@ -15,16 +12,15 @@ import android.widget.EditText;
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.presenters.MotAddPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
+import pl.edu.pwr.zpi.autoasystent.utils.ReminderBuilder;
 import pl.edu.pwr.zpi.autoasystent.view.MotAddPanel;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
-import pl.edu.pwr.zpi.autoasystent.view.service.TestService;
 
 /**
  * Created by Marek on 09.05.2016.
@@ -80,7 +76,6 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         }
 
         mot.setMotDescription(description.getText().toString());
-        createReminder();
         presenter.saveMot(mot);
         finish();
     }
@@ -91,7 +86,7 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                MotAddActivity.this.date.setText(dayOfMonth+"." +monthOfYear + "." +year);//TODO CHANGE
+                MotAddActivity.this.date.setText(dayOfMonth+"." +(monthOfYear+1) + "." +year);//TODO CHANGE
             }
         });
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -99,13 +94,14 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
     }
 
     public void createReminder() {
-        Intent intent = new Intent(this, TestService.class);
-        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        PendingIntent pIntent = PendingIntent.getService(this, 0, intent, 0);
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2016, 5, 9, 19, 20);
-
-        manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pIntent);
+        try {
+            new ReminderBuilder(this)
+                    .setDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN))
+                    .setTitle("Testowo")
+                    .setDescription("Z buildera!")
+                    .set();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }

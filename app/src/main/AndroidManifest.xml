@@ -27,7 +27,7 @@
         <activity android:name=".view.activity.AddServiceActivity" />
         <activity android:name=".view.activity.InsuranceAddActivity" />
         <activity android:name=".view.activity.MotAddActivity" />
-        <service android:name=".view.service.TestService" />
+        <service android:name=".view.service.ReminderNotificationService" />
         <meta-data
             android:name="DATABASE"
             android:value="auto_asystent.db"/>
