@@ -38,8 +38,8 @@ public class ServiceJobsActivity extends BaseActivity implements ServiceViewPane
 
     public void setServiceJob(ServiceJobs serviceJobs) {
         date.setText(DateUtils.dateToString(serviceJobs.getServiceDate()));
-        cost.setText(String.valueOf(serviceJobs.getServiceCost()) + " zł");
-        mileage.setText(String.valueOf(serviceJobs.getServiceMileage()) + " km");
+        cost.setText(String.format("%s %s", String.valueOf(serviceJobs.getServiceCost()), getString(R.string.currency_symbol)));
+        mileage.setText(String.format("%s %s", String.valueOf(serviceJobs.getServiceMileage()), getString(R.string.mileage_symbol)));
         Logger.debug(serviceJobs.getGarage());
         garage.setText(serviceJobs.getGarage());
         description.setText(serviceJobs.getServiceDescription());
