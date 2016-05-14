@@ -77,7 +77,7 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
 
 
     public String getTabName() {
-        return "Raporty";
+        return "Raporty";//getString(R.string.reports_tab_name);
     }
 
 

@@ -39,8 +39,9 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
 
     @Override
     public String getTabName() {
-        return "Szczegóły";
+        return "Szczegóły";//getString(R.string.car_view_tab_name);
     }
+
 
     @Nullable
     @Override

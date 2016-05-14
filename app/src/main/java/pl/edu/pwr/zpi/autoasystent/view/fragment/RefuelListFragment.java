@@ -67,7 +67,7 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
     }
 
     public String getTabName() {
-        return "Tankowania";
+        return "Tankowania";//getString(R.string.refuel_tab_name);
     }
 
 

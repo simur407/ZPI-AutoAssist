@@ -63,7 +63,7 @@ public class ServiceJobsListFragment extends Fragment implements ServiceJobsPane
     }
 
     public String getTabName() {
-        return "Serwisy";
+        return "Serwisy";//getString(R.string.service_jobs_tab_name);
     }
 
     public void refreshList() {

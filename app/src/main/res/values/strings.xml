@@ -63,6 +63,10 @@
     <string name="error_value">Nieprawidłowa wartość</string>
     <string name="add_insurance_button_label">Uaktualnij datę OC</string>
     <string name="add_mot_button_label">Dodaj przegląd techniczny</string>
+    <string name="car_view_tab_name">Szczegóły</string>
+    <string name="refuel_tab_name">Tankowania</string>
+    <string name="service_jobs_tab_name">Serwisy</string>
+    <string name="reports_tab_name">Raporty</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
