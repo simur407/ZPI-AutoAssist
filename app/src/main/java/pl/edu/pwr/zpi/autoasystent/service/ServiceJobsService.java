@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
+import java.util.List;
+
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 
 /**
@@ -25,19 +27,16 @@ public class ServiceJobsService {
         ServiceJobs.save(service);
     }
 
-     public ServiceJobs findServiceById(long id) {
-         // return ServiceJobs.findById(ServiceJobs.class, id);
-         //TODO usunąć to poniżej
-         ServiceJobs serviceJobs = new ServiceJobs();
-         serviceJobs.setServiceGarage("Mechanik");
-         serviceJobs.setServiceCost(250.66);
-         serviceJobs.setServiceDescription("fajnie było");
-         serviceJobs.setId(18L);
-         return serviceJobs;
+    public ServiceJobs findServiceById(long id) {
+        return ServiceJobs.findById(ServiceJobs.class, id);
     }
 
-    public java.util.List<ServiceJobs> getAllServices() {
+    public List<ServiceJobs> getAllServices() {
         return ServiceJobs.listAll(ServiceJobs.class);
+    }
+
+    public List<ServiceJobs> getAllServicesByCarId(long carId) {
+        return ServiceJobs.find(ServiceJobs.class, "car = ?", String.valueOf(carId));
     }
 
     public void deleteService(ServiceJobs service) {

@@ -17,6 +17,5 @@ public class ServiceJobsViewPresenter {
     public void setServiceJob(long id) {
         ServiceJobs service = ServiceJobsService.getInstance().findServiceById(id);
         panel.setServiceJob(service);
-
     }
 }

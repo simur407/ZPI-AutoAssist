@@ -55,7 +55,7 @@ public class CustomViewDialog extends AlertDialog {
         negativeButton = (Button) outerView.findViewById(R.id.negative_button);
         ViewGroup contentHolder = (ViewGroup) outerView.findViewById(R.id.content);
 
-        if(params != null ) {
+        if (params != null) {
             contentHolder.addView(view, params);
         } else {
             contentHolder.addView(view);
@@ -94,7 +94,7 @@ public class CustomViewDialog extends AlertDialog {
         negativeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listener != null) {
+                if (listener != null) {
                     listener.onClick(CustomViewDialog.this, DialogInterface.BUTTON_NEGATIVE);
                 }
                 CustomViewDialog.this.dismiss();

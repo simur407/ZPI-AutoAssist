@@ -6,13 +6,13 @@ import android.widget.TextView;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.presenters.RefuelViewPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.view.RefuelViewPanel;
 
 
 /**
  * Created by Marek on 18.04.2016.
  */
-//TODO to nie jest tabfragment
 public class RefuelViewActivity extends BaseActivity implements RefuelViewPanel {
     TextView date;
     TextView quantity;
@@ -38,7 +38,7 @@ public class RefuelViewActivity extends BaseActivity implements RefuelViewPanel 
 
     @Override
     public void setRefuelingData(Refueling refueling) {
-        date.setText((CharSequence) refueling.getRefuelingDate());
+        date.setText(DateUtils.dateToString(refueling.getRefuelingDate()));
         quantity.setText(String.valueOf(refueling.getQuantity()) + " l");
         cost.setText(String.valueOf(refueling.getRefuelingCost()) + " zł");
         costPerOne.setText(String.valueOf((Math.round(100 * refueling.getRefuelingCost() / refueling.getQuantity())) / 100.0) + " zł/l");

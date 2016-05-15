@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,7 +18,8 @@ import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
-import pl.edu.pwr.zpi.autoasystent.view.dialog.InsuranceAddDialog;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
+
 
 /**
  * Created by Marcin on 25.04.2016.
@@ -32,11 +35,11 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     protected TextView capacityField;
     protected TextView motField;
     protected TextView insuranceField;
-    protected int carId;
+    protected long carId;
 
     @Override
     public String getTabName() {
-        return "Szczegóły samochodu";
+        return "Szczegóły";
     }
 
     @Nullable
@@ -45,25 +48,30 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         View view = inflater.inflate(R.layout.fragment_car_view, container, false);
 
         //TODO wczytać carId
-        carId=1;
-        CarViewPresenter presenter=new CarViewPresenter(this);
+        carId = getArguments().getLong(CarActivity.ID_KEY);
+        final CarViewPresenter presenter = new CarViewPresenter(this, carId);
 
-        makeField = (TextView)view.findViewById(R.id.make_field);
-        modelField = (TextView)view.findViewById(R.id.model_field);
-        yearField = (TextView)view.findViewById(R.id.year_field);
-        powerField = (TextView)view.findViewById(R.id.power_field);
-        plateField = (TextView)view.findViewById(R.id.plate_field);
-        vinField = (TextView)view.findViewById(R.id.vin_field);
-        capacityField = (TextView)view.findViewById(R.id.capacity_field);
-        motField = (TextView)view.findViewById(R.id.mot_field);
-        insuranceField = (TextView)view.findViewById(R.id.insurance_field);
+        makeField = (TextView) view.findViewById(R.id.make_field);
+        modelField = (TextView) view.findViewById(R.id.model_field);
+        yearField = (TextView) view.findViewById(R.id.year_field);
+        powerField = (TextView) view.findViewById(R.id.power_field);
+        plateField = (TextView) view.findViewById(R.id.plate_field);
+        vinField = (TextView) view.findViewById(R.id.vin_field);
+        capacityField = (TextView) view.findViewById(R.id.capacity_field);
+        motField = (TextView) view.findViewById(R.id.mot_field);
+        insuranceField = (TextView) view.findViewById(R.id.insurance_field);
         view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new InsuranceAddDialog(getActivity()).show();
+                presenter.onInsuranceButtonClick(v);
             }
         });
-
+        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onMotButtonClick(v);
+            }
+        });
         presenter.setCarData(carId);
 
         return view;
@@ -79,8 +87,17 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         plateField.setText(car.getLicencePlate());
         vinField.setText(car.getVIN());
         capacityField.setText(Integer.toString(car.getCapacity()));
-        motField.setText((new SimpleDateFormat("yyyy")).format(MotService.getInstance().getLatest(car)));
-        insuranceField.setText((new SimpleDateFormat("yyyy")).format(InsuranceService.getInstance().getLatest(car)));
+        motField.setText((new SimpleDateFormat("dd.MM.yyyy")).format(MotService.getInstance().getLatest(car)));
+        insuranceField.setText((new SimpleDateFormat("dd.MM.yyyy")).format(InsuranceService.getInstance().getLatest(car)));
 
+    }
+
+    @Override
+    public void startActivity(Class<?> clazz, Uri additionalData) {
+        Intent intent = new Intent(this.getContext(), clazz);
+        if (additionalData != null) {
+            intent.setData(additionalData);
+        }
+        startActivity(intent);
     }
 }

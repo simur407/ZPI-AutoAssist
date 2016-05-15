@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.rafalzajfert.androidlogger.Logger;
+
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.Car;
@@ -29,9 +31,9 @@ public class CarListPresenter {
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //Toast.makeText((Context)panel, "Clicked " + position, Toast.LENGTH_SHORT).show();
-        //TODO implement
-        panel.startActivity(CarActivity.class, null);
+        Car car = (Car) parent.getItemAtPosition(position);
+        Logger.debug(car);
+        panel.startActivity(CarActivity.class, Uri.parse(String.valueOf(car.getId())));
     }
 
     public void onAddButtonClick(View v) {

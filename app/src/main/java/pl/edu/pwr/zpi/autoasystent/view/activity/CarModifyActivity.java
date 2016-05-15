@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
-import com.rafalzajfert.androidlogger.Logger;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -50,7 +49,6 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
 
     //Używany przy edycji.
     private Car car;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,32 +112,78 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
     }
 
     private void saveCar() {
+        boolean error = false;
         if (car == null) {
             car = new Car();
         }
         car.setLicencePlate(plate.getText().toString());
         car.setVIN(vin.getText().toString());
-        car.setCapacity(Integer.valueOf(capacity.getText().toString()));
+        if (capacity.length() < 1) {
+            error = true;
+            capacity.setError(getString(R.string.error));
+        } else if (capacity.length() > 8) {
+            error = true;
+            capacity.setError(getString(R.string.error_value));
+        } else {
+            car.setCapacity(Integer.valueOf(capacity.getText().toString()));
+        }
         car.setCarDescription(description.getText().toString());
         car.setColor(Integer.toHexString(color));
-        car.setPower(Integer.valueOf(power.getText().toString()));
-        car.setProductionYear(new GregorianCalendar(Integer.valueOf(year.getText().toString()), Calendar.getInstance().get(Calendar
-                .MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).getTime());
-        car.setStartMileage(Integer.valueOf(mileage.getText().toString()));
+        if (power.length() < 1) {
+            error = true;
+            power.setError(getString(R.string.error));
+        } else if (power.length() > 6) {
+            error = true;
+            power.setError(getString(R.string.error_value));
+        } else {
+            car.setPower(Integer.valueOf(power.getText().toString()));
+        }
+        Calendar calendar = Calendar.getInstance();
+        if (year.length() < 1) {
+            error = true;
+            year.setError(getString(R.string.error));
+        } else if (year.length() > 4 || Integer.valueOf(year.getText().toString()) > calendar.get(Calendar.YEAR)) {
+            error = true;
+            year.setError(getString(R.string.error_value));
+        } else {
+            car.setProductionYear(new GregorianCalendar(Integer.valueOf(year.getText().toString()), Calendar.getInstance().get(Calendar
+                    .MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).getTime());
+        }
+        if (mileage.length() < 1) {
+            error = true;
+            mileage.setError(getString(R.string.error));
+        } else if (mileage.length() > 9) {
+            error = true;
+            mileage.setError(getString(R.string.error_value));
+        } else {
+            car.setStartMileage(Integer.valueOf(mileage.getText().toString()));
+        }
 
 
         if (selectedMake == null) {
-            selectedMake = new Make();
-            selectedMake.setMakeName(make.getText().toString().toUpperCase());
+            if (make.length() < 1) {
+                error = true;
+                make.setError(getString(R.string.error));
+            } else {
+                selectedMake = new Make();
+                selectedMake.setMakeName(make.getText().toString().toUpperCase());
+            }
         }
 
         if (selectedModel == null) {
-            selectedModel = new Model();
-            selectedModel.setModelName(model.getText().toString().toUpperCase());
-        }
 
-        presenter.saveCar(car, selectedMake, selectedModel);
-        finish();
+            if (model.length() < 1) {
+                error = true;
+                model.setError(getString(R.string.error));
+            } else {
+                selectedModel = new Model();
+                selectedModel.setModelName(model.getText().toString().toUpperCase());
+            }
+        }
+        if (!error) {
+            presenter.saveCar(car, selectedMake, selectedModel);
+            finish();
+        }
     }
 
     @Override
@@ -164,7 +208,6 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
     public void setMakeSpinner(List<Make> makeList) {
         makeAdapter.addAll(makeList);
         makeAdapter.notifyDataSetChanged();
-        Logger.debug(makeAdapter.getCount());
     }
 
     @Override
@@ -172,7 +215,6 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
         modelAdapter.clear();
         modelAdapter.addAll(modelList);
         modelAdapter.notifyDataSetChanged();
-        Logger.debug(modelAdapter.getCount());
     }
 
     @Override
