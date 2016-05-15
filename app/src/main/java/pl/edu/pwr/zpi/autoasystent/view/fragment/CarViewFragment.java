@@ -1,5 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
+import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 
@@ -38,8 +40,8 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     protected long carId;
 
     @Override
-    public String getTabName() {
-        return "Szczegóły";//getString(R.string.car_view_tab_name);
+    public String getTabName(Context context) {
+        return StringUtils.getStringFromId(context, R.string.car_view_tab_name);
     }
 
 

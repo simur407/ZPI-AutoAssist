@@ -1,5 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.presenters.RefuelPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.RefuelPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.RefuelAdapter;
@@ -66,8 +68,9 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
         presenter.setList();
     }
 
-    public String getTabName() {
-        return "Tankowania";//getString(R.string.refuel_tab_name);
+
+    public String getTabName(Context context) {
+        return StringUtils.getStringFromId(context, R.string.refuel_tab_name);
     }
 
 
