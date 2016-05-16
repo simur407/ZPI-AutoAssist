@@ -193,9 +193,20 @@
 
 			<ImageView
 				android:id="@+id/add_mot"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_width="24dp"
+				android:layout_height="24dp"
 				android:src="@drawable/ic_add_circle_black_24dp"
+				android:layout_marginRight="5dp"
+				android:layout_toLeftOf="@+id/edit_mot"
+				android:layout_alignTop="@id/mot_field"
+				android:layout_alignBottom="@id/mot_field"/>
+
+			<ImageView
+				android:id="@+id/edit_mot"
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:src="@drawable/ic_edit"
+				android:layout_marginRight="5dp"
 				android:layout_toLeftOf="@+id/mot_field"
 				android:layout_alignTop="@id/mot_field"
 				android:layout_alignBottom="@id/mot_field"/>
@@ -221,9 +232,20 @@
 
 			<ImageView
 				android:id="@+id/add_insurance"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_width="24dp"
+				android:layout_height="24dp"
 				android:src="@drawable/ic_add_circle_black_24dp"
+				android:layout_toLeftOf="@+id/edit_insurance"
+				android:layout_alignTop="@id/insurance_field"
+				android:layout_marginRight="5dp"
+				android:layout_alignBottom="@id/insurance_field"/>
+
+			<ImageView
+				android:id="@+id/edit_insurance"
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:src="@drawable/ic_edit"
+				android:layout_marginRight="5dp"
 				android:layout_toLeftOf="@+id/insurance_field"
 				android:layout_alignTop="@id/insurance_field"
 				android:layout_alignBottom="@id/insurance_field"/>

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -35,6 +36,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     protected TextView capacityField;
     protected TextView motField;
     protected TextView insuranceField;
+    private ImageView addMotButton, addInsuranceButton, editMotButton, editInsuranceButton;
     protected long carId;
 
     @Override
@@ -47,7 +49,6 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_car_view, container, false);
 
-        //TODO wczytać carId
         carId = getArguments().getLong(CarActivity.ID_KEY);
         final CarViewPresenter presenter = new CarViewPresenter(this, carId);
 
@@ -60,18 +61,37 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         capacityField = (TextView) view.findViewById(R.id.capacity_field);
         motField = (TextView) view.findViewById(R.id.mot_field);
         insuranceField = (TextView) view.findViewById(R.id.insurance_field);
-        view.findViewById(R.id.add_mot).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onInsuranceButtonClick(v);
-            }
-        });
-        view.findViewById(R.id.add_insurance).setOnClickListener(new View.OnClickListener() {
+        addMotButton = (ImageView) view.findViewById(R.id.add_mot);
+        editMotButton = (ImageView) view.findViewById(R.id.edit_mot);
+        addInsuranceButton = (ImageView) view.findViewById(R.id.add_insurance);
+        editInsuranceButton = (ImageView) view.findViewById(R.id.edit_insurance);
+
+        addMotButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onMotButtonClick(v);
             }
         });
+        addInsuranceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onInsuranceButtonClick(v);
+            }
+        });
+
+        editMotButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        editInsuranceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         presenter.setCarData(carId);
 
         return view;
