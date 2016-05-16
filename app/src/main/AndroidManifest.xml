@@ -27,7 +27,7 @@
         <activity android:name=".view.activity.AddServiceActivity" />
         <activity android:name=".view.activity.InsuranceAddActivity" />
         <activity android:name=".view.activity.MotAddActivity" />
-
+        <activity android:name=".view.activity.TransferActivity"/>
         <meta-data
             android:name="DATABASE"
             android:value="auto_asystent.db" />
@@ -35,7 +35,7 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="pl.edu.pwr.zpi" />
 
-        <activity android:name=".view.activity.TransferActivity"></activity>
+
     </application>
 
 </manifest>

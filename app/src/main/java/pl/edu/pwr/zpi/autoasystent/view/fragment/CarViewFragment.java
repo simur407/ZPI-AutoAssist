@@ -47,10 +47,8 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_car_view, container, false);
 
-        //TODO wczytać carId
         carId = getArguments().getLong(CarActivity.ID_KEY);
         final CarViewPresenter presenter = new CarViewPresenter(this, carId);
-
         makeField = (TextView) view.findViewById(R.id.make_field);
         modelField = (TextView) view.findViewById(R.id.model_field);
         yearField = (TextView) view.findViewById(R.id.year_field);
