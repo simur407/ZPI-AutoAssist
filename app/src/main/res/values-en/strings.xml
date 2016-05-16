@@ -68,6 +68,17 @@
     <string name="refuel_tab_name">Refuellings</string>
     <string name="service_jobs_tab_name">Services</string>
     <string name="reports_tab_name">Reports</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fifth_refuelling">5 refuellings added.</string>
+    <string name="fifth_service">5 services added.</string>
+    <string name="fiftieth_refuelling">50 refuellings added.</string>
+    <string name="first_car_added">First car added.</string>
+    <string name="first_refuelling">First refuelling added.</string>
+    <string name="first_service">First service added.</string>
+    <string name="mot_insurance_added">MOT and insurance added.</string>
+    <string name="one_year_using">1 year of application using</string>
+    <string name="twentieth_refuelling">20 refuellings added.</string>
+    <string name="twentieth_service">20 services added.</string>
+    <string name="two_years_using">1 year of application using</string>
+    <string name="tenth_service">10 services done.</string>
+
 </resources>
