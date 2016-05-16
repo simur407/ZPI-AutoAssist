@@ -1,5 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
+import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 
@@ -38,9 +40,10 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     protected long carId;
 
     @Override
-    public String getTabName() {
-        return "Szczegóły";
+    public String getTabName(Context context) {
+        return StringUtils.getStringFromId(context, R.string.car_view_tab_name);
     }
+
 
     @Nullable
     @Override
@@ -58,13 +61,13 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         capacityField = (TextView) view.findViewById(R.id.capacity_field);
         motField = (TextView) view.findViewById(R.id.mot_field);
         insuranceField = (TextView) view.findViewById(R.id.insurance_field);
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.add_insurance_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onInsuranceButtonClick(v);
             }
         });
-        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.add_mot_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onMotButtonClick(v);

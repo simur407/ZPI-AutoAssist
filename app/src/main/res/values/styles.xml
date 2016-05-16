@@ -9,4 +9,9 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="AppTheme.Dialog" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
 </resources>

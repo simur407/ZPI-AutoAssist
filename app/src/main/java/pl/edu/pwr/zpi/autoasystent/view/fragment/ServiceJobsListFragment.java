@@ -1,5 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.presenters.ServiceJobsListPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.ServiceJobsPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.ServiceJobsAdapter;
@@ -62,8 +64,9 @@ public class ServiceJobsListFragment extends Fragment implements ServiceJobsPane
         presenter.setList();
     }
 
-    public String getTabName() {
-        return "Serwisy";
+
+    public String getTabName(Context context) {
+        return StringUtils.getStringFromId(context, R.string.service_jobs_tab_name);
     }
 
     public void refreshList() {

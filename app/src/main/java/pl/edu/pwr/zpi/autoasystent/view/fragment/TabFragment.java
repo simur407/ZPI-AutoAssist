@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
+import android.content.Context;
+
 /**
  * Interfejs określający nazwę fragmentu w tabach
  *
@@ -8,6 +10,6 @@ package pl.edu.pwr.zpi.autoasystent.view.fragment;
  */
 public interface TabFragment {
 
-    String getTabName();
+    String getTabName(Context context);
 
 }

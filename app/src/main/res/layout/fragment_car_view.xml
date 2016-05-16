@@ -207,20 +207,20 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/add_insurance_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/insurance_label"
-        android:text="TEST UBE" />
+        android:text="@string/add_insurance_button_label" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/add_mot_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/insurance_label"
+        android:layout_below="@id/add_insurance_button"
         android:layout_alignParentRight="true"
         android:gravity="right"
-        android:text="TEST MOT" />
+        android:text="@string/add_mot_button_label" />
 </RelativeLayout>
 
     </ScrollView>

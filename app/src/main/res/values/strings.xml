@@ -22,7 +22,7 @@
     <string name="different_maintenance_label">Inne:</string>
     <string name="service_view_label">Informacje o przeglądzie</string>
     <string name="refuel_view_label">Informacje o tankowaniu</string>
-    <string name="service_add_label">Dodawanie przeglądu</string>
+    <string name="service_add_label">Dodawanie serwisu</string>
     <string name="refuel_add_label">Dodawanie tankowania</string>
     <string name="insurance_description_label">Opis (ubezpieczalnia)</string>
     <string name="mot_description_label">Szczegóły</string>
@@ -58,12 +58,27 @@
     <string name="report_summary_chart">Wykres kosztów całkowitych</string>
     <string name="currency_symbol">zł</string>
     <string name="quantity_symbol">l</string>
+    <string name="mileage_symbol">km</string>
     <string name="error">Pole obowiązkowe</string>
     <string name="error_value">Nieprawidłowa wartość</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_insurance_button_label">Uaktualnij datę OC</string>
+    <string name="add_mot_button_label">Dodaj przegląd techniczny</string>
+    <string name="car_view_tab_name">Szczegóły</string>
+    <string name="refuel_tab_name">Tankowania</string>
+    <string name="service_jobs_tab_name">Serwisy</string>
+    <string name="reports_tab_name">Raporty</string>
+    <string name="first_car_added">Dodano pierwszy samochód.</string>
+    <string name="mot_insurance_added">Dodano termin ubezpieczenia i przeglądu technicznego.</string>
+    <string name="one_year_using">Minął rok od rozpoczęcia korzystania z aplikacji.</string>
+    <string name="two_years_using">Minęły 2 lata od rozpoczęcia korzystania z aplikacji.</string>
+    <string name="first_refuelling">Dodano pierwsze tankowanie.</string>
+    <string name="fifth_refuelling">Dodano 5 tankowań.</string>
+    <string name="twentieth_refuelling">Dodano 20 tankowań.</string>
+    <string name="fiftieth_refuelling">Dodano 50 tankowań.</string>
+    <string name="first_service">Dodano pierwszy serwis.</string>
+    <string name="fifth_service">Dodano 5 serwisów</string>
+    <string name="tenth_service">Dodano 10 serwisów</string>
+    <string name="twentieth_service">Dodano 20 serwisów</string>
     <string name="type_filename_plz">Podaj nazwę pliku</string>
     <string name="save_file">Zapisz do pliku</string>
     <string name="load_file">Wczytaj z pliku</string>
