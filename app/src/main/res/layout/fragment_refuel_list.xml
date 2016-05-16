@@ -13,6 +13,7 @@
         android:paddingLeft="@dimen/list_horizontal_margin"
         android:paddingRight="@dimen/list_horizontal_margin"
         android:scrollbarStyle="outsideOverlay"
+        android:clipToPadding="true"
         tools:listitem="@layout/item_refuel" />
 
     <com.melnykov.fab.FloatingActionButton

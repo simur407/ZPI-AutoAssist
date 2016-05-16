@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.rafalzajfert.androidlogger.Logger;
+
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
@@ -39,5 +41,18 @@ public class RefuelPresenter {
     public void onAddButtonClick(View v) {
         panel.startActivity(RefuelingAddActivity.class, Uri.parse(String.valueOf(carId)));
       }
+
+    public void onListItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        panel.showDeleteMenu((Refueling) parent.getItemAtPosition(position));
+    }
+
+    public void deleteRefueling(Refueling refueling) {
+        if(carId != refueling.getCar().getId()) {
+            Logger.error("Deleting refueling from other car!!!");
+        }
+        RefuelingService.getInstance().deleteRefueling(refueling);
+        List<Refueling> refuelings = RefuelingService.getInstance().getAllRefuelingsByCarId(carId);
+        panel.setRefuelList(refuelings);
+    }
 }
 

@@ -5,10 +5,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
@@ -42,6 +44,13 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
         ListView listView = (ListView) view.findViewById(R.id.refuel_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(onItemClickListener);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                presenter.onListItemLongClick(parent, view, position, id);
+                return true;
+            }
+        });
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fab_refuel);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +98,28 @@ public class RefuelListFragment extends Fragment implements RefuelPanel, TabFrag
             intent.setData(additionalData);
         }
         startActivity(intent);
+    }
+
+    @Override
+    public void showDeleteMenu(final Refueling refueling) {
+        View view = getLayoutInflater(null).inflate( R.layout.menu_car_edit, null);
+        Button editButton = (Button) view.findViewById(R.id.edit_button);
+        editButton.setVisibility(View.GONE);
+        Button deleteButton = (Button) view.findViewById(R.id.delete_button);
+        final AlertDialog dialog = new AlertDialog.Builder(getContext()).setView(view).show();
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.deleteRefueling(refueling);
+                dialog.dismiss();
+            }
+        });
+    }
+
+    @Override
+    public void refreshRefuelList() {
+
     }
 }
 
