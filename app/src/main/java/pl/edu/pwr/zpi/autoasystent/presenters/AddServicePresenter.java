@@ -25,8 +25,8 @@ public class AddServicePresenter {
         ServiceJobsService.getInstance().saveService(service);
     }
 
-    public void dataBoxClicked() {
-        panel.showDataPicker(new Date());
+    public void dataBoxClicked(Date date) {
+        panel.showDataPicker(date);
     }
 
 

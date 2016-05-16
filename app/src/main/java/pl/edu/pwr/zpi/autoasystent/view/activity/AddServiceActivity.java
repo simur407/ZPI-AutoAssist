@@ -47,13 +47,11 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         description = (EditText) findViewById(R.id.service_description);
 
         date.setInputType(InputType.TYPE_NULL);
-        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    presenter.dataBoxClicked();
-                }
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.dataBoxClicked(new Date()); //TODO temp date
             }
-
         });
 
         list = (ListView) findViewById(R.id.service_add_list);

@@ -49,7 +49,7 @@ public class ReminderBuilder {
 
     /**
      * Ustawia przypomnienie. Każda metoda z {@link ReminderBuilder} wywołana po tym nie odniesie skutku.
-     * Przed wywołaniem należy wywołać
+     * Przed użyciem należy wywołać
      * {@link ReminderBuilder#setDate(Date)}, {@link ReminderBuilder#setTitle(String)} i {@link ReminderBuilder#setDescription(String)}.
      */
     public void set() {
@@ -67,9 +67,8 @@ public class ReminderBuilder {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         Logger.debug(calendar.getTimeZone());
-        calendar.set(Calendar.HOUR_OF_DAY, 2);
-        calendar.set(Calendar.MINUTE, 42);
-        Logger.debug(calendar.getTimeInMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 12);
+        calendar.set(Calendar.MINUTE, 0);
         manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pIntent);
 
     }

@@ -39,13 +39,11 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         date = (EditText) findViewById(R.id.mot_date);
         description = (EditText) findViewById(R.id.mot_description);
 
-        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    presenter.showDateDialog(new Date());
-                }
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showDateDialog(new Date());//TODO temp date
             }
-
         });
     }
 

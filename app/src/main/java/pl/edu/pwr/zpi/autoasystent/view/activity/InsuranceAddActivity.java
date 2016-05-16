@@ -43,14 +43,11 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
         description = (EditText) findViewById(R.id.insurance_description);
 
         date.setInputType(InputType.TYPE_NULL);
-
-        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    presenter.showDatePicker(new Date());//TODO temporary date
-                }
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showDatePicker(new Date());//TODO temporary date
             }
-
         });
     }
 

@@ -14,6 +14,8 @@ import android.widget.DatePicker;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.Date;
+
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.presenters.ReportsPresenter;
 import pl.edu.pwr.zpi.autoasystent.view.ReportsPanel;
@@ -41,42 +43,17 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
                 presenter.onRadioButtonClicked(checkedId);
             }
         });
-
-        fromDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    DateDialog dialog = new DateDialog();
-                    dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                            fromDate.setText(dayOfMonth+"." +monthOfYear + "." +year);
-                        }
-                    });
-
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    dialog.show(ft, null);
-                }
+        fromDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showFromDatePicker(new Date());//TODO temp date
             }
-
         });
-
-        toDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    //TODO przez prezenter
-                    DateDialog dialog = new DateDialog();
-                    dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                            toDate.setText(dayOfMonth+"." +monthOfYear + "." +year);
-                        }
-                    });
-
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    dialog.show(ft, null);
-                }
+        toDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showToDatePicker(new Date()); //TODO temp date
             }
-
         });
 
         button.setOnClickListener(new Button.OnClickListener() {
@@ -100,5 +77,33 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
             intent.setData(additionalData);
         }
         startActivity(intent);
+    }
+
+    @Override
+    public void showFromDatePicker(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                fromDate.setText(dayOfMonth + "." + monthOfYear + "." + year);
+            }
+        });
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        dialog.show(ft, null);
+    }
+
+    @Override
+    public void showToDatePicker(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                toDate.setText(dayOfMonth + "." + monthOfYear + "." + year);
+            }
+        });
+
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        dialog.show(ft, null);
     }
 }

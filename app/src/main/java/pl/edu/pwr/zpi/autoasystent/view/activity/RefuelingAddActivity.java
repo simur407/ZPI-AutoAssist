@@ -3,6 +3,7 @@ package pl.edu.pwr.zpi.autoasystent.view.activity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,14 +46,13 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
 
         presenter = new RefuelingAddPresenter(this, carId);
 
-        dateField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-
-                }
+        dateField.setInputType(InputType.TYPE_NULL);
+        dateField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showDatePicker(new Date());//TODO temp date
             }
         });
-
     }
 
     @Override
