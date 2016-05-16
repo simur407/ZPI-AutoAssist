@@ -89,6 +89,18 @@ public class TransferPresenter {
         return sb.toString();
     }
 
+    public static void deleteDatabase()
+    {
+        RefersTo.deleteAll(RefersTo.class);
+        ServiceJobs.deleteAll(ServiceJobs.class);
+        CarMaintenance.deleteAll(CarMaintenance.class);
+        Reminder.deleteAll(Reminder.class);
+        Mot.deleteAll(Mot.class);
+        Refueling.deleteAll(Refueling.class);
+        Insurance.deleteAll(Insurance.class);
+        Car.deleteAll(Car.class);
+    }
+
     public static void loadFile(Context context, boolean external, String filename, boolean overwrite)
     {
         try
@@ -104,14 +116,7 @@ public class TransferPresenter {
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 if (overwrite)
                 {
-                    RefersTo.deleteAll(RefersTo.class);
-                    ServiceJobs.deleteAll(ServiceJobs.class);
-                    CarMaintenance.deleteAll(CarMaintenance.class);
-                    Reminder.deleteAll(Reminder.class);
-                    Mot.deleteAll(Mot.class);
-                    Refueling.deleteAll(Refueling.class);
-                    Insurance.deleteAll(Insurance.class);
-                    Car.deleteAll(Car.class);
+                    deleteDatabase();
                 }
                 String line;
                 ArrayList<String> list=new ArrayList<>();
