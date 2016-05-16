@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.TransferActivity">
+        <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,7 +35,7 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="pl.edu.pwr.zpi" />
 
-        <activity android:name=".view.activity.MainActivity"></activity>
+        <activity android:name=".view.activity.TransferActivity"></activity>
     </application>
 
 </manifest>
