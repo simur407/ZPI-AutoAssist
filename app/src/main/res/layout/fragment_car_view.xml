@@ -1,227 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin">
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/car_image_view"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/car_ico"/>
+		<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:paddingLeft="@dimen/activity_horizontal_margin"
+			android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/color_viewer"
-        android:layout_below="@+id/car_image_view"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:src="@drawable/color_palette"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/make_label"
-        android:id="@+id/make_label"
-        android:layout_below="@+id/color_viewer"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+			<ImageView
+				android:id="@+id/car_image_view"
+				android:layout_width="match_parent"
+				android:layout_height="150dp"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_alignParentTop="true"
+				android:src="@drawable/car_ico"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/model_label"
-        android:id="@+id/model_label"
-        android:layout_below="@+id/make_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+			<ImageView
+				android:id="@+id/color_viewer"
+				android:layout_width="50dp"
+				android:layout_height="50dp"
+				android:layout_alignParentLeft="false"
+				android:layout_alignParentStart="true"
+				android:layout_alignParentTop="false"
+				android:layout_below="@+id/car_image_view"
+				android:layout_marginLeft="10dp"
+				android:src="@drawable/color_palette"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/year_label"
-        android:id="@+id/year_label"
-        android:layout_below="@+id/model_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+			<TextView
+				android:id="@+id/make_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@+id/color_viewer"
+				android:text="@string/make_label"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/power_label"
-        android:id="@+id/power_label"
-        android:layout_below="@+id/year_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+			<TextView
+				android:id="@+id/model_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@+id/make_label"
+				android:text="@string/model_label"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/plate_label"
-        android:id="@+id/plate_label"
-        android:layout_below="@+id/power_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+			<TextView
+				android:id="@+id/year_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@+id/model_label"
+				android:text="@string/year_label"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vin_label"
-        android:id="@+id/vin_label"
-        android:layout_below="@+id/plate_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/capacity_label"
-        android:id="@+id/capacity_label"
-        android:layout_below="@+id/vin_label"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+			<TextView
+				android:id="@+id/power_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@+id/year_label"
+				android:text="@string/power_label"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="Fiat"
-        android:id="@+id/make_field"
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/color_viewer"
-       />
+			<TextView
+				android:id="@+id/plate_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@+id/power_label"
+				android:text="@string/plate_label"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="124 Spider"
-        android:id="@+id/model_field"
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/make_field"
-        />
+			<TextView
+				android:id="@+id/vin_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@+id/plate_label"
+				android:text="@string/vin_label"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="1974"
-        android:id="@+id/year_field"
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/model_field"
-        />
+			<TextView
+				android:id="@+id/capacity_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@+id/vin_label"
+				android:text="@string/capacity_label"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="90 KM"
-        android:id="@+id/power_field"
+			<TextView
+				android:id="@+id/make_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_below="@+id/color_viewer"
+				android:gravity="right"
+				tools:text="Fiat"
+				/>
 
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/year_field"
-        />
+			<TextView
+				android:id="@+id/model_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_below="@+id/make_field"
+				android:gravity="right"
+				tools:text="124 Spider"
+				/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="DW584DS"
-        android:id="@+id/plate_field"
+			<TextView
+				android:id="@+id/year_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_below="@+id/model_field"
+				android:gravity="right"
+				tools:text="1974"
+				/>
 
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/power_field"
-        />
+			<TextView
+				android:id="@+id/power_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="CFG5739206742"
-        android:id="@+id/vin_field"
+				android:layout_below="@+id/year_field"
+				android:gravity="right"
+				tools:text="90 KM"
+				/>
 
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/plate_field"
-        />
+			<TextView
+				android:id="@+id/plate_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="1438"
-        android:id="@+id/capacity_field"
+				android:layout_below="@+id/power_field"
+				android:gravity="right"
+				tools:text="DW584DS"
+				/>
 
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/vin_field"
-        />
+			<TextView
+				android:id="@+id/vin_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mot_label"
-        android:id="@+id/mot_label"
-        android:layout_below="@+id/capacity_label"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="24.09.2015"
-        android:id="@+id/mot_field"
+				android:layout_below="@+id/plate_field"
+				android:gravity="right"
+				tools:text="CFG5739206742"
+				/>
 
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/capacity_field"
-        />
+			<TextView
+				android:id="@+id/capacity_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/insurance_label"
-        android:id="@+id/insurance_label"
-        android:layout_below="@+id/mot_label"
-        />
+				android:layout_below="@+id/vin_field"
+				android:gravity="right"
+				tools:text="1438"
+				/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="05.11.2015"
-        android:id="@+id/insurance_field"
+			<TextView
+				android:id="@+id/mot_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/capacity_label"
+				android:text="@string/mot_label"
+				/>
 
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:layout_below="@+id/mot_field"
-        />
+			<TextView
+				android:id="@+id/mot_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_below="@+id/capacity_field"
+				android:gravity="right"
+				tools:text="24.09.2015"
+				/>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/insurance_label"
-        android:text="TEST UBE" />
+			<ImageView
+				android:id="@+id/add_mot"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_add_circle_black_24dp"
+				android:layout_toLeftOf="@+id/mot_field"
+				android:layout_alignTop="@id/mot_field"
+				android:layout_alignBottom="@id/mot_field"/>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/insurance_label"
-        android:layout_alignParentRight="true"
-        android:gravity="right"
-        android:text="TEST MOT" />
-</RelativeLayout>
+			<TextView
+				android:id="@+id/insurance_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/mot_label"
+				android:text="@string/insurance_label"
+				/>
 
-    </ScrollView>
+			<TextView
+				android:id="@+id/insurance_field"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+
+				android:layout_below="@+id/mot_field"
+				android:gravity="right"
+				tools:text="05.11.2015"
+				/>
+
+			<ImageView
+				android:id="@+id/add_insurance"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_add_circle_black_24dp"
+				android:layout_toLeftOf="@+id/insurance_field"
+				android:layout_alignTop="@id/insurance_field"
+				android:layout_alignBottom="@id/insurance_field"/>
+		</RelativeLayout>
+
+	</ScrollView>
 </RelativeLayout>
