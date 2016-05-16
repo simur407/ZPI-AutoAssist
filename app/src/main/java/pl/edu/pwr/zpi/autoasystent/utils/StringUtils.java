@@ -4,7 +4,10 @@ import android.content.Context;
 import android.support.annotation.StringRes;
 
 /**
- * Created by Marek on 15.05.2016.
+ * TODO Dokumentacja
+ *
+ * @author Szymon Bartczak
+ * @date 2016-05-15
  */
 public class StringUtils {
 

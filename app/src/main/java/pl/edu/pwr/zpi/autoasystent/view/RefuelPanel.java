@@ -14,4 +14,7 @@ public interface RefuelPanel {
 
     void startActivity(Class<?> clazz, Uri additionalData);
 
+    void showDeleteMenu(Refueling refueling);
+
+    void refreshRefuelList();
 }

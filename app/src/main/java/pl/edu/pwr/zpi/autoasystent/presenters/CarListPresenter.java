@@ -10,7 +10,7 @@ import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
-import pl.edu.pwr.zpi.autoasystent.view.activity.CarAddActivity;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarModifyActivity;
 
 /**
  * Created by Szymon on 2016-03-21.
@@ -34,6 +34,21 @@ public class CarListPresenter {
     }
 
     public void onAddButtonClick(View v) {
-        panel.startActivity(CarAddActivity.class, null);
+        panel.startActivity(CarModifyActivity.class, null);
+    }
+
+    public void onListItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        panel.showDeleteMenu((Car)parent.getItemAtPosition(position));
+    }
+
+    public void editCar(Car car) {
+        panel.startActivity(CarModifyActivity.class, Uri.parse(String.valueOf(car.getId())));
+    }
+
+    public void deleteCar(Car car) {
+        CarService.getInstance().deleteCar(car);
+        List<Car> cars = CarService.getInstance().getAllCars();
+        panel.setCarList(cars);
+        panel.refreshList();
     }
 }
