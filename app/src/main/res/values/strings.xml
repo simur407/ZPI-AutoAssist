@@ -64,4 +64,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="type_filename_plz">Podaj nazwę pliku</string>
+    <string name="save_file">Zapisz do pliku</string>
+    <string name="load_file">Wczytaj z pliku</string>
+    <string name="delete_database">Usuń baze</string>
+    <string name="memory_card">Karta pamięci</string>
 </resources>

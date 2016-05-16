@@ -20,6 +20,7 @@ import java.util.Date;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 import pl.edu.pwr.zpi.autoasystent.model.Insurance;
+import pl.edu.pwr.zpi.autoasystent.model.Model;
 import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.model.RefersTo;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
@@ -31,7 +32,7 @@ import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
  */
 public class TransferPresenter {
 
-    private final static String fileDirName = "/autoasystent";
+    private final static String fileDirName = "/dane";
     private final static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static boolean isThereExternal() {
@@ -88,12 +89,23 @@ public class TransferPresenter {
         return sb.toString();
     }
 
+    public static void deleteDatabase()
+    {
+        RefersTo.deleteAll(RefersTo.class);
+        ServiceJobs.deleteAll(ServiceJobs.class);
+        CarMaintenance.deleteAll(CarMaintenance.class);
+        Reminder.deleteAll(Reminder.class);
+        Mot.deleteAll(Mot.class);
+        Refueling.deleteAll(Refueling.class);
+        Insurance.deleteAll(Insurance.class);
+        Car.deleteAll(Car.class);
+    }
+
     public static void loadFile(Context context, boolean external, String filename, boolean overwrite)
     {
         try
         {
             if (!external || isThereExternal()) {
-
                 File file;
                 if (external) {
                     file = new File(context.getExternalFilesDir(null), fileDirName);
@@ -102,21 +114,112 @@ public class TransferPresenter {
                 }
                 file = new File(file, filename);
                 BufferedReader reader = new BufferedReader(new FileReader(file));
-                String line;
                 if (overwrite)
                 {
-                    RefersTo.deleteAll(RefersTo.class);
-                    ServiceJobs.deleteAll(ServiceJobs.class);
-                    CarMaintenance.deleteAll(CarMaintenance.class);
-                    Reminder.deleteAll(Reminder.class);
-                    Mot.deleteAll(Mot.class);
-                    Refueling.deleteAll(Refueling.class);
-                    Insurance.deleteAll(Insurance.class);
-                    Car.deleteAll(Car.class);
+                    deleteDatabase();
                 }
-                while ((line = reader.readLine()) != null) {
+                String line;
+                ArrayList<String> list=new ArrayList<>();
+                ArrayList<Car> carList=new ArrayList<>();
+                ArrayList<ServiceJobs> serviceJobsList=new ArrayList<>();
+                ArrayList<CarMaintenance> carMaintenanceList=new ArrayList<>();
+                if((line=reader.readLine())!=null && line.equals("car"))
+                {
+                    while (!(line = reader.readLine()).equals("mot"))
+                    {
+                        list=splitData(line);
+                        Car car=new Car();
+                        car.setModel(Model.findById(Model.class, Long.parseLong(list.get(0))));
+                        car.setVIN(list.get(1));
+                        car.setProductionYear(stringToDate(list.get(2)));
+                        car.setLicencePlate(list.get(3));
+                        car.setCapacity(Integer.parseInt(list.get(4)));
+                        car.setColor(list.get(5));
+                        car.setPower(Integer.parseInt(list.get(6)));
+                        car.setStartMileage(Integer.parseInt(list.get(7)));
+                        car.setCarDescription(list.get(8));
+                        carList.add(car);
+                        car.save();
+                    }
 
+                    while (!(line = reader.readLine()).equals("refueling"))
+                    {
+                        list=splitData(line);
+                        Mot mot=new Mot();
+                        mot.setCar(carList.get(Integer.parseInt(list.get(0))));
+                        mot.setMotDate(stringToDate(list.get(1)));
+                        mot.setMotDescription(list.get(2));
+                        mot.save();
+                    }
+
+                    while (!(line = reader.readLine()).equals("insurance"))
+                    {
+                        list=splitData(line);
+                        Refueling refueling=new Refueling();
+                        refueling.setCar(carList.get(Integer.parseInt(list.get(0))));
+                        refueling.setRefuelingDate(stringToDate(list.get(1)));
+                        refueling.setRefuelingMileage(Integer.parseInt(list.get(2)));
+                        refueling.setQuantity(Double.parseDouble(list.get(3)));
+                        refueling.setRefuelingCost(Double.parseDouble(list.get(4)));
+                        refueling.setRefuelingDescription(list.get(5));
+                        refueling.save();
+                    }
+
+                    while (!(line = reader.readLine()).equals("reminder"))
+                    {
+                        list=splitData(line);
+                        Insurance insurance=new Insurance();
+                        insurance.setCar(carList.get(Integer.parseInt(list.get(0))));
+                        insurance.setInsuranceDate(stringToDate(list.get(1)));
+                        insurance.setInsuranceDescription(list.get(2));
+                        insurance.setInsuranceCost(Double.parseDouble(list.get(3)));
+                        insurance.save();
+                    }
+
+                    while (!(line = reader.readLine()).equals("serviceJobs"))
+                    {
+                        list=splitData(line);
+                        Reminder reminder=new Reminder();
+                        reminder.setCar(carList.get(Integer.parseInt(list.get(0))));
+                        reminder.setReminderDate(stringToDate(list.get(1)));
+                        reminder.setReminderDesription(list.get(2));
+                        reminder.setTitle(list.get(3));
+                        reminder.save();
+                    }
+
+                    while (!(line = reader.readLine()).equals("carMaintenance"))
+                    {
+                        list=splitData(line);
+                        ServiceJobs serviceJobs=new ServiceJobs();
+                        serviceJobs.setCar(carList.get(Integer.parseInt(list.get(0))));
+                        serviceJobs.setServiceDate(stringToDate(list.get(1)));
+                        serviceJobs.setServiceCost(Double.parseDouble(list.get(2)));
+                        serviceJobs.setServiceGarage(list.get(3));
+                        serviceJobs.setServiceMileage(Integer.parseInt(list.get(4)));
+                        serviceJobs.setServiceDescription(list.get(5));
+                        serviceJobsList.add(serviceJobs);
+                        serviceJobs.save();
+                    }
+
+                    while (!(line = reader.readLine()).equals("refersTo"))
+                    {
+                        list=splitData(line);
+                        CarMaintenance carMaintenance=new CarMaintenance();
+                        carMaintenance.setMaintenanceName(list.get(0));
+                        carMaintenanceList.add(carMaintenance);
+                        carMaintenance.save();
+                    }
+
+                    while ((line = reader.readLine()) != null)
+                    {
+                        list=splitData(line);
+                        RefersTo refersTo=new RefersTo();
+                        refersTo.setService(serviceJobsList.get(Integer.parseInt(list.get(0))));
+                        refersTo.setMaintenance(carMaintenanceList.get(Integer.parseInt(list.get(1))));
+                        refersTo.save();
+                    }
                 }
+
 
 
 
@@ -152,8 +255,8 @@ public class TransferPresenter {
                 writer.println("car");
                 for(Car c:Car.listAll(Car.class))
                 {
-                    ArrayList<String> temp=new ArrayList<String>();
-                    temp.add(c.getModel().getModelName());
+                    ArrayList<String> temp=new ArrayList<>();
+                    temp.add(Long.toString(c.getModel().getId()));
                     temp.add(c.getVIN());
                     temp.add(dateToString(c.getProductionYear()));
                     temp.add(c.getLicencePlate());
@@ -167,7 +270,7 @@ public class TransferPresenter {
                 writer.println("mot");
                 for(Mot m:Mot.listAll(Mot.class))
                 {
-                    ArrayList<String> temp=new ArrayList<String>();
+                    ArrayList<String> temp=new ArrayList<>();
                     temp.add(Integer.toString(Car.listAll(Car.class).indexOf(m.getCar())));
                     temp.add(dateToString(m.getMotDate()));
                     temp.add(m.getMotDescription());
@@ -176,7 +279,7 @@ public class TransferPresenter {
                 writer.println("refueling");
                 for(Refueling r:Refueling.listAll(Refueling.class))
                 {
-                    ArrayList<String> temp=new ArrayList<String>();
+                    ArrayList<String> temp=new ArrayList<>();
                     temp.add(Integer.toString(Car.listAll(Car.class).indexOf(r.getCar())));
                     temp.add(dateToString(r.getRefuelingDate()));
                     temp.add(Integer.toString(r.getRefuelingMileage()));
@@ -188,7 +291,7 @@ public class TransferPresenter {
                 writer.println("insurance");
                 for(Insurance i:Insurance.listAll(Insurance.class))
                 {
-                    ArrayList<String> temp=new ArrayList<String>();
+                    ArrayList<String> temp=new ArrayList<>();
                     temp.add(Integer.toString(Car.listAll(Car.class).indexOf(i.getCar())));
                     temp.add(dateToString(i.getInsuranceDate()));
                     temp.add(i.getInsuranceDescription());
@@ -198,7 +301,7 @@ public class TransferPresenter {
                 writer.println("reminder");
                 for(Reminder r:Reminder.listAll(Reminder.class))
                 {
-                    ArrayList<String> temp=new ArrayList<String>();
+                    ArrayList<String> temp=new ArrayList<>();
                     temp.add(Integer.toString(Car.listAll(Car.class).indexOf(r.getCar())));
                     temp.add(dateToString(r.getReminderDate()));
                     temp.add(r.getReminderDesription());
@@ -208,7 +311,7 @@ public class TransferPresenter {
                 writer.println("serviceJobs");
                 for(ServiceJobs s:ServiceJobs.listAll(ServiceJobs.class))
                 {
-                    ArrayList<String> temp=new ArrayList<String>();
+                    ArrayList<String> temp=new ArrayList<>();
                     temp.add(Integer.toString(Car.listAll(Car.class).indexOf(s.getCar())));
                     temp.add(dateToString(s.getServiceDate()));
                     temp.add(Double.toString(s.getServiceCost()));
@@ -220,14 +323,14 @@ public class TransferPresenter {
                 writer.println("carMaintenance");
                 for(CarMaintenance c:CarMaintenance.listAll(CarMaintenance.class))
                 {
-                    ArrayList<String> temp=new ArrayList<String>();
+                    ArrayList<String> temp=new ArrayList<>();
                     temp.add(c.getMaintenanceName());
                     writer.println(joinData(temp));
                 }
                 writer.println("refersTo");
                 for(RefersTo r:RefersTo.listAll(RefersTo.class))
                 {
-                    ArrayList<String> temp=new ArrayList<String>();
+                    ArrayList<String> temp=new ArrayList<>();
                     temp.add(Integer.toString(ServiceJobs.listAll(ServiceJobs.class).indexOf(r.getService())));
                     temp.add(Integer.toString(CarMaintenance.listAll(CarMaintenance.class).indexOf(r.getMaintenance())));
                     writer.println(joinData(temp));

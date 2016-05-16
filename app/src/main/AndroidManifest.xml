@@ -12,6 +12,7 @@
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -19,22 +20,22 @@
         <activity android:name=".view.activity.CarActivity" />
         <activity android:name=".view.activity.RefuelViewActivity" />
         <activity android:name=".view.activity.ServiceJobsActivity" />
-        <activity android:name=".view.activity.RefuelingAddActivity"/>
+        <activity android:name=".view.activity.RefuelingAddActivity" />
         <activity android:name=".view.activity.ReportFuelActivity" />
         <activity android:name=".view.activity.ReportServicesActivity" />
         <activity android:name=".view.activity.ReportSummaryActivity" />
-
         <activity android:name=".view.activity.AddServiceActivity" />
         <activity android:name=".view.activity.InsuranceAddActivity" />
         <activity android:name=".view.activity.MotAddActivity" />
 
         <meta-data
             android:name="DATABASE"
-            android:value="auto_asystent.db"/>
+            android:value="auto_asystent.db" />
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="pl.edu.pwr.zpi" />
 
+        <activity android:name=".view.activity.TransferActivity"></activity>
     </application>
 
 </manifest>
