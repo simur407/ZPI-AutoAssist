@@ -22,8 +22,11 @@
     <string name="different_maintenance_label">Inne:</string>
     <string name="service_view_label">Informacje o przeglądzie</string>
     <string name="refuel_view_label">Informacje o tankowaniu</string>
-    <string name="service_add_label">Dodawanie przeglądu</string>
+    <string name="service_add_label">Dodawanie serwisu</string>
     <string name="refuel_add_label">Dodawanie tankowania</string>
+    <string name="car_add_label">Dodawanie samochodu</string>
+    <string name="insurance_add_label">Dodawanie ubezpieczenia</string>
+    <string name="mot_add_label">Dodawanie przeglądu technicznego</string>
     <string name="insurance_description_label">Opis (ubezpieczalnia)</string>
     <string name="mot_description_label">Szczegóły</string>
     <string name="report_label">Raporty</string>

@@ -34,6 +34,8 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         presenter = new MotAddPresenter(this, carId);
         date = (EditText) findViewById(R.id.mot_date);
         description = (EditText) findViewById(R.id.mot_description);
+
+        setToolbarTitle(R.string.mot_add_label);
     }
 
     @Override

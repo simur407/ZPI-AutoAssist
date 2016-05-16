@@ -7,17 +7,33 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin">
 
-    <EditText
-        android:id="@+id/mot_date"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_mot_date"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/date_label"
-        android:inputType="date" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/mot_description"
+        <EditText
+            android:id="@+id/mot_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/date_label"
+            android:inputType="date" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_mot_description"
+        android:layout_below="@id/input_mot_date"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/mot_description_label" />
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/mot_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/mot_description_label" />
+
+    </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>

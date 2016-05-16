@@ -33,6 +33,8 @@ public class RefuelViewActivity extends BaseActivity implements RefuelViewPanel 
         mileage = (TextView) findViewById(R.id.refuel_mileage_field);
         description = (TextView) findViewById(R.id.refuel_description_field);
         presenter.setRefueling(Long.parseLong(getIntent().getData().toString()));
+
+        setToolbarTitle(R.string.refuel_view_label);
     }
 
 

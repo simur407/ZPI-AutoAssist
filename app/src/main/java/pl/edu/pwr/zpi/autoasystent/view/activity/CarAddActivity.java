@@ -87,6 +87,9 @@ public class CarAddActivity extends BaseActivity implements CarAddPanel {
 
         presenter = new CarAddPresenter(this);
         presenter.setMakeSpinner();
+
+        setToolbarTitle(R.string.car_add_label);
+
     }
 
     @Override

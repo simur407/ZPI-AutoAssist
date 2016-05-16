@@ -35,11 +35,18 @@ public class CarActivity extends BaseActivity implements CarPanel {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        presenter.setToolbarTitle(carId);
     }
 
     @Override
     public void setFragments(List<Fragment> fragments) {
         fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
+    }
+
+    @Override
+    public void setTitle(String title) {
+        setToolbarTitle(title);
     }
 
 

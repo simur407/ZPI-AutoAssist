@@ -43,6 +43,8 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
 
         presenter = new RefuelingAddPresenter(this, carId);
 
+        setToolbarTitle(R.string.refuel_add_label);
+
     }
 
     @Override

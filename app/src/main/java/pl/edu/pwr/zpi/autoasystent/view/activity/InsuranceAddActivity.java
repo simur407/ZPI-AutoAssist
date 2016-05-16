@@ -37,6 +37,8 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
         date = (EditText) findViewById(R.id.insurance_date);
         cost = (EditText) findViewById(R.id.insurance_cost);
         description = (EditText) findViewById(R.id.insurance_description);
+
+        setToolbarTitle(R.string.insurance_add_label);
     }
 
 

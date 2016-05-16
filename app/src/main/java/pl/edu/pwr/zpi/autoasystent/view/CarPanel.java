@@ -13,4 +13,6 @@ import java.util.List;
 public interface CarPanel {
 
     void setFragments(List<Fragment> fragments);
+
+    void setTitle(String title);
 }
