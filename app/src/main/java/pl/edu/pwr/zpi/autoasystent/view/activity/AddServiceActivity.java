@@ -100,7 +100,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         } else {
             // Date picker
             try {
-                service.setServiceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN));
+                service.setServiceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
             } catch (ParseException e) {
                 Logger.error(e);
             }

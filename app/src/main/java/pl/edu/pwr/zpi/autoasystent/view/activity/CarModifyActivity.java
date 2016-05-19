@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.flask.colorpicker.ColorPickerView;
 import com.flask.colorpicker.builder.ColorPickerClickListener;
@@ -194,7 +193,6 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
                 .setPositiveButton("OK", new ColorPickerClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i, Integer[] integers) {
-                        Toast.makeText(CarModifyActivity.this, "Color: " + Integer.toHexString(i), Toast.LENGTH_SHORT).show();
                         presenter.onColorSelected(i);
                     }
                 })

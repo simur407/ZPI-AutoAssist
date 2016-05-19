@@ -57,7 +57,7 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
     private void saveMot() {
         Mot mot = new Mot();
         try {
-            mot.setMotDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN));
+            mot.setMotDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
         } catch (ParseException e) {
             Logger.error(e);
         }

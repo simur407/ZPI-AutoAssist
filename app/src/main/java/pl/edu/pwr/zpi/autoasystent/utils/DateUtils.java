@@ -6,19 +6,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * TODO Dokumentacja
+ * Klasa zapewniająca konwersję dat na sformatowane Stringi, oraz Stringi na obiekty {@link Date}.
  *
  * @author Szymon Bartczak
  * @date 2016-05-03
  */
 public class DateUtils {
 
-    public static String DATE_PATTERN = "dd.MM.yyyy";
-    public static String DATE_AND_TIME_PATTERN = "dd.MM.yyyy HH:mm";
-    public static String TIME_PATTERN = "HH:mm";
+    public static String DATE_FORMAT_DEF = "dd.MM.yyyy";
+    public static String DATE_AND_TIME_FORMAT_DEF = "dd.MM.yyyy HH:mm";
+    public static String TIME_FORMAT = "HH:mm";
+    public static String YEAR_FORMAT = "yyyy";
 
     /**
-     * Konwertuje {@link Date} na pattern podany w parametrze. Można skorzystać z gotowych patternów z klasy {@link DateUtils}.
+     * Konwertuje {@link Date} na format podany w parametrze. Można skorzystać z gotowych formatów z klasy {@link DateUtils}.
      */
     public static String dateToString(Date date, String pattern) {
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
@@ -26,10 +27,10 @@ public class DateUtils {
     }
 
     /**
-     * Konwertuje {@link Date} na pattern {@link DateUtils#DATE_PATTERN}.
+     * Konwertuje {@link Date} na format {@value DateUtils#DATE_FORMAT_DEF}.
      */
     public static String dateToString(Date date) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT_DEF);
         return dateFormat.format(date);
     }
 

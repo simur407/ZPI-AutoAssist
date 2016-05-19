@@ -71,7 +71,7 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
         }
         insurance.setInsuranceDescription(description.getText().toString());
         try {
-            insurance.setInsuranceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN));
+            insurance.setInsuranceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
         } catch (ParseException e) {
             Logger.error(e);
         }

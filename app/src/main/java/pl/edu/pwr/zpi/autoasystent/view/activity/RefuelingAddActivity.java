@@ -97,7 +97,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
 //            String dateString = dateField.getText().toString();
 //            DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
             try {
-                refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_PATTERN));
+                refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_FORMAT_DEF));
             } catch (ParseException e) {
                 Logger.error(e);
             }
