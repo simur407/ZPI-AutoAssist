@@ -1,17 +1,20 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
@@ -44,6 +47,12 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         description = (EditText) findViewById(R.id.service_description);
 
         date.setInputType(InputType.TYPE_NULL);
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.dataBoxClicked(new Date()); //TODO temp date
+            }
+        });
 
         list = (ListView) findViewById(R.id.service_add_list);
 
@@ -122,32 +131,25 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         }
     }
 
-    public void onStart() {
-        super.onStart();
-
-        EditText txtDate = (EditText) findViewById(R.id.service_date);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    DateDialog dialog = new DateDialog(view);
-
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    dialog.show(ft, "Wybierz datę");
-                }
-            }
-
-        });
-    }
-
-
     @Override
     public void setMaintanaceList(List<CarMaintenance> maintenances) {
 
     }
 
-    @Override
-    public void showDataPicker(int currentData) {
 
+    @Override
+    public void showDataPicker(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                //TODO Pattern
+                AddServiceActivity.this.date.setText(dayOfMonth+"." +monthOfYear + "." +year);
+            }
+        });
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
     }
 
     @Override

@@ -53,6 +53,7 @@ public class MainActivity extends BaseActivity implements CarListPanel {
         });
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();

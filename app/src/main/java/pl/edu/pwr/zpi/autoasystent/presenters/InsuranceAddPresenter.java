@@ -1,6 +1,8 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
 
+import java.util.Date;
+
 import pl.edu.pwr.zpi.autoasystent.model.Insurance;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
@@ -21,5 +23,9 @@ public class InsuranceAddPresenter {
     public void saveInsurance(Insurance insurance) {
         insurance.setCar(CarService.getInstance().findCarById(carId));
         InsuranceService.getInstance().saveInsurance(insurance);
+    }
+
+    public void showDatePicker(Date date) {
+        panel.showDatePicker(date);
     }
 }
