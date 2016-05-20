@@ -80,5 +80,10 @@
     <string name="twentieth_service">20 Reparaturen hinzugefügt.</string>
     <string name="two_years_using">2 Jahren Benutzung des Applikations</string>
     <string name="tenth_service">10 Reparaturen hinzugefügt.</string>
+    <string name="delete_database">Datenbank löschen</string>
+    <string name="load_file">Laden aus einer Datei</string>
+    <string name="memory_card">Speicherkarte</string>
+    <string name="type_filename_plz">Geben Sie den Dateinamen</string>
+    <string name="save_file">Speichern ins Datei</string>
 
 </resources>

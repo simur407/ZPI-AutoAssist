@@ -80,5 +80,10 @@
     <string name="twentieth_service">20 services added.</string>
     <string name="two_years_using">1 year of application using</string>
     <string name="tenth_service">10 services done.</string>
+    <string name="delete_database">Delete dababase</string>
+    <string name="load_file">Load from file</string>
+    <string name="memory_card">Memory card</string>
+    <string name="save_file">Save to file</string>
+    <string name="type_filename_plz">Enter the filename </string>
 
 </resources>
