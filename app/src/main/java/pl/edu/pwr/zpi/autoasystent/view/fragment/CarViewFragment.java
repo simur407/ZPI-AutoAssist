@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.model.Insurance;
+import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
@@ -30,6 +32,9 @@ import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 public class CarViewFragment extends Fragment implements TabFragment, CarViewPanel {
 
     private static final String TINT = "#99";
+
+    private CarViewPresenter presenter;
+
     protected TextView makeField;
     protected TextView modelField;
     protected TextView yearField;
@@ -54,7 +59,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         View view = inflater.inflate(R.layout.fragment_car_view, container, false);
 
         carId = getArguments().getLong(CarActivity.ID_KEY);
-        final CarViewPresenter presenter = new CarViewPresenter(this, carId);
+        presenter = new CarViewPresenter(this, carId);
         colorView = (GradientDrawable) view.findViewById(R.id.color_viewer).getBackground();
         makeField = (TextView) view.findViewById(R.id.make_field);
         modelField = (TextView) view.findViewById(R.id.model_field);
@@ -77,9 +82,14 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
                 presenter.onMotButtonClick(v);
             }
         });
-        presenter.setCarData(carId);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.setCarData(carId);
     }
 
     @Override
@@ -92,8 +102,18 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         plateField.setText(car.getLicencePlate());
         vinField.setText(car.getVIN());
         capacityField.setText(String.valueOf(car.getCapacity()));
-        motField.setText(DateUtils.dateToString(MotService.getInstance().getLatest(car)));//TODO Not a pattern
-        insuranceField.setText(DateUtils.dateToString(InsuranceService.getInstance().getLatest(car)));
+        Mot latestMot = MotService.getInstance().getLatest(car);
+        if(latestMot == null) {
+            motField.setText("-");
+        } else {
+            motField.setText(DateUtils.dateToString(latestMot.getMotDate()));//TODO Not a pattern
+        }
+        Insurance latestService = InsuranceService.getInstance().getLatest(car);
+        if(latestService == null) {
+            insuranceField.setText("-");
+        } else {
+            insuranceField.setText(DateUtils.dateToString(latestService.getInsuranceDate()));
+        }
     }
 
     @Override

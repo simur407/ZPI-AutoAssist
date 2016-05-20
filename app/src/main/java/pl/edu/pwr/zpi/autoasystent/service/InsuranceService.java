@@ -1,9 +1,5 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
-import com.orm.SugarRecord;
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.Car;
@@ -14,9 +10,9 @@ import pl.edu.pwr.zpi.autoasystent.model.Insurance;
  */
 public class InsuranceService {
     private static InsuranceService instance = null;
-    
+
     public static InsuranceService getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new InsuranceService();
         }
         return instance;
@@ -42,21 +38,14 @@ public class InsuranceService {
         Insurance.delete(insurance);
     }
 
-    public Date getLatest(Car car) {
-        ArrayList<Insurance> insuranceList=(ArrayList<Insurance>)getAllInsurances();
-        Date insuranceDate=new Date(1);
-        for(Insurance insurance:insuranceList)
-        {
-            Date insuranceDateTemp=insurance.getInsuranceDate();
-            if (car.equals(insurance.getCar()))
-            {
-                if (insuranceDateTemp.compareTo(insuranceDate)==1)
-                {
-                    insuranceDate=insuranceDateTemp;
-                }
-            }
+    public Insurance getLatest(Car car) {
+        List<Insurance> insuranceList = Insurance.find(Insurance.class, "car = ?", new String[]{String.valueOf(car.getId())}, null,
+                "insurance_date DESC", "1");
+
+        if (!insuranceList.isEmpty()) {
+            return insuranceList.get(0);
         }
-        return insuranceDate;
+        return null;
     }
 }
     
