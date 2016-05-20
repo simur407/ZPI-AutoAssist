@@ -31,7 +31,7 @@
 					android:scaleType="centerCrop"
 					android:src="@drawable/car_photo"/>
 
-				<ImageView
+				<View
 					android:id="@+id/color_viewer"
 					android:layout_width="50dp"
 					android:layout_height="50dp"

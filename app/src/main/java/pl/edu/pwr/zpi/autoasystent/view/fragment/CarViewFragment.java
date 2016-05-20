@@ -2,6 +2,7 @@ package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.rafalzajfert.androidlogger.Logger;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
@@ -30,7 +29,7 @@ import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
  */
 public class CarViewFragment extends Fragment implements TabFragment, CarViewPanel {
 
-    private static final int TINT = 0x99000000;
+    private static final String TINT = "#99";
     protected TextView makeField;
     protected TextView modelField;
     protected TextView yearField;
@@ -85,11 +84,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
 
     @Override
     public void setCarData(Car car) {
-
-        int tintedColor = TINT + Integer.valueOf(car.getColor(), 16)%0xFFFFFF;//TODO Ogarnąć
-        Logger.debug(Integer.toHexString(Integer.valueOf(car.getColor(), 16)));
-        colorView.setColor(Integer.valueOf(car.getColor(), 16));
-
+        colorView.setColor(Color.parseColor("#" + car.getColor()));
         makeField.setText(car.getModel().getMake().getMakeName());
         modelField.setText(car.getModel().getModelName());
         yearField.setText(DateUtils.dateToString(car.getProductionYear(), DateUtils.YEAR_FORMAT));
@@ -99,7 +94,6 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         capacityField.setText(String.valueOf(car.getCapacity()));
         motField.setText(DateUtils.dateToString(MotService.getInstance().getLatest(car)));//TODO Not a pattern
         insuranceField.setText(DateUtils.dateToString(InsuranceService.getInstance().getLatest(car)));
-
     }
 
     @Override
