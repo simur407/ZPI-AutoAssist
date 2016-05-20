@@ -94,7 +94,7 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
     public void createReminder() {
         try {
             new ReminderBuilder(this)
-                    .setDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN))
+                    .setDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF))
                     .setTitle("Testowo")
                     .setDescription("Z buildera!")
                     .set();
