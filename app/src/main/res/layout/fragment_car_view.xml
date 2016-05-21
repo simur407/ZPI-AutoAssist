@@ -31,15 +31,7 @@
 					android:scaleType="centerCrop"
 					android:src="@drawable/car_photo"/>
 
-				<View
-					android:id="@+id/color_viewer"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
-					android:layout_alignParentBottom="true"
-					android:layout_marginBottom="@dimen/activity_vertical_margin"
-					android:layout_marginLeft="@dimen/activity_horizontal_margin"
-					android:layout_marginStart="@dimen/activity_horizontal_margin"
-					android:background="@drawable/rounded_edge"/>
+
 
 				<LinearLayout
 					android:layout_width="match_parent"
@@ -49,14 +41,13 @@
 					android:layout_marginLeft="@dimen/activity_horizontal_margin"
 					android:layout_marginRight="@dimen/activity_horizontal_margin"
 					android:layout_marginStart="@dimen/activity_horizontal_margin"
-					android:gravity="bottom|end"
+					android:gravity="bottom|start"
 					android:orientation="vertical">
 
 					<TextView
 						android:id="@+id/make_field"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_gravity="end"
 						android:textColor="@color/white"
 						android:textSize="34sp"
 						tools:text="Fiat"/>
@@ -66,14 +57,34 @@
 						android:id="@+id/model_field"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_gravity="end"
 						android:textColor="@color/white"
 						android:textSize="24sp"
 						tools:text="124 Spider"/>
 
 				</LinearLayout>
 			</RelativeLayout>
+			<View
+				android:id="@+id/color_viewer"
+				android:layout_below="@id/image_overlay"
+				android:layout_width="56dp"
+				android:layout_height="56dp"
+				android:layout_marginBottom="@dimen/activity_vertical_margin"
+				android:layout_marginLeft="@dimen/activity_horizontal_margin"
+				android:layout_marginRight="@dimen/activity_horizontal_margin"
+				android:layout_marginTop="-30dp"
+				android:layout_alignParentRight="true"
 
+				android:background="@drawable/rounded_edge"/>
+
+			<View
+				android:id="@+id/car_color_shadow"
+				android:layout_width="82dp"
+				android:layout_height="82dp"
+				android:background="@drawable/fab_shadow"
+				android:layout_below="@id/image_overlay"
+				android:layout_marginTop="-44dp"
+				android:layout_marginRight="3dp"
+				android:layout_alignParentRight="true"/>
 
 			<RelativeLayout
 				android:layout_width="match_parent"

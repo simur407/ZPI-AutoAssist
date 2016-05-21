@@ -53,6 +53,8 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
                 presenter.showDatePicker(new Date());//TODO temp date
             }
         });
+
+        setToolbarTitle(R.string.refuel_add_label);
     }
 
     @Override

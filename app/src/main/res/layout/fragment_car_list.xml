@@ -5,16 +5,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <ListView
         android:id="@+id/car_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/list_horizontal_margin"
-        android:paddingRight="@dimen/list_horizontal_margin"
         android:scrollbarStyle="outsideOverlay"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_marginTop="8dp"
         tools:listitem="@layout/item_car"
-        android:clipToPadding="true"/>
+        android:clipToPadding="true"
+        android:dividerHeight="0dp"
+        android:divider="@null"/>
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab_main"
@@ -22,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_car_24dp"
+        android:src="@drawable/ic_car_add_24dp"
         fab:fab_colorNormal="@color/accent"
         fab:fab_colorPressed="@color/accent_light"
         fab:fab_colorRipple="@color/accent"/>
