@@ -1,15 +1,19 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
+import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Insurance;
@@ -38,7 +42,13 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
         cost = (EditText) findViewById(R.id.insurance_cost);
         description = (EditText) findViewById(R.id.insurance_description);
 
-        setToolbarTitle(R.string.insurance_add_label);
+        date.setInputType(InputType.TYPE_NULL);
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showDatePicker(new Date());//TODO temporary date
+            }
+        });
     }
 
 
@@ -67,15 +77,20 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
 //        insurance.setInsuranceDate(Integer.parseInt(date.getText().toString()));
         if (cost.length() < 1) {
             error = true;
-            cost.setError("Pole obowiązkowe");
+            cost.setError(getString(R.string.error));
         } else {
             insurance.setInsuranceCost(Double.parseDouble(cost.getText().toString()));
         }
         insurance.setInsuranceDescription(description.getText().toString());
-        try {
-            insurance.setInsuranceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN));
-        } catch (ParseException e) {
-            Logger.error(e);
+        if (date.length() < 1) {
+            error = true;
+            date.setError(getString(R.string.error));
+        } else {
+            try {
+                insurance.setInsuranceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+            } catch (ParseException e) {
+                Logger.error(e);
+            }
         }
         if (!error) {
             presenter.saveInsurance(insurance);
@@ -83,20 +98,18 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
         }
     }
 
-    public void onStart() {
-        super.onStart();
-
-        EditText txtDate = (EditText) findViewById(R.id.insurance_date);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    DateDialog dialog = new DateDialog(view);
-
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    dialog.show(ft, "Wybierz datę");
-                }
+    @Override
+    public void showDatePicker(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                //TODO Pattern
+                InsuranceAddActivity.this.date.setText(dayOfMonth + "." + monthOfYear + "." + year);
             }
-
         });
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
     }
 }

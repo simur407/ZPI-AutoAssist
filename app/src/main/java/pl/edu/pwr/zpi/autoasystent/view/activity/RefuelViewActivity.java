@@ -41,10 +41,14 @@ public class RefuelViewActivity extends BaseActivity implements RefuelViewPanel 
     @Override
     public void setRefuelingData(Refueling refueling) {
         date.setText(DateUtils.dateToString(refueling.getRefuelingDate()));
-        quantity.setText(String.valueOf(refueling.getQuantity()) + " l");
-        cost.setText(String.valueOf(refueling.getRefuelingCost()) + " zł");
-        costPerOne.setText(String.valueOf((Math.round(100 * refueling.getRefuelingCost() / refueling.getQuantity())) / 100.0) + " zł/l");
-        mileage.setText(String.valueOf(refueling.getRefuelingMileage()) + " km");
-        description.setText(refueling.getRefuelingDescription());
+        quantity.setText(String.format("%s %s", String.valueOf(refueling.getQuantity()), getString(R.string.currency_symbol)));
+        cost.setText(String.format("%s %s", String.valueOf(refueling.getRefuelingCost()), getString(R.string.quantity_symbol)));
+        costPerOne.setText(String.format("%s %s/%s", String.valueOf((Math.round(100 * refueling.getRefuelingCost() / refueling.getQuantity())) / 100.0), getString(R.string.currency_symbol), getString(R.string.quantity_symbol)));
+        mileage.setText(String.format("%s %s", String.valueOf(refueling.getRefuelingMileage()), getString(R.string.mileage_symbol)));
+        if (refueling.getRefuelingDescription().length() < 1) {
+            description.setText("-");
+        } else {
+            description.setText(refueling.getRefuelingDescription());
+        }
     }
 }

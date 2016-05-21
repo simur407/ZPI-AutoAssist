@@ -1,6 +1,9 @@
 package pl.edu.pwr.zpi.autoasystent.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,13 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.model.Insurance;
+import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
+import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 
@@ -25,6 +30,10 @@ import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
  * Created by Marcin on 25.04.2016.
  */
 public class CarViewFragment extends Fragment implements TabFragment, CarViewPanel {
+
+    private static final String TINT = "#99";
+
+    private CarViewPresenter presenter;
 
     protected TextView makeField;
     protected TextView modelField;
@@ -35,22 +44,23 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     protected TextView capacityField;
     protected TextView motField;
     protected TextView insuranceField;
+    private GradientDrawable colorView;
     protected long carId;
 
     @Override
-    public String getTabName() {
-        return "Szczegóły";
+    public String getTabName(Context context) {
+        return StringUtils.getStringFromId(context, R.string.car_view_tab_name);
     }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_car_view, container, false);
 
-        //TODO wczytać carId
         carId = getArguments().getLong(CarActivity.ID_KEY);
-        final CarViewPresenter presenter = new CarViewPresenter(this, carId);
-
+        presenter = new CarViewPresenter(this, carId);
+        colorView = (GradientDrawable) view.findViewById(R.id.color_viewer).getBackground();
         makeField = (TextView) view.findViewById(R.id.make_field);
         modelField = (TextView) view.findViewById(R.id.model_field);
         yearField = (TextView) view.findViewById(R.id.year_field);
@@ -60,36 +70,58 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         capacityField = (TextView) view.findViewById(R.id.capacity_field);
         motField = (TextView) view.findViewById(R.id.mot_field);
         insuranceField = (TextView) view.findViewById(R.id.insurance_field);
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.add_insurance_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onInsuranceButtonClick(v);
             }
         });
-        view.findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.add_mot_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onMotButtonClick(v);
             }
         });
-        presenter.setCarData(carId);
 
         return view;
     }
 
     @Override
-    public void setCarData(Car car) {
+    public void onResume() {
+        super.onResume();
+        presenter.setCarData(carId);
+    }
 
+    @Override
+    public void setCarData(Car car) {
+        colorView.setColor(Color.parseColor("#" + car.getColor()));
         makeField.setText(car.getModel().getMake().getMakeName());
         modelField.setText(car.getModel().getModelName());
-        yearField.setText((new SimpleDateFormat("yyyy")).format(car.getProductionYear()));
-        powerField.setText(Integer.toString(car.getPower()));
+        yearField.setText(DateUtils.dateToString(car.getProductionYear(), DateUtils.YEAR_FORMAT));
+        if (car.getPower() > 0) {
+            powerField.setText(String.valueOf(car.getPower()));
+        } else {
+            powerField.setText(getString(R.string.no_data_entered));
+        }
         plateField.setText(car.getLicencePlate());
         vinField.setText(car.getVIN());
-        capacityField.setText(Integer.toString(car.getCapacity()));
-        motField.setText((new SimpleDateFormat("dd.MM.yyyy")).format(MotService.getInstance().getLatest(car)));
-        insuranceField.setText((new SimpleDateFormat("dd.MM.yyyy")).format(InsuranceService.getInstance().getLatest(car)));
-
+        if (car.getCapacity() > 0) {
+            capacityField.setText(String.valueOf(car.getCapacity()));
+        } else {
+            capacityField.setText(getString(R.string.no_data_entered));
+        }
+        Mot latestMot = MotService.getInstance().getLatest(car);
+        if (latestMot == null) {
+            motField.setText("-");
+        } else {
+            motField.setText(DateUtils.dateToString(latestMot.getMotDate()));//TODO Not a pattern
+        }
+        Insurance latestService = InsuranceService.getInstance().getLatest(car);
+        if (latestService == null) {
+            insuranceField.setText("-");
+        } else {
+            insuranceField.setText(DateUtils.dateToString(latestService.getInsuranceDate()));
+        }
     }
 
     @Override

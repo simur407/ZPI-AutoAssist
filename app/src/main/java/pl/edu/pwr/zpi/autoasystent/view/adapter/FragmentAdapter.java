@@ -1,5 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.view.adapter;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -15,10 +16,12 @@ import pl.edu.pwr.zpi.autoasystent.view.fragment.TabFragment;
  */
 public class FragmentAdapter extends FragmentPagerAdapter {
     List<Fragment> fragmentList;
+    Context context;
 
-    public FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList) {
+    public FragmentAdapter(FragmentManager fm, List<Fragment> fragmentList, Context context) {
         super(fm);
         this.fragmentList = fragmentList;
+        this.context = context;
     }
 
     @Override
@@ -34,8 +37,10 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
+
         if(fragmentList.get(position) instanceof TabFragment) {
-            return ((TabFragment) fragmentList.get(position)).getTabName();
+
+            return ((TabFragment) fragmentList.get(position)).getTabName(context);
         } else {
             throw new IllegalStateException("Fragment must implement " + TabFragment.class.getName());
         }

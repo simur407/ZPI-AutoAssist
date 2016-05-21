@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
+import java.util.Date;
+
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.ServiceJobsService;
@@ -23,8 +25,8 @@ public class AddServicePresenter {
         ServiceJobsService.getInstance().saveService(service);
     }
 
-    public void dataBoxClicked(int currentData) {
-        panel.showDataPicker(currentData);
+    public void dataBoxClicked(Date date) {
+        panel.showDataPicker(date);
     }
 
 

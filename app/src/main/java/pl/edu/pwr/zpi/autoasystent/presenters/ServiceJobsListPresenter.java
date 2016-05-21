@@ -39,4 +39,17 @@ public class ServiceJobsListPresenter {
     public void onAddButtonClick(View v) {
         panel.startActivity(AddServiceActivity.class, Uri.parse(String.valueOf(carId)));
     }
+
+    public void onLongListItemClick(AdapterView<?> parent, View view, int position, long id) {
+        panel.showDeleteMenu((ServiceJobs)parent.getItemAtPosition(position));
+    }
+
+    public void deleteServiceJob(ServiceJobs serviceJob) {
+        if(carId != serviceJob.getCar().getId()) {
+            Logger.error("Deleting refueling from other car!!!");
+        }
+        ServiceJobsService.getInstance().deleteService(serviceJob);
+        List<ServiceJobs> serviceJobs = ServiceJobsService.getInstance().getAllServicesByCarId(carId);
+        panel.setServiceJobsList(serviceJobs);
+    }
 }

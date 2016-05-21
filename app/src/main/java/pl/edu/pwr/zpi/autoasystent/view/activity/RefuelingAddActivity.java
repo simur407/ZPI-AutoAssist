@@ -1,16 +1,19 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
+import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
@@ -43,8 +46,13 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
 
         presenter = new RefuelingAddPresenter(this, carId);
 
-        setToolbarTitle(R.string.refuel_add_label);
-
+        dateField.setInputType(InputType.TYPE_NULL);
+        dateField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showDatePicker(new Date());//TODO temp date
+            }
+        });
     }
 
     @Override
@@ -99,7 +107,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
 //            String dateString = dateField.getText().toString();
 //            DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
             try {
-                refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_PATTERN));
+                refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_FORMAT_DEF));
             } catch (ParseException e) {
                 Logger.error(e);
             }
@@ -112,20 +120,17 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         }
     }
 
-    public void onStart() {
-        super.onStart();
-
-        EditText txtDate = (EditText) findViewById(R.id.refuel_date);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    DateDialog dialog = new DateDialog(view);
-
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    dialog.show(ft, "Wybierz datę");
-                }
+    @Override
+    public void showDatePicker(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                RefuelingAddActivity.this.dateField.setText(dayOfMonth+"." +monthOfYear + "." +year);
             }
-
         });
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
     }
 }

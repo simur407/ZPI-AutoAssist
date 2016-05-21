@@ -3,8 +3,6 @@ package pl.edu.pwr.zpi.autoasystent.view.activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.rafalzajfert.androidlogger.Logger;
-
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.presenters.ServiceJobsViewPresenter;
@@ -38,11 +36,17 @@ public class ServiceJobsActivity extends BaseActivity implements ServiceViewPane
 
     public void setServiceJob(ServiceJobs serviceJobs) {
         date.setText(DateUtils.dateToString(serviceJobs.getServiceDate()));
-        cost.setText(String.valueOf(serviceJobs.getServiceCost()) + " zł");
-        mileage.setText(String.valueOf(serviceJobs.getServiceMileage()) + " km");
-        Logger.debug(serviceJobs.getGarage());
-        garage.setText(serviceJobs.getGarage());
-        description.setText(serviceJobs.getServiceDescription());
+        cost.setText(String.format("%s %s", String.valueOf(serviceJobs.getServiceCost()), getString(R.string.currency_symbol)));
+        mileage.setText(String.format("%s %s", String.valueOf(serviceJobs.getServiceMileage()), getString(R.string.mileage_symbol)));
+        if (serviceJobs.getGarage().length() < 1) {
+            garage.setText("-");
+        } else {
+            garage.setText(serviceJobs.getGarage());
+        }
+        if (serviceJobs.getServiceDescription().length() < 1) {
+            description.setText("-");
+        } else {
+            description.setText(serviceJobs.getServiceDescription());
+        }
     }
-
 }

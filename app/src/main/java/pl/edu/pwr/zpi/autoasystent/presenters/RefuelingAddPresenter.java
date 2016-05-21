@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
+import java.util.Date;
+
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.RefuelingService;
@@ -21,5 +23,9 @@ public class RefuelingAddPresenter {
     public void saveRefueling(Refueling refueling) {
         refueling.setCar(CarService.getInstance().findCarById(carId));
         RefuelingService.getInstance().saveRefueling(refueling);
+    }
+
+    public void showDatePicker(Date date) {
+        panel.showDatePicker(date);
     }
 }

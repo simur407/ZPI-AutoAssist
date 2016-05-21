@@ -1,20 +1,24 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import java.text.ParseException;
+import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.presenters.MotAddPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
+import pl.edu.pwr.zpi.autoasystent.utils.ReminderBuilder;
 import pl.edu.pwr.zpi.autoasystent.view.MotAddPanel;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
@@ -35,7 +39,12 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         date = (EditText) findViewById(R.id.mot_date);
         description = (EditText) findViewById(R.id.mot_description);
 
-        setToolbarTitle(R.string.mot_add_label);
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showDateDialog(new Date());//TODO temp date
+            }
+        });
     }
 
     @Override
@@ -57,34 +66,47 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
     }
 
     private void saveMot() {
+        boolean error = false;
         Mot mot = new Mot();
-        try {
-            mot.setMotDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_PATTERN));
-        } catch (ParseException e) {
-            Logger.error(e);
-        }
-
-        mot.setMotDescription(description.getText().toString());
-
-        presenter.saveMot(mot);
-        finish();
-    }
-
-    public void onStart() {
-        super.onStart();
-
-        EditText txtDate = (EditText) findViewById(R.id.mot_date);
-        txtDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean hasfocus) {
-                if (hasfocus) {
-                    DateDialog dialog = new DateDialog(view);
-
-                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    dialog.show(ft, "Wybierz datę");
-                }
+        if (date.length() < 1) {
+            error = true;
+            date.setError(getString(R.string.error));
+        } else {
+            try {
+                mot.setMotDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+            } catch (ParseException e) {
+                Logger.error(e);
             }
-
-        });
+        }
+        mot.setMotDescription(description.getText().toString());
+        if (!error) {
+            presenter.saveMot(mot);
+            finish();
+        }
     }
 
+    @Override
+    public void showDateDialog(Date date) {
+        DateDialog dialog = new DateDialog();
+        dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                MotAddActivity.this.date.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);//TODO CHANGE
+            }
+        });
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, null);
+    }
+
+    public void createReminder() {
+        try {
+            new ReminderBuilder(this)
+                    .setDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF))
+                    .setTitle("Testowo")
+                    .setDescription("Z buildera!")
+                    .set();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
 }

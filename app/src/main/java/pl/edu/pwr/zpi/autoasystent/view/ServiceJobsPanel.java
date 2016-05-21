@@ -13,4 +13,6 @@ public interface ServiceJobsPanel {
     void setServiceJobsList(List<ServiceJobs> serviceJobsList);
 
     void startActivity(Class<?> clazz, Uri additionalData);
+
+    void showDeleteMenu(ServiceJobs serviceJob);
 }

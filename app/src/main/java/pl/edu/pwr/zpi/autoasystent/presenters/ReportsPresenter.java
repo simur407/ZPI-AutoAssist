@@ -2,6 +2,8 @@ package pl.edu.pwr.zpi.autoasystent.presenters;
 
 import android.view.View;
 
+import java.util.Date;
+
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.view.ReportsPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.ReportFuelActivity;
@@ -46,5 +48,13 @@ public class ReportsPresenter {
 
     public void onGenerateButtonClick(View v) {
         //TODO implement
+    }
+
+    public void showFromDatePicker(Date date) {
+        panel.showFromDatePicker(date);
+    }
+
+    public void showToDatePicker(Date date) {
+        panel.showToDatePicker(date);
     }
 }

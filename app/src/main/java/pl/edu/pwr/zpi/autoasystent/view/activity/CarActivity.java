@@ -41,7 +41,7 @@ public class CarActivity extends BaseActivity implements CarPanel {
 
     @Override
     public void setFragments(List<Fragment> fragments) {
-        fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
+        fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments, getApplicationContext());
     }
 
     @Override
