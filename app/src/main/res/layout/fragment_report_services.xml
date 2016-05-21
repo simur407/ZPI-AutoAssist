@@ -3,15 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/report_services_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/report_services"
-        android:textAlignment="center" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,71 +13,101 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
 
 
-            <TextView
-                android:id="@+id/report_services_count_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/report_services_count" />
+            <LinearLayout
+                android:id="@+id/report_services_count_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_services_count_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/report_services_count_label"
-                android:gravity="right"
-                tools:text="5" />
+                <TextView
+                    android:id="@+id/report_services_count_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_services_count"
+                    android:textColor="@color/secondary_text"/>
 
-            <TextView
-                android:id="@+id/report_services_cost_overall_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_services_count_field"
-                android:text="@string/report_services_cost_overall" />
+                <TextView
+                    android:id="@+id/report_services_count_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="5"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/report_services_cost_overall_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/report_services_cost_overall_label"
-                android:gravity="right"
-                tools:text="3000 zł" />
+            <LinearLayout
+                android:id="@+id/report_services_cost_overall_group"
+                android:layout_below="@+id/report_services_count_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_services_cost_average_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_services_cost_overall_field"
-                android:text="@string/report_services_cost_average" />
+                <TextView
+                    android:id="@+id/report_services_cost_overall_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_services_cost_overall"
+                    android:textColor="@color/secondary_text"/>
 
-            <TextView
-                android:id="@+id/report_services_cost_average_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/report_services_cost_average_label"
-                android:gravity="right"
-                tools:text="600 zł" />
+                <TextView
+                    android:id="@+id/report_services_cost_overall_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="3000 zł"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/report_services_cost_per_month_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_services_cost_average_field"
-                android:text="@string/report_services_cost_per_month" />
+            <LinearLayout
+                android:id="@+id/report_services_cost_average_group"
+                android:layout_below="@+id/report_services_cost_overall_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_services_cost_per_month_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/report_services_cost_per_month_label"
-                android:gravity="right"
-                tools:text="333 zł" />
+                <TextView
+                    android:id="@+id/report_services_cost_average_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_services_cost_average"
+                    android:textColor="@color/secondary_text"/>
+
+                <TextView
+                    android:id="@+id/report_services_cost_average_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="600 zł"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/report_services_cost_per_month_group"
+                android:layout_below="@+id/report_services_cost_average_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/report_services_cost_per_month_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_services_cost_per_month"
+                    android:textColor="@color/secondary_text"/>
+
+                <TextView
+                    android:id="@+id/report_services_cost_per_month_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="333 zł"/>
+            </LinearLayout>
+
 
         </RelativeLayout>
     </ScrollView>

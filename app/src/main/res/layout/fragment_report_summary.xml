@@ -4,14 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_marginTop="@dimen/activity_vertical_margin">
-
-    <TextView
-        android:id="@+id/report_summary_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/report_summary"
-        android:textAlignment="center" />
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,164 +17,235 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin">
 
-            <TextView
-                android:id="@+id/report_summary_cost_overall_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/report_summary_cost_overall" />
+            <LinearLayout
+                android:id="@+id/report_summary_cost_overall_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_summary_cost_overall_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_cost_overall_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="5450 zł" />
+                <TextView
+                    android:id="@+id/report_summary_cost_overall_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_summary_cost_overall"
+                    android:textColor="@color/secondary_text"/>
 
-            <TextView
-                android:id="@+id/report_summary_cost_per_month_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_cost_overall_field"
-                android:text="@string/report_summary_cost_per_month" />
+                <TextView
+                    android:id="@+id/report_summary_cost_overall_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="5450 zł"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/report_summary_cost_per_month_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_cost_per_month_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="540 zł" />
+            <LinearLayout
+                android:id="@+id/report_summary_cost_per_month_group"
+                android:layout_below="@id/report_summary_cost_overall_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_summary_fuel_average_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_cost_per_month_field"
-                android:text="@string/report_fuel_average" />
+                <TextView
+                    android:id="@+id/report_summary_cost_per_month_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_summary_cost_per_month"
+                    android:textColor="@color/secondary_text"/>
 
-            <TextView
-                android:id="@+id/report_summary_fuel_average_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_fuel_average_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="33l/100km" />
+                <TextView
+                    android:id="@+id/report_summary_cost_per_month_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="540 zł"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/report_summary_fuel_overall_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_fuel_average_field"
-                android:text="@string/report_fuel_overall" />
+            <LinearLayout
+                android:id="@+id/report_summary_fuel_average_group"
+                android:layout_below="@id/report_summary_cost_per_month_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_summary_fuel_overall_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_fuel_overall_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="330 l" />
+                <TextView
+                    android:id="@+id/report_summary_fuel_average_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_fuel_average"
+                    android:textColor="@color/secondary_text"/>
 
-            <TextView
-                android:id="@+id/report_summary_fuel_cost_overall_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_fuel_overall_field"
-                android:text="@string/report_fuel_cost_overall" />
+                <TextView
+                    android:id="@+id/report_summary_fuel_average_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="33l/100 km"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/report_summary_fuel_cost_overall_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_fuel_cost_overall_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="630 zł" />
+            <LinearLayout
+                android:id="@+id/report_summary_fuel_overall_group"
+                android:layout_below="@id/report_summary_fuel_average_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_summary_services_cost_overall_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_fuel_cost_overall_field"
-                android:text="@string/report_services_cost_overall" />
+                <TextView
+                    android:id="@+id/report_summary_fuel_overall_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_fuel_overall"
+                    android:textColor="@color/secondary_text"/>
 
-            <TextView
-                android:id="@+id/report_summary_services_cost_overall_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_services_cost_overall_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="3000 zł" />
+                <TextView
+                    android:id="@+id/report_summary_fuel_overall_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="330 l"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/report_summary_mileage_overall_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_services_cost_overall_field"
-                android:text="@string/report_summary_mileage_overall" />
+            <LinearLayout
+                android:id="@+id/report_summary_fuel_cost_overall_group"
+                android:layout_below="@id/report_summary_fuel_overall_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_summary_mileage_overall_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_mileage_overall_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="4567 km" />
+                <TextView
+                    android:id="@+id/report_summary_fuel_cost_overall_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_fuel_cost_overall"
+                    android:textColor="@color/secondary_text"/>
 
-            <TextView
-                android:id="@+id/report_summary_mileage_per_month_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_mileage_overall_field"
-                android:text="@string/report_summary_mileage_per_month" />
+                <TextView
+                    android:id="@+id/report_summary_fuel_cost_overall_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="630 zł"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/report_summary_mileage_per_month_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_mileage_per_month_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="600 km" />
+            <LinearLayout
+                android:id="@+id/report_summary_services_cost_overall_group"
+                android:layout_below="@id/report_summary_fuel_cost_overall_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_summary_to_mot_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_mileage_per_month_field"
-                android:text="@string/report_summary_to_mot" />
+                <TextView
+                    android:id="@+id/report_summary_services_cost_overall_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_services_cost_overall"
+                    android:textColor="@color/secondary_text"/>
 
-            <TextView
-                android:id="@+id/report_summary_to_mot_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_to_mot_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="54 dni" />
+                <TextView
+                    android:id="@+id/report_summary_services_cost_overall_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="3000 zł"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/report_summary_to_insurance_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_to_mot_field"
-                android:text="@string/report_summary_to_insurance" />
+            <LinearLayout
+                android:id="@+id/report_summary_mileage_overall_group"
+                android:layout_below="@id/report_summary_services_cost_overall_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/report_summary_to_insurance_field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/report_summary_to_insurance_label"
-                android:layout_alignParentRight="true"
-                android:gravity="right"
-                tools:text="54 dni" />
+                <TextView
+                    android:id="@+id/report_summary_mileage_overall_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_summary_mileage_overall"
+                    android:textColor="@color/secondary_text"/>
+
+                <TextView
+                    android:id="@+id/report_summary_mileage_overall_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="4567 km"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/report_summary_mileage_per_month_group"
+                android:layout_below="@id/report_summary_mileage_overall_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/report_summary_mileage_per_month_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_summary_mileage_per_month"
+                    android:textColor="@color/secondary_text"/>
+
+                <TextView
+                    android:id="@+id/report_summary_mileage_per_month_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="600 km"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/report_summary_to_mot_group"
+                android:layout_below="@id/report_summary_mileage_per_month_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/report_summary_to_mot_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_summary_to_mot"
+                    android:textColor="@color/secondary_text"/>
+
+                <TextView
+                    android:id="@+id/report_summary_to_mot_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="54 dni"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/report_summary_to_insurance_group"
+                android:layout_below="@id/report_summary_to_mot_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/report_summary_to_insurance_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_summary_to_insurance"
+                    android:textColor="@color/secondary_text"/>
+
+                <TextView
+                    android:id="@+id/report_summary_to_insurance_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textSize="24sp"
+                    tools:text="54 dni"/>
+            </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>
