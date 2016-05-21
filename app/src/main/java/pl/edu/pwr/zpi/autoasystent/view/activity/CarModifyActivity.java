@@ -130,7 +130,7 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
         car.setCarDescription(description.getText().toString());
         car.setColor(Integer.toHexString(color));
         if (power.length() > 1) {
-            if (Integer.valueOf(capacity.getText().toString()) < 5) {
+            if (Integer.valueOf(power.getText().toString()) < 5) {
                 error = true;
                 power.setError(getString(R.string.error_value));
             } else {
