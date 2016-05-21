@@ -77,15 +77,20 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
 //        insurance.setInsuranceDate(Integer.parseInt(date.getText().toString()));
         if (cost.length() < 1) {
             error = true;
-            cost.setError("Pole obowiązkowe");
+            cost.setError(getString(R.string.error));
         } else {
             insurance.setInsuranceCost(Double.parseDouble(cost.getText().toString()));
         }
         insurance.setInsuranceDescription(description.getText().toString());
-        try {
-            insurance.setInsuranceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
-        } catch (ParseException e) {
-            Logger.error(e);
+        if (date.length() < 1) {
+            error = true;
+            date.setError(getString(R.string.error));
+        } else {
+            try {
+                insurance.setInsuranceDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+            } catch (ParseException e) {
+                Logger.error(e);
+            }
         }
         if (!error) {
             presenter.saveInsurance(insurance);
@@ -100,7 +105,7 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 //TODO Pattern
-                InsuranceAddActivity.this.date.setText(dayOfMonth+"." +monthOfYear + "." +year);
+                InsuranceAddActivity.this.date.setText(dayOfMonth + "." + monthOfYear + "." + year);
             }
         });
 

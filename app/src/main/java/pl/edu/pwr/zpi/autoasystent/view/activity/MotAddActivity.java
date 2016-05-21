@@ -66,16 +66,23 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
     }
 
     private void saveMot() {
+        boolean error = false;
         Mot mot = new Mot();
-        try {
-            mot.setMotDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
-        } catch (ParseException e) {
-            Logger.error(e);
+        if (date.length() < 1) {
+            error = true;
+            date.setError(getString(R.string.error));
+        } else {
+            try {
+                mot.setMotDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+            } catch (ParseException e) {
+                Logger.error(e);
+            }
         }
-
         mot.setMotDescription(description.getText().toString());
-        presenter.saveMot(mot);
-        finish();
+        if (!error) {
+            presenter.saveMot(mot);
+            finish();
+        }
     }
 
     @Override
@@ -84,7 +91,7 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                MotAddActivity.this.date.setText(dayOfMonth+"." +(monthOfYear+1) + "." +year);//TODO CHANGE
+                MotAddActivity.this.date.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);//TODO CHANGE
             }
         });
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

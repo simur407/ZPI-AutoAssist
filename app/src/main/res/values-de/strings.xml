@@ -85,5 +85,7 @@
     <string name="memory_card">Speicherkarte</string>
     <string name="type_filename_plz">Geben Sie den Dateinamen</string>
     <string name="save_file">Speichern ins Datei</string>
+    <string name="no_data_entered">unbekannt</string>
+    <string name="end_date">Enddatum</string>
 
 </resources>

@@ -85,5 +85,7 @@
     <string name="memory_card">Memory card</string>
     <string name="save_file">Save to file</string>
     <string name="type_filename_plz">Enter the filename </string>
+    <string name="no_data_entered">No data</string>
+    <string name="end_date">End date</string>
 
 </resources>

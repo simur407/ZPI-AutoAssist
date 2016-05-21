@@ -11,7 +11,7 @@
         android:id="@+id/insurance_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/date_label"
+        android:hint="@string/end_date"
         android:inputType="date" />
 
     <EditText

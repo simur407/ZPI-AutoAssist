@@ -43,6 +43,10 @@ public class RefuelViewActivity extends BaseActivity implements RefuelViewPanel 
         cost.setText(String.format("%s %s", String.valueOf(refueling.getRefuelingCost()), getString(R.string.quantity_symbol)));
         costPerOne.setText(String.format("%s %s/%s", String.valueOf((Math.round(100 * refueling.getRefuelingCost() / refueling.getQuantity())) / 100.0), getString(R.string.currency_symbol), getString(R.string.quantity_symbol)));
         mileage.setText(String.format("%s %s", String.valueOf(refueling.getRefuelingMileage()), getString(R.string.mileage_symbol)));
-        description.setText(refueling.getRefuelingDescription());
+        if (refueling.getRefuelingDescription().length() < 1) {
+            description.setText("-");
+        } else {
+            description.setText(refueling.getRefuelingDescription());
+        }
     }
 }

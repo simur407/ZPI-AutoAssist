@@ -98,18 +98,26 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         makeField.setText(car.getModel().getMake().getMakeName());
         modelField.setText(car.getModel().getModelName());
         yearField.setText(DateUtils.dateToString(car.getProductionYear(), DateUtils.YEAR_FORMAT));
-        powerField.setText(String.valueOf(car.getPower()));
+        if (car.getPower() > 0) {
+            powerField.setText(String.valueOf(car.getPower()));
+        } else {
+            powerField.setText(getString(R.string.no_data_entered));
+        }
         plateField.setText(car.getLicencePlate());
         vinField.setText(car.getVIN());
-        capacityField.setText(String.valueOf(car.getCapacity()));
+        if (car.getCapacity() > 0) {
+            capacityField.setText(String.valueOf(car.getCapacity()));
+        } else {
+            capacityField.setText(getString(R.string.no_data_entered));
+        }
         Mot latestMot = MotService.getInstance().getLatest(car);
-        if(latestMot == null) {
+        if (latestMot == null) {
             motField.setText("-");
         } else {
             motField.setText(DateUtils.dateToString(latestMot.getMotDate()));//TODO Not a pattern
         }
         Insurance latestService = InsuranceService.getInstance().getLatest(car);
-        if(latestService == null) {
+        if (latestService == null) {
             insuranceField.setText("-");
         } else {
             insuranceField.setText(DateUtils.dateToString(latestService.getInsuranceDate()));
