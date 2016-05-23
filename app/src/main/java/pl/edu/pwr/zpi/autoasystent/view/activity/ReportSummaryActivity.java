@@ -63,7 +63,7 @@ public class ReportSummaryActivity extends BaseActivity implements ReportSummary
         int minFuelMileage = 1;
         String sAverageFuelConsumption = getString(R.string.no_data_entered);
         double averageFuelConsumption = 0.00;
-        long daysCount = (toDate.getTime() - fromDate.getTime()) / 86400000;
+        long daysCount = 1 + ((toDate.getTime() - fromDate.getTime()) / 86400000);
         int timeToMot = 0;
         String sTimeToMot = getString(R.string.expired);
         if (mots.size() > 0) {
@@ -112,9 +112,9 @@ public class ReportSummaryActivity extends BaseActivity implements ReportSummary
         double oCosts = fCosts + sCosts + iCosts;
         double oCostMonth = oCosts / daysCount * 30;
 
-        if (refuelings.size() > 0) {
+        if (refuelings.size() > 1) {
             minFuelMileage = refuelings.get(0).getRefuelingMileage();
-            averageFuelConsumption = Math.round(100 * fuelConsumed / ((maxMileage - minFuelMileage) / 100)) / 100;
+            averageFuelConsumption = (Math.round(100 * fuelConsumed / ((maxMileage - minFuelMileage) / 100))) / 100.0;
             sAverageFuelConsumption = String.format("%s %s/100%s", String.valueOf(averageFuelConsumption), getString(R.string.quantity_symbol), getString(R.string.mileage_symbol));
         }
 

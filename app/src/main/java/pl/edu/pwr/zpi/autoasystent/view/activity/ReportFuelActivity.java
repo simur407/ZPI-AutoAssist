@@ -48,7 +48,7 @@ public class ReportFuelActivity extends BaseActivity implements ReportFuelPanel 
     @Override
     public void setReportData(List<Refueling> refuelings) {
         if (refuelings.size() > 0) {
-            int daysCount = (int) (toDate.getTime() - fromDate.getTime()) / 86400000;
+            int daysCount = (int) (1 + ((toDate.getTime() - fromDate.getTime()) / 86400000));
             double fCosts = 0.0;
             int maxMileage = 1;
             int minMileage = refuelings.get(0).getRefuelingMileage();
@@ -60,7 +60,11 @@ public class ReportFuelActivity extends BaseActivity implements ReportFuelPanel 
                     maxMileage = r.getRefuelingMileage();
                 }
             }
-            fuelAverage.setText(String.format("%s %s/100%s", String.valueOf(Math.round(100 * quantityOverall / ((maxMileage - minMileage) / 100)) / 100), getString(R.string.quantity_symbol), getString(R.string.mileage_symbol)));
+            if (maxMileage == minMileage) {
+                fuelAverage.setText(getString(R.string.no_data_entered));
+            } else {
+                fuelAverage.setText(String.format("%s %s/100%s", String.valueOf(Math.round(100 * quantityOverall / ((maxMileage - minMileage) / 100)) / 100.0), getString(R.string.quantity_symbol), getString(R.string.mileage_symbol)));
+            }
             fuelPerDay.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall / daysCount)), getString(R.string.quantity_symbol)));
             fuelPerMonth.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall * 30 / daysCount)), getString(R.string.quantity_symbol)));
             fuelOverall.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall)), getString(R.string.quantity_symbol)));
