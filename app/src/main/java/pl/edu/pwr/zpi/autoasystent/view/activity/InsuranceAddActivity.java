@@ -42,11 +42,16 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
         cost = (EditText) findViewById(R.id.insurance_cost);
         description = (EditText) findViewById(R.id.insurance_description);
 
+        date.setText(DateUtils.dateToString(new Date()));
         date.setInputType(InputType.TYPE_NULL);
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showDatePicker(new Date());//TODO temporary date
+                try {
+                    presenter.showDatePicker(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
     }
@@ -101,11 +106,12 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
     @Override
     public void showDatePicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 //TODO Pattern
-                InsuranceAddActivity.this.date.setText(dayOfMonth + "." + monthOfYear + "." + year);
+                InsuranceAddActivity.this.date.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 

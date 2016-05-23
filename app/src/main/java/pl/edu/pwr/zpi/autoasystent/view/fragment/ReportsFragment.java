@@ -54,16 +54,27 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
                 presenter.onRadioButtonClicked(checkedId);
             }
         });
+        fromDate.setText(DateUtils.dateToString(new Date()));
         fromDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showFromDatePicker(new Date());//TODO temp date
+                try {
+                    presenter.showFromDatePicker(DateUtils.stringToDate(fromDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
+
+        toDate.setText(DateUtils.dateToString(new Date()));
         toDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showToDatePicker(new Date()); //TODO temp date
+                try {
+                    presenter.showToDatePicker(DateUtils.stringToDate(toDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
 
@@ -93,10 +104,11 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     @Override
     public void showFromDatePicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                fromDate.setText(dayOfMonth + "." + monthOfYear + "." + year);
+                fromDate.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 
@@ -107,10 +119,11 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     @Override
     public void showToDatePicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                toDate.setText(dayOfMonth + "." + monthOfYear + "." + year);
+                toDate.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 

@@ -47,10 +47,15 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         description = (EditText) findViewById(R.id.service_description);
 
         date.setInputType(InputType.TYPE_NULL);
+        date.setText(DateUtils.dateToString(new Date()));
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.dataBoxClicked(new Date()); //TODO temp date
+                try {
+                    presenter.dateBoxClicked(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
 
@@ -84,9 +89,6 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 //        RefersTo refersTo = new RefersTo();
 
         //TODO Obsługa przekroczenia wartości zmiennych
-
-        //TODO Coś się dzieje z focusem datepickera po błędnym uzupełnieniu
-
 
         if (mileage.length() < 1) {
             error = true;
@@ -142,11 +144,12 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
     @Override
     public void showDataPicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 //TODO Pattern
-                AddServiceActivity.this.date.setText(dayOfMonth+"." +monthOfYear + "." +year);
+                AddServiceActivity.this.date.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 
