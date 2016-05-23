@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AutoAsystent.iml" filepath="$PROJECT_DIR$/AutoAsystent.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZPI-AutoAssist.iml" filepath="$PROJECT_DIR$/ZPI-AutoAssist.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

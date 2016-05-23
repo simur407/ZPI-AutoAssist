@@ -21,6 +21,7 @@ import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.presenters.AddServicePresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.AchievementUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarAddServicePanel;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
@@ -33,6 +34,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
     protected long carId;
 
     protected AddServicePresenter presenter;
+    protected AchievementUtils achievementUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         presenter = new AddServicePresenter(this, carId);
 
         setToolbarTitle(R.string.service_add_label);
+
+        achievementUtils=new AchievementUtils(this);
     }
 
     @Override
@@ -129,6 +133,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 //        }
         if (!error) {
             presenter.saveService(service);
+            achievementUtils.checkService();
             finish();
         }
     }

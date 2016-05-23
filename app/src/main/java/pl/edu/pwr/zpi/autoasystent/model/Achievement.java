@@ -21,12 +21,35 @@ public enum Achievement {
     TENTH_SERVICE(R.string.tenth_service, R.drawable.pump_icon),
     TWENTIETH_SERVICE(R.string.twentieth_service, R.drawable.pump_icon);
 
+
+
     Achievement(@StringRes int id, @DrawableRes int drawable) {
         this.id = id;
         this.drawable = drawable;
+        this.earned = false;
     }
 
-    public int id, drawable;
+    private int id, drawable;
 
+    private boolean earned;
 
+    public boolean isEarned() {
+        return earned;
+    }
+
+    public void setEarned(boolean earned) {
+        this.earned = earned;
+    }
+
+    public void makeEarned() {
+        earned=true;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getDrawable() {
+        return drawable;
+    }
 }

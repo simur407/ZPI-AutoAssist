@@ -18,6 +18,7 @@ import java.util.Date;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Refueling;
 import pl.edu.pwr.zpi.autoasystent.presenters.RefuelingAddPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.AchievementUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.view.RefuelingAddPanel;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
@@ -31,6 +32,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
     protected TextView descriptionField;
     protected RefuelingAddPresenter presenter;
     protected long carId;
+    protected AchievementUtils achievementUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         });
 
         setToolbarTitle(R.string.refuel_add_label);
+        achievementUtils = new AchievementUtils(this);
     }
 
     @Override
@@ -118,6 +121,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
 
         if (!error) {
             presenter.saveRefueling(refueling);
+            achievementUtils.checkRefueling();
             finish();
         }
     }

@@ -19,6 +19,7 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarListPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.AchievementUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.CarAdapter;
 
@@ -26,6 +27,7 @@ public class MainActivity extends BaseActivity implements CarListPanel {
 
     private CarListPresenter presenter;
     private CarAdapter adapter;
+    private AchievementUtils achievementUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class MainActivity extends BaseActivity implements CarListPanel {
                 presenter.onAddButtonClick(v);
             }
         });
+
+        achievementUtils=new AchievementUtils(this);
     }
 
 
@@ -61,6 +65,7 @@ public class MainActivity extends BaseActivity implements CarListPanel {
         //List<Car> kurczak=Car.listAll(Car.class);
         //Toast.makeText(this, "Kurczak", Toast.LENGTH_SHORT).show();
         presenter.setList();
+        achievementUtils.checkTime();
     }
 
     @Override

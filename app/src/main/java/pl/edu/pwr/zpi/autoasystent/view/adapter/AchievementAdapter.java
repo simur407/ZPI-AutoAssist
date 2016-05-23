@@ -44,7 +44,7 @@ public class AchievementAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(Achievement.values()[position].drawable);
+        imageView.setImageResource(Achievement.values()[position].getDrawable());
         return imageView;
     }
 }
