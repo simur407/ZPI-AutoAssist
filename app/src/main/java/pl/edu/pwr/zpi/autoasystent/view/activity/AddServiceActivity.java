@@ -50,7 +50,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.dataBoxClicked(new Date()); //TODO temp date
+                presenter.dateBoxClicked(new Date()); //TODO temp date
             }
         });
 
@@ -84,9 +84,6 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 //        RefersTo refersTo = new RefersTo();
 
         //TODO Obsługa przekroczenia wartości zmiennych
-
-        //TODO Coś się dzieje z focusem datepickera po błędnym uzupełnieniu
-
 
         if (mileage.length() < 1) {
             error = true;
