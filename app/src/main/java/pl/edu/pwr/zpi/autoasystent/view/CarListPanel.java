@@ -16,4 +16,6 @@ public interface CarListPanel {
     void showDeleteMenu(Car itemAtPosition);
 
     void showConfirmDialog(Car car);
+
+    void prepareDatabase();
 }

@@ -31,8 +31,6 @@ import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
  */
 public class CarViewFragment extends Fragment implements TabFragment, CarViewPanel {
 
-    private static final String TINT = "#99";
-
     private CarViewPresenter presenter;
 
     protected TextView makeField;

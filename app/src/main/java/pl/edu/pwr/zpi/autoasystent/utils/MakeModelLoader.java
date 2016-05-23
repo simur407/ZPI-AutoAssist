@@ -11,6 +11,7 @@ import pl.edu.pwr.zpi.autoasystent.model.Make;
 import pl.edu.pwr.zpi.autoasystent.model.Model;
 import pl.edu.pwr.zpi.autoasystent.service.MakeService;
 import pl.edu.pwr.zpi.autoasystent.service.ModelService;
+import pl.edu.pwr.zpi.autoasystent.view.dialog.DialogDismissListener;
 
 /**
  * TODO Dokumentacja
@@ -19,6 +20,16 @@ import pl.edu.pwr.zpi.autoasystent.service.ModelService;
  * @date 2016-04-23
  */
 public class MakeModelLoader {
+
+    public static void startAsyncLoad(final Resources resources, final DialogDismissListener listener) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                load(resources);
+                listener.dismissDialog();
+            }
+        }).start();
+    }
 
     public static void load(Resources resources) {
         Scanner scanner = new Scanner(resources.openRawResource(R.raw.make_model));
@@ -36,20 +47,44 @@ public class MakeModelLoader {
                 make = new Make();
                 make.setMakeName(columns[1]);
                 makes.add(make);
+            } else {
+                make = findMakeInMakeList(makes, columns[1]);
+                if(make == null) {
+                    throw new IllegalStateException("Make cannot be null! Should be in list!");
+                }
             }
 
-            Model model = new Model();
-            model.setModelName(columns[2]);
-            model.setMake(make);
-            models.add(model);
+            if(!existsInModelList(models, columns[2])) {
+                Model model = new Model();
+                model.setModelName(columns[2]);
+                model.setMake(make);
+                models.add(model);
+            }
         }
         MakeService.getInstance().saveMakeList(makes);
         ModelService.getInstance().saveModelList(models);
     }
 
+    private static boolean existsInModelList(List<Model> models, String name) {
+        for (Model m : models) {
+            if (m.getModelName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static Make findMakeInMakeList(List<Make> list, String name) {
+        for (Make m : list) {
+            if (m.getMakeName().equals(name)) {
+                return m;
+            }
+        }
+        return null;
+    }
+
     private static boolean existsInList(List<Make> list, String name) {
-        for (Make m :
-                list) {
+        for (Make m : list) {
             if (m.getMakeName().equals(name)) {
                 return true;
             }
