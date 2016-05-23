@@ -91,7 +91,7 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                MotAddActivity.this.date.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);//TODO CHANGE
+                MotAddActivity.this.date.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
             }
         });
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

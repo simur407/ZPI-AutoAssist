@@ -143,7 +143,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 //TODO Pattern
-                AddServiceActivity.this.date.setText(dayOfMonth+"." +monthOfYear + "." +year);
+                AddServiceActivity.this.date.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
             }
         });
 

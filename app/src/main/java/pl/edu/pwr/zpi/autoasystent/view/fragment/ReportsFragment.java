@@ -86,7 +86,7 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                fromDate.setText(dayOfMonth + "." + monthOfYear + "." + year);
+                fromDate.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
             }
         });
 
@@ -100,7 +100,7 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                toDate.setText(dayOfMonth + "." + monthOfYear + "." + year);
+                toDate.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
             }
         });
 

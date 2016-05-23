@@ -105,7 +105,7 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 //TODO Pattern
-                InsuranceAddActivity.this.date.setText(dayOfMonth + "." + monthOfYear + "." + year);
+                InsuranceAddActivity.this.date.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
             }
         });
 

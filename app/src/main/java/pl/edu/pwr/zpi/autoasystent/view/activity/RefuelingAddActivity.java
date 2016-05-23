@@ -128,7 +128,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                RefuelingAddActivity.this.dateField.setText(dayOfMonth+"." +monthOfYear + "." +year);
+                RefuelingAddActivity.this.dateField.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
             }
         });
 

@@ -3,10 +3,14 @@ package pl.edu.pwr.zpi.autoasystent.view.dialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 
 /**
  * Created by argo on 07 maj.
@@ -29,6 +33,7 @@ public class DateDialog extends DialogFragment {
         this.date = date;
     }
 
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         // Use the current date as the default date in the dialog
@@ -41,4 +46,8 @@ public class DateDialog extends DialogFragment {
         return new DatePickerDialog(getActivity(), listener, year, month, day);
     }
 
+    public static String convertToString(int year, int month, int day) {
+        GregorianCalendar calendar = new GregorianCalendar(year, month, day);
+        return DateUtils.dateToString(calendar.getTime());
+    }
 }
