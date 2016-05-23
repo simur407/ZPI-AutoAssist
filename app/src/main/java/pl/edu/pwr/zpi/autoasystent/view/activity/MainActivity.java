@@ -1,25 +1,24 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarListPresenter;
-import pl.edu.pwr.zpi.autoasystent.presenters.TransferPresenter;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.CarAdapter;
 
@@ -65,6 +64,27 @@ public class MainActivity extends BaseActivity implements CarListPanel {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings: {
+                presenter.onSettingsSelected();
+                break;
+            }
+            case R.id.action_achievements: {
+                presenter.onAchievementsSelected();
+                break;
+            }
+        }
+        return true;
+    }
+
+    @Override
     public void setCarList(List<Car> carList) {
         adapter.setItems(carList);
     }
@@ -100,12 +120,25 @@ public class MainActivity extends BaseActivity implements CarListPanel {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.deleteCar(car);
+                presenter.showConfirmDialog(car);
                 dialog.dismiss();
             }
         });
+    }
 
-
+    @Override
+    public void showConfirmDialog(final Car car) {
+        new AlertDialog.Builder(this)
+                .setTitle(car.getModel().getMake().getMakeName() + " " + car.getModel().getModelName())
+                .setMessage(R.string.delete_confirm_message)
+                .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        presenter.deleteCar(car);
+                    }
+                })
+                .setNegativeButton(R.string.abort, null)
+                .show();
     }
 
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {

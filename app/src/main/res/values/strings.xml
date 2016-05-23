@@ -84,4 +84,10 @@
     <string name="load_file">Wczytaj z pliku</string>
     <string name="delete_database">Usuń baze</string>
     <string name="memory_card">Karta pamięci</string>
+    <string name="settings">Ustawienia</string>
+    <string name="achievements">Osiągnięcia</string>
+    <string name="language">Język</string>
+    <string name="delete_confirm_message">Czy usunąć ten pojazd?</string>
+    <string name="confirm">Tak</string>
+    <string name="abort">Nie</string>
 </resources>
