@@ -18,5 +18,12 @@
         <item name="android:textColor">#ffff0000</item>
     </style>
 
+    <style name="AppTheme.ToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:popupBackground">@color/white</item>
+    </style>
+
+    <style name="AppTheme.PopupMenuStyle" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:colorBackground">@color/white</item>
+    </style>
 
 </resources>

@@ -89,4 +89,10 @@
     <string name="memory_card">Karta pamięci</string>
     <string name="no_data_entered">Nieznana</string>
     <string name="end_date">Data końca ważności</string>
+    <string name="settings">Ustawienia</string>
+    <string name="achievements">Osiągnięcia</string>
+    <string name="language">Język</string>
+    <string name="delete_confirm_message">Czy usunąć ten pojazd?</string>
+    <string name="confirm">Tak</string>
+    <string name="abort">Nie</string>
 </resources>
