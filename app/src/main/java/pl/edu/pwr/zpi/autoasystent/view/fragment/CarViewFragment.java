@@ -103,8 +103,16 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         } else {
             powerField.setText(getString(R.string.no_data_entered));
         }
-        plateField.setText(car.getLicencePlate());
-        vinField.setText(car.getVIN());
+        if (car.getLicencePlate().length() > 0) {
+            plateField.setText(car.getLicencePlate());
+        } else plateField.setText(getString(R.string.no_data_entered));
+
+        if (car.getVIN().length() > 0) {
+            vinField.setText(car.getVIN());
+        } else {
+            vinField.setText(getString(R.string.no_data_entered));
+        }
+
         if (car.getCapacity() > 0) {
             capacityField.setText(String.valueOf(car.getCapacity()));
         } else {

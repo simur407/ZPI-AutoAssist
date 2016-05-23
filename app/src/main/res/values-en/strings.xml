@@ -87,5 +87,6 @@
     <string name="type_filename_plz">Enter the filename </string>
     <string name="no_data_entered">No data</string>
     <string name="end_date">End date</string>
+    <string name="expired">Expired</string>
 
 </resources>

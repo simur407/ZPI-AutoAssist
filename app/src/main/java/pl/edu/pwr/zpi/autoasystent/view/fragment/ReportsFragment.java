@@ -3,7 +3,6 @@ package pl.edu.pwr.zpi.autoasystent.view.fragment;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,12 +14,17 @@ import android.widget.DatePicker;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.rafalzajfert.androidlogger.Logger;
+
+import java.text.ParseException;
 import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.presenters.ReportsPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.ReportsPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
 /**
@@ -30,14 +34,19 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     private ReportsPresenter presenter;
     private TextView fromDate;
     private TextView toDate;
+    private long carId;
+    public static final String ID_KEY = "id";
+    public static final String DATE_FROM = "from";
+    public static final String DATE_TO = "to";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reports, container, false);
-        presenter = new ReportsPresenter(this);
+        carId = getArguments().getLong(CarActivity.ID_KEY);
+        presenter = new ReportsPresenter(this, carId);
 
         fromDate = (TextView) view.findViewById(R.id.report_from_field);
         toDate = (TextView) view.findViewById(R.id.report_to_field);
-        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.report_list);
+        final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.report_list);
         Button button = (Button) view.findViewById(R.id.report_make_button);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -60,7 +69,8 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
 
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                presenter.onGenerateButtonClick(v);
+                dates();
+                presenter.onGenerateButtonClick(v, presenter.onRadioButtonClicked(radioGroup.getCheckedRadioButtonId()));
             }
         });
 
@@ -72,10 +82,10 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     }
 
 
-    public void startActivity(Class<?> clazz, Uri additionalData) {
+    public void startActivity(Class<?> clazz, Bundle args) {
         Intent intent = new Intent(this.getContext(), clazz);
-        if (additionalData != null) {
-            intent.setData(additionalData);
+        if (args != null) {
+            intent.putExtras(args);
         }
         startActivity(intent);
     }
@@ -106,5 +116,16 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
 
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         dialog.show(ft, null);
+    }
+
+    public void dates() {
+        Date from;
+        Date to;
+        try {
+            presenter.setFromDate(DateUtils.stringToDate(fromDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+            presenter.setToDate(DateUtils.stringToDate(toDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+        } catch (ParseException e) {
+            Logger.error(e);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
+import java.util.Date;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
@@ -37,6 +38,10 @@ public class ServiceJobsService {
 
     public List<ServiceJobs> getAllServicesByCarId(long carId) {
         return ServiceJobs.find(ServiceJobs.class, "car = ?", String.valueOf(carId));
+    }
+
+    public List<ServiceJobs> getAllServicesByCarIdAndDates(long carId, Date from, Date to) {
+        return ServiceJobs.find(ServiceJobs.class, "car = ? AND service_date BETWEEN ? AND ?", String.valueOf(carId), String.valueOf(from.getTime()), String.valueOf(to.getTime()));
     }
 
     public void deleteService(ServiceJobs service) {

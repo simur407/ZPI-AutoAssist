@@ -34,6 +34,10 @@ public class InsuranceService {
         return Insurance.listAll(Insurance.class);
     }
 
+    public List<Insurance> getAllInsurancesByCarId(long carId) {
+        return Insurance.find(Insurance.class, "car = ?", String.valueOf(carId));
+    }
+
     public void deleteInsurance(Insurance insurance) {
         Insurance.delete(insurance);
     }

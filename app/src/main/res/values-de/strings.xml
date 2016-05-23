@@ -87,5 +87,6 @@
     <string name="save_file">Speichern ins Datei</string>
     <string name="no_data_entered">unbekannt</string>
     <string name="end_date">Enddatum</string>
+    <string name="expired">Ungültig</string>
 
 </resources>
