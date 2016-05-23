@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 
 import java.util.LinkedList;
 
+import pl.edu.pwr.zpi.autoasystent.model.Car;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.fragment.CarViewFragment;
@@ -39,5 +41,10 @@ public class CarPresenter {
             f.setArguments(args);
         }
         panel.setFragments(fragmentLinkedList);
+    }
+
+    public void setToolbarTitle(long carId) {
+        Car car = CarService.getInstance().findCarById(carId);
+        panel.setTitle(car.getModel().getMake() + " " + car.getModel() );
     }
 }

@@ -57,8 +57,8 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
         setToolbarTitle(R.string.app_name);
         View color = findViewById(R.id.car_color);
         carColorDrawable = (GradientDrawable) color.getBackground();
-        ImageView colorPicker = (ImageView) findViewById(R.id.color_picker);
-        colorPicker.setOnClickListener(new View.OnClickListener() {
+//        ImageView colorPicker = (ImageView) findViewById(R.id.color_picker);
+        color.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onColorPickerClick();

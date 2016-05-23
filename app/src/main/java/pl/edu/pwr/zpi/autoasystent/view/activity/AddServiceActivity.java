@@ -57,6 +57,8 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         list = (ListView) findViewById(R.id.service_add_list);
 
         presenter = new AddServicePresenter(this, carId);
+
+        setToolbarTitle(R.string.service_add_label);
     }
 
     @Override

@@ -56,7 +56,7 @@ public class CarAdapter extends ArrayAdapter<Car> {
         } else {
             holder.modelTextView.setText(car.getLicencePlate());
         }
-        holder.carImageView.setImageResource(R.drawable.car_ico);
+        holder.carImageView.setImageResource(R.drawable.ic_car_24dp);
         return convertView;
     }
 

@@ -9,8 +9,10 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.AchievementActivity;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarModifyActivity;
+import pl.edu.pwr.zpi.autoasystent.view.activity.SettingsActivity;
 
 /**
  * Created by Szymon on 2016-03-21.
@@ -50,5 +52,17 @@ public class CarListPresenter {
         List<Car> cars = CarService.getInstance().getAllCars();
         panel.setCarList(cars);
         panel.refreshList();
+    }
+
+    public void onSettingsSelected() {
+        panel.startActivity(SettingsActivity.class, null);
+    }
+
+    public void onAchievementsSelected() {
+        panel.startActivity(AchievementActivity.class, null);
+    }
+
+    public void showConfirmDialog(Car car) {
+        panel.showConfirmDialog(car);
     }
 }

@@ -14,4 +14,6 @@ public interface CarListPanel {
     void startActivity(Class<?> clazz, Uri additionalData);
     void refreshList();
     void showDeleteMenu(Car itemAtPosition);
+
+    void showConfirmDialog(Car car);
 }

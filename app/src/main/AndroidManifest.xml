@@ -28,6 +28,7 @@
         <activity android:name=".view.activity.MotAddActivity" />
         <activity android:name=".view.activity.TransferActivity"/>
         <activity android:name=".view.activity.AchievementActivity" />
+        <activity android:name=".view.activity.SettingsActivity" />
         <service android:name=".view.service.ReminderNotificationService" />
         <meta-data
             android:name="DATABASE"
