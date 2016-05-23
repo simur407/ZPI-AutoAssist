@@ -8,15 +8,18 @@
         <item name="colorAccent">@color/accent</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/primary_text</item>
-        <item name="android:actionDropDownStyle">@style/AppTheme.DropDownStyle</item>
     </style>
 
     <style name="AppTheme.Dialog" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.DropDownStyle" parent="AppTheme">
-        <item name="android:background">@android:color/white</item>
+    <style name="AppTheme.ToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:popupBackground">@color/white</item>
+    </style>
+
+    <style name="AppTheme.PopupMenuStyle" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:colorBackground">@color/white</item>
     </style>
 
 </resources>
