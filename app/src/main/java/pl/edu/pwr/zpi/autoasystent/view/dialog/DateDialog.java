@@ -29,7 +29,7 @@ public class DateDialog extends DialogFragment {
         this.listener = listener;
     }
 
-    public void setDate(Date date ) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

@@ -15,10 +15,14 @@ import android.widget.DatePicker;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.rafalzajfert.androidlogger.Logger;
+
+import java.text.ParseException;
 import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.presenters.ReportsPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.ReportsPanel;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
@@ -45,16 +49,27 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
                 presenter.onRadioButtonClicked(checkedId);
             }
         });
+        fromDate.setText(DateUtils.dateToString(new Date()));
         fromDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showFromDatePicker(new Date());//TODO temp date
+                try {
+                    presenter.showFromDatePicker(DateUtils.stringToDate(fromDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
+
+        toDate.setText(DateUtils.dateToString(new Date()));
         toDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showToDatePicker(new Date()); //TODO temp date
+                try {
+                    presenter.showToDatePicker(DateUtils.stringToDate(toDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
 
@@ -83,10 +98,11 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     @Override
     public void showFromDatePicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                fromDate.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
+                fromDate.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 
@@ -97,10 +113,11 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     @Override
     public void showToDatePicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                toDate.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
+                toDate.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 

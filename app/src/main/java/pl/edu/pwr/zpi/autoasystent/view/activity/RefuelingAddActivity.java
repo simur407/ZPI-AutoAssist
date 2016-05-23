@@ -47,10 +47,15 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         presenter = new RefuelingAddPresenter(this, carId);
 
         dateField.setInputType(InputType.TYPE_NULL);
+        dateField.setText(DateUtils.dateToString(new Date()));
         dateField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showDatePicker(new Date());//TODO temp date
+                try {
+                presenter.showDatePicker(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+            } catch (ParseException e) {
+                Logger.error(e);
+            }
             }
         });
 
@@ -125,6 +130,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
     @Override
     public void showDatePicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {

@@ -39,10 +39,15 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         date = (EditText) findViewById(R.id.mot_date);
         description = (EditText) findViewById(R.id.mot_description);
 
+        date.setText(DateUtils.dateToString(new Date()));
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showDateDialog(new Date());//TODO temp date
+                try {
+                    presenter.showDateDialog(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
     }
@@ -88,10 +93,11 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
     @Override
     public void showDateDialog(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                MotAddActivity.this.date.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
+                MotAddActivity.this.date.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
