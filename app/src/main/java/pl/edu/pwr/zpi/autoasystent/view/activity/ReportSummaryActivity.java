@@ -78,7 +78,7 @@ public class ReportSummaryActivity extends BaseActivity implements ReportSummary
         int timeToInsurance = 0;
         String sTimetoInsurance = getString(R.string.expired);
         if (insurances.size() > 0) {
-            timeToInsurance = (int) ((insurances.get(mots.size() - 1).getInsuranceDate().getTime() - new Date().getTime()) / 86400000);
+            timeToInsurance = (int) ((insurances.get(insurances.size() - 1).getInsuranceDate().getTime() - new Date().getTime()) / 86400000);
         } else {
             sTimetoInsurance = getString(R.string.no_data_entered);
         }

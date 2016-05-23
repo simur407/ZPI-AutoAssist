@@ -45,6 +45,6 @@ public class CarPresenter {
 
     public void setToolbarTitle(long carId) {
         Car car = CarService.getInstance().findCarById(carId);
-        panel.setTitle(car.getModel().getMake() + " " + car.getModel() );
+        panel.setTitle(car.getModel().getMake() + " " + car.getModel());
     }
 }

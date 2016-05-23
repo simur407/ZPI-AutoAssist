@@ -60,7 +60,7 @@ public class ReportFuelActivity extends BaseActivity implements ReportFuelPanel 
                     maxMileage = r.getRefuelingMileage();
                 }
             }
-            fuelAverage.setText(String.format("%s %s/100%s%", String.valueOf(Math.round(100 * quantityOverall / ((maxMileage - minMileage) / 100)) / 100), getString(R.string.quantity_symbol), getString(R.string.mileage_symbol)));
+            fuelAverage.setText(String.format("%s %s/100%s", String.valueOf(Math.round(100 * quantityOverall / ((maxMileage - minMileage) / 100)) / 100), getString(R.string.quantity_symbol), getString(R.string.mileage_symbol)));
             fuelPerDay.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall / daysCount)), getString(R.string.quantity_symbol)));
             fuelPerMonth.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall * 30 / daysCount)), getString(R.string.quantity_symbol)));
             fuelOverall.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall)), getString(R.string.quantity_symbol)));

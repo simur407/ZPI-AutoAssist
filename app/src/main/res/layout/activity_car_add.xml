@@ -81,7 +81,7 @@
                 android:layout_below="@id/input_model"
                 android:layout_marginTop="-44dp"
                 android:layout_marginRight="3dp"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true" />
 
             <View
                 android:id="@+id/car_color"

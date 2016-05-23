@@ -64,7 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void setToolbarTitle(CharSequence title) {
-        if(getSupportActionBar() != null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
         } else {
             Logger.debug("Cos nie dziala");

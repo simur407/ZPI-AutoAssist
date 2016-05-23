@@ -16,7 +16,7 @@
         tools:listitem="@layout/item_car"
         android:clipToPadding="true"
         android:dividerHeight="0dp"
-        android:divider="@null"/>
+        android:divider="@null" />
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab_main"
