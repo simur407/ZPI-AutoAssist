@@ -32,10 +32,6 @@ public class ReportSummaryPresenter {
     }
 
 
-    //  public void setReportData(long carId){
-    //      panel.setReportData(Car.findById(Car.class, carId));
-    //  }
-
     public void setList() {
         List<Refueling> refuelings = RefuelingService.getInstance().getRefuelingsByCarAndDate(carId, fromDate, toDate);
         List<ServiceJobs> serviceJobses = ServiceJobsService.getInstance().getAllServicesByCarIdAndDates(carId, fromDate, toDate);

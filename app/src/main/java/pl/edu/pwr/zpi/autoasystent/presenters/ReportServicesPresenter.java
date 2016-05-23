@@ -23,10 +23,6 @@ public class ReportServicesPresenter {
         this.toDate = toDate;
     }
 
-    public ReportServicesPresenter(ReportServicesPanel panel) {
-        this.panel = panel;
-    }
-
     public void setList() {
         List<ServiceJobs> serviceJobses = ServiceJobsService.getInstance().getAllServicesByCarIdAndDates(carId, fromDate, toDate);
         panel.setReportData(serviceJobses);

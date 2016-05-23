@@ -43,7 +43,7 @@ public class ReportServicesActivity extends BaseActivity implements ReportServic
     public void setReportData(List<ServiceJobs> serviceJobses) {
         if (serviceJobses.size() > 0) {
             double oCost = 0;
-            long daysCount = (toDate.getTime() - fromDate.getTime()) / 86400000;
+            long daysCount = 1 + (toDate.getTime() - fromDate.getTime()) / 86400000;
             for (ServiceJobs s : serviceJobses) {
                 oCost += s.getServiceCost();
             }
