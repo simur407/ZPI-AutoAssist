@@ -96,4 +96,5 @@
     <string name="delete_confirm_message">Czy usunąć ten pojazd?</string>
     <string name="confirm">Tak</string>
     <string name="abort">Nie</string>
+    <string name="wrong_date">Zła kolejność dat</string>
 </resources>

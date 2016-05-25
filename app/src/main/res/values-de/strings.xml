@@ -97,5 +97,6 @@
     <string name="mot_add_label">Hauptuntersuchung hinzufügen</string>
     <string name="settings">Einstellungen</string>
     <string name="insurance_add_label">Versicherung hinzufügen</string>
+    <string name="wrong_date">Falschen Reihenfolge</string>
 
 </resources>

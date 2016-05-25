@@ -97,5 +97,6 @@
     <string name="settings">Settings</string>
     <string name="insurance_add_label">Insurance adding</string>
     <string name="delete_confirm_message">Delete this vehicle?</string>
+    <string name="wrong_date">Wrong order of dates</string>
 
 </resources>

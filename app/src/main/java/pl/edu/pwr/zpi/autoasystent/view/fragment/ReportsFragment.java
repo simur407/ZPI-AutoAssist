@@ -35,6 +35,7 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     private TextView fromDate;
     private TextView toDate;
     private long carId;
+    private Date fDate, tDate;
     public static final String ID_KEY = "id";
     public static final String DATE_FROM = "from";
     public static final String DATE_TO = "to";
@@ -69,8 +70,9 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
 
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                dates();
-                presenter.onGenerateButtonClick(v, presenter.onRadioButtonClicked(radioGroup.getCheckedRadioButtonId()));
+                if (dates()) {
+                    presenter.onGenerateButtonClick(v, presenter.onRadioButtonClicked(radioGroup.getCheckedRadioButtonId()));
+                }
             }
         });
 
@@ -118,14 +120,25 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
         dialog.show(ft, null);
     }
 
-    public void dates() {
-        Date from;
-        Date to;
+    public boolean dates() {
+        boolean b = false;
         try {
-            presenter.setFromDate(DateUtils.stringToDate(fromDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
-            presenter.setToDate(DateUtils.stringToDate(toDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+            fDate = DateUtils.stringToDate(fromDate.getText().toString(), DateUtils.DATE_FORMAT_DEF);
+            tDate = DateUtils.stringToDate(toDate.getText().toString(), DateUtils.DATE_FORMAT_DEF);
+            if (!tDate.before(fDate)) {
+                presenter.setToDate(tDate);
+                presenter.setFromDate(fDate);
+                fromDate.setError(null);
+                toDate.setError(null);
+                b = true;
+            } else {
+
+                fromDate.setError(getString(R.string.wrong_date));
+                toDate.setError(getString(R.string.wrong_date));
+            }
         } catch (ParseException e) {
             Logger.error(e);
         }
+        return b;
     }
 }

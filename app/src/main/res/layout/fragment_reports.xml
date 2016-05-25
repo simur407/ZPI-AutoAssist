@@ -54,7 +54,8 @@
             android:id="@+id/report_radio_fuel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/report_fuel" />
+            android:text="@string/report_fuel"
+            android:checked="true" />
 
         <RadioButton
             android:id="@+id/report_radio_services"
