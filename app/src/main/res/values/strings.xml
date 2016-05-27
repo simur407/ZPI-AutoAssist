@@ -97,4 +97,6 @@
     <string name="confirm">Tak</string>
     <string name="abort">Nie</string>
     <string name="wrong_date">Zła kolejność dat</string>
+    <string name="edit_button_label">Edytuj</string>
+    <string name="delete_button_label">Usuń</string>
 </resources>

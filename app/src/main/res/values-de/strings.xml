@@ -98,5 +98,7 @@
     <string name="settings">Einstellungen</string>
     <string name="insurance_add_label">Versicherung hinzufügen</string>
     <string name="wrong_date">Falschen Reihenfolge</string>
+    <string name="delete_button_label">Löschen</string>
+    <string name="edit_button_label">Bearbeiten</string>
 
 </resources>
