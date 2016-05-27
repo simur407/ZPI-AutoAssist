@@ -47,4 +47,13 @@ public class ServiceJobsService {
     public void deleteService(ServiceJobs service) {
         ServiceJobs.delete(service);
     }
+
+    public int getServiceMaxMileage(long carId) {
+        List<ServiceJobs> serviceJobses =
+                ServiceJobs.find(ServiceJobs.class, "car = ?", new String[]{String.valueOf(carId)}, null, "service_mileage DESC", "1");
+        if (!serviceJobses.isEmpty()) {
+            return serviceJobses.get(0).getServiceMileage();
+        }
+        return 0;
+    }
 }

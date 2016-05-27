@@ -18,8 +18,11 @@ import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.model.Insurance;
 import pl.edu.pwr.zpi.autoasystent.model.Mot;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarViewPresenter;
+import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.InsuranceService;
 import pl.edu.pwr.zpi.autoasystent.service.MotService;
+import pl.edu.pwr.zpi.autoasystent.service.RefuelingService;
+import pl.edu.pwr.zpi.autoasystent.service.ServiceJobsService;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarViewPanel;
@@ -44,6 +47,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
     protected TextView capacityField;
     protected TextView motField;
     protected TextView insuranceField;
+    protected TextView mileageField;
     private GradientDrawable colorView;
     protected long carId;
 
@@ -70,6 +74,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         capacityField = (TextView) view.findViewById(R.id.capacity_field);
         motField = (TextView) view.findViewById(R.id.mot_field);
         insuranceField = (TextView) view.findViewById(R.id.insurance_field);
+        mileageField = (TextView) view.findViewById(R.id.mileage_field);
         view.findViewById(R.id.add_insurance_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +123,16 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         } else {
             capacityField.setText(getString(R.string.no_data_entered));
         }
+        int mileage = CarService.getInstance().findCarById(carId).getStartMileage();
+        if (RefuelingService.getInstance().getRefuelingMaxMileage(carId) > mileage) {
+            mileage = RefuelingService.getInstance().getRefuelingMaxMileage(carId);
+        }
+        if (ServiceJobsService.getInstance().getServiceMaxMileage(carId) > mileage) {
+            mileage = ServiceJobsService.getInstance().getServiceMaxMileage(carId);
+        }
+        mileageField.setText(String.valueOf(mileage));
+
+
         Mot latestMot = MotService.getInstance().getLatest(car);
         if (latestMot == null) {
             motField.setText("-");
@@ -130,6 +145,7 @@ public class CarViewFragment extends Fragment implements TabFragment, CarViewPan
         } else {
             insuranceField.setText(DateUtils.dateToString(latestService.getInsuranceDate()));
         }
+
     }
 
     @Override

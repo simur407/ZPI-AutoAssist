@@ -47,6 +47,15 @@ public class RefuelingService {
                 String.valueOf(from.getTime()), String.valueOf(to.getTime()));
     }
 
+    public int getRefuelingMaxMileage(long carId) {
+        List<Refueling> refuelings =
+                Refueling.find(Refueling.class, "car = ?", new String[]{String.valueOf(carId)}, null, "refueling_mileage DESC", "1");
+        if (!refuelings.isEmpty()) {
+            return refuelings.get(0).getRefuelingMileage();
+        }
+        return 0;
+    }
+
     public void saveRefueling(Refueling refueling) {
         Refueling.save(refueling);
     }
