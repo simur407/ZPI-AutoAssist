@@ -52,10 +52,10 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
             @Override
             public void onClick(View v) {
                 try {
-                presenter.showDatePicker(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_FORMAT_DEF));
-            } catch (ParseException e) {
-                Logger.error(e);
-            }
+                    presenter.showDatePicker(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
 
@@ -114,7 +114,15 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
 //            String dateString = dateField.getText().toString();
 //            DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
             try {
-                refueling.setRefuelingDate(DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                Date date = DateUtils.stringToDate(dateField.getText().toString(), DateUtils.DATE_FORMAT_DEF);
+                Date today = new Date();
+                if (date.after(today)) {
+                    error = true;
+                    dateField.setError(getString(R.string.error_value));
+                } else {
+                    dateField.setError(null);
+                    refueling.setRefuelingDate(date);
+                }
             } catch (ParseException e) {
                 Logger.error(e);
             }
@@ -134,7 +142,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                RefuelingAddActivity.this.dateField.setText(DateDialog.convertToString(year,monthOfYear,dayOfMonth));
+                RefuelingAddActivity.this.dateField.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 
