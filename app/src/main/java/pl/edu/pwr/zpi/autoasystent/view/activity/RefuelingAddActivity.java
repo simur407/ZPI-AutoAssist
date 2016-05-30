@@ -57,7 +57,7 @@ public class RefuelingAddActivity extends BaseActivity implements RefuelingAddPa
         });
 
         setToolbarTitle(R.string.refuel_add_label);
-        achievementUtils = new AchievementUtils(this);
+        achievementUtils = new AchievementUtils(this, findViewById(android.R.id.content));
     }
 
     @Override

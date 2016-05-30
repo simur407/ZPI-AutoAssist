@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity implements CarListPanel {
             }
         });
 
-        achievementUtils=new AchievementUtils(this);
+        achievementUtils=new AchievementUtils(this,findViewById(android.R.id.content));
     }
 
 
@@ -65,7 +65,9 @@ public class MainActivity extends BaseActivity implements CarListPanel {
         //List<Car> kurczak=Car.listAll(Car.class);
         //Toast.makeText(this, "Kurczak", Toast.LENGTH_SHORT).show();
         presenter.setList();
+        achievementUtils.load();
         achievementUtils.checkTime();
+
     }
 
     @Override

@@ -62,7 +62,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
         setToolbarTitle(R.string.service_add_label);
 
-        achievementUtils=new AchievementUtils(this);
+        achievementUtils=new AchievementUtils(this, findViewById(android.R.id.content));
     }
 
     @Override

@@ -96,7 +96,7 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
             presenter.setInitialData(Long.valueOf(getIntent().getData().toString()));
         }
         this.color = 0xff000000;
-        achievementUtils = new AchievementUtils(this);
+        achievementUtils = new AchievementUtils(this, findViewById(android.R.id.content));
     }
 
     @Override
