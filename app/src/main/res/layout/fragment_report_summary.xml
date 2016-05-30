@@ -1,250 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="20dp">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/report_summary_cost_overall_group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_cost_overall_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_cost_overall_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_summary_cost_overall"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_cost_overall_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_summary_cost_overall"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_cost_overall_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="5450 zł" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_cost_overall_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="5450 zł" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_cost_per_month_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_cost_overall_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_cost_per_month_group"
-                android:layout_below="@id/report_summary_cost_overall_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_cost_per_month_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_summary_cost_per_month"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_cost_per_month_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_summary_cost_per_month"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_cost_per_month_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="540 zł" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_cost_per_month_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="540 zł" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_fuel_average_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_cost_per_month_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_fuel_average_group"
-                android:layout_below="@id/report_summary_cost_per_month_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_fuel_average_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_fuel_average"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_fuel_average_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_fuel_average"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_fuel_average_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="33l/100 km" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_fuel_average_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="33l/100 km" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_fuel_overall_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_fuel_average_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_fuel_overall_group"
-                android:layout_below="@id/report_summary_fuel_average_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_fuel_overall_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_fuel_overall"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_fuel_overall_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_fuel_overall"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_fuel_overall_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="330 l" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_fuel_overall_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="330 l" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_fuel_cost_overall_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_fuel_overall_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_fuel_cost_overall_group"
-                android:layout_below="@id/report_summary_fuel_overall_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_fuel_cost_overall_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_fuel_cost_overall"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_fuel_cost_overall_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_fuel_cost_overall"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_fuel_cost_overall_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="630 zł" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_fuel_cost_overall_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="630 zł" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_services_cost_overall_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_fuel_cost_overall_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_services_cost_overall_group"
-                android:layout_below="@id/report_summary_fuel_cost_overall_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_services_cost_overall_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_services_cost_overall"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_services_cost_overall_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_services_cost_overall"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_services_cost_overall_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="3000 zł" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_services_cost_overall_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="3000 zł" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_mileage_overall_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_services_cost_overall_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_mileage_overall_group"
-                android:layout_below="@id/report_summary_services_cost_overall_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_mileage_overall_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_summary_mileage_overall"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_mileage_overall_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_summary_mileage_overall"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_mileage_overall_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="4567 km" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_mileage_overall_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="4567 km" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_mileage_per_month_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_mileage_overall_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_mileage_per_month_group"
-                android:layout_below="@id/report_summary_mileage_overall_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_mileage_per_month_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_summary_mileage_per_month"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_mileage_per_month_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_summary_mileage_per_month"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_mileage_per_month_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="600 km" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_mileage_per_month_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="600 km" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_to_mot_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_mileage_per_month_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_to_mot_group"
-                android:layout_below="@id/report_summary_mileage_per_month_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_to_mot_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_summary_to_mot"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_to_mot_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_summary_to_mot"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_to_mot_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="54 dni" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_to_mot_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="54 dni" />
-            </LinearLayout>
+        <LinearLayout
+            android:id="@+id/report_summary_to_insurance_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/report_summary_to_mot_group"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/report_summary_to_insurance_group"
-                android:layout_below="@id/report_summary_to_mot_group"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/report_summary_to_insurance_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_summary_to_insurance"
+                android:textColor="@color/secondary_text" />
 
-                <TextView
-                    android:id="@+id/report_summary_to_insurance_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/report_summary_to_insurance"
-                    android:textColor="@color/secondary_text" />
+            <TextView
+                android:id="@+id/report_summary_to_insurance_field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:textSize="24sp"
+                tools:text="54 dni" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/report_summary_to_insurance_field"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:textSize="24sp"
-                    tools:text="54 dni" />
-            </LinearLayout>
-
-        </RelativeLayout>
-    </ScrollView>
-</LinearLayout>
+    </RelativeLayout>
+</ScrollView>
