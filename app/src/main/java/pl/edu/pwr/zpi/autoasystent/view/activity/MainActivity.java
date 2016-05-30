@@ -20,7 +20,7 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarListPresenter;
-import pl.edu.pwr.zpi.autoasystent.utils.MakeModelLoader;
+import pl.edu.pwr.zpi.autoasystent.utils.InitLoader;
 import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.CarAdapter;
@@ -155,7 +155,7 @@ public class MainActivity extends BaseActivity implements CarListPanel {
         dialog.setCancelable(false);
         dialog.show();
 
-        MakeModelLoader.startAsyncLoad(getResources(), new DialogDismissListener() {
+        InitLoader.startAsyncLoad(getResources(), new DialogDismissListener() {
             @Override
             public void dismissDialog() {
                 dialog.dismiss();

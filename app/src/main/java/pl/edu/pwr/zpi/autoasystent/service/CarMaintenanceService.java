@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.service;
 
+import java.util.List;
+
 import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 
 /**
@@ -19,6 +21,10 @@ public class CarMaintenanceService {
 
     private CarMaintenanceService() {
 
+    }
+
+    public void saveMaintenanceList(List<CarMaintenance> maintenances) {
+        CarMaintenance.saveInTx(maintenances);
     }
 
     public void saveMaintenance (CarMaintenance maintenance) {

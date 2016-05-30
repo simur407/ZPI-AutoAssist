@@ -205,7 +205,9 @@ public class TransferPresenter {
                     {
                         list=splitData(line);
                         CarMaintenance carMaintenance=new CarMaintenance();
-                        carMaintenance.setMaintenanceName(list.get(0));
+                        carMaintenance.setMaintenanceNameEng(list.get(0));
+                        carMaintenance.setMaintenanceNameDeu(list.get(1));
+                        carMaintenance.setMaintenanceNamePol(list.get(2));
                         carMaintenanceList.add(carMaintenance);
                         carMaintenance.save();
                     }
@@ -324,7 +326,9 @@ public class TransferPresenter {
                 for(CarMaintenance c:CarMaintenance.listAll(CarMaintenance.class))
                 {
                     ArrayList<String> temp=new ArrayList<>();
-                    temp.add(c.getMaintenanceName());
+                    temp.add(c.getMaintenanceNameEng());
+                    temp.add(c.getMaintenanceNameDeu());
+                    temp.add(c.getMaintenanceNamePol());
                     writer.println(joinData(temp));
                 }
                 writer.println("refersTo");

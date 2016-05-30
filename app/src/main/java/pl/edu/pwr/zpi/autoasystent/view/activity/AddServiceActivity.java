@@ -29,7 +29,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
 
     protected EditText date, mileage, cost, garage, description;
-    protected ListView list;
+    protected ListView maintenancesList;
     protected long carId;
 
     protected AddServicePresenter presenter;
@@ -45,7 +45,6 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         cost = (EditText) findViewById(R.id.service_cost);
         garage = (EditText) findViewById(R.id.service_garage);
         description = (EditText) findViewById(R.id.service_description);
-
         date.setInputType(InputType.TYPE_NULL);
         date.setText(DateUtils.dateToString(new Date()));
         date.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +58,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
             }
         });
 
-        list = (ListView) findViewById(R.id.service_add_list);
+        maintenancesList = (ListView) findViewById(R.id.service_add_list);
 
         presenter = new AddServicePresenter(this, carId);
 

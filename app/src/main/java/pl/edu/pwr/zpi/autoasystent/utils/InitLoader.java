@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import pl.edu.pwr.zpi.autoasystent.R;
+import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 import pl.edu.pwr.zpi.autoasystent.model.Make;
 import pl.edu.pwr.zpi.autoasystent.model.Model;
+import pl.edu.pwr.zpi.autoasystent.service.CarMaintenanceService;
 import pl.edu.pwr.zpi.autoasystent.service.MakeService;
 import pl.edu.pwr.zpi.autoasystent.service.ModelService;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DialogDismissListener;
@@ -19,12 +21,13 @@ import pl.edu.pwr.zpi.autoasystent.view.dialog.DialogDismissListener;
  * @author Szymon Bartczak
  * @date 2016-04-23
  */
-public class MakeModelLoader {
+public class InitLoader {
 
     public static void startAsyncLoad(final Resources resources, final DialogDismissListener listener) {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                loadMaintenances(resources);
                 load(resources);
                 listener.dismissDialog();
             }
@@ -50,7 +53,7 @@ public class MakeModelLoader {
             } else {
                 make = findMakeInMakeList(makes, columns[1]);
                 if(make == null) {
-                    throw new IllegalStateException("Make cannot be null! Should be in list!");
+                    throw new IllegalStateException("Make cannot be null! Should be in maintenancesList!");
                 }
             }
 
@@ -63,6 +66,25 @@ public class MakeModelLoader {
         }
         MakeService.getInstance().saveMakeList(makes);
         ModelService.getInstance().saveModelList(models);
+    }
+
+    public static void loadMaintenances(Resources resources) {
+
+        Scanner scanner = new Scanner(resources.openRawResource(R.raw.maintenances));
+
+        List<CarMaintenance> maintenances = new ArrayList<>();
+
+        CarMaintenance maintenance;
+        while (scanner.hasNextLine()) {
+            String row = scanner.nextLine();
+            String[] columns = row.split(",");
+            maintenance = new CarMaintenance();
+            maintenance.setMaintenanceNameEng(columns[1]);
+            maintenance.setMaintenanceNameDeu(columns[2]);
+            maintenance.setMaintenanceNamePol(columns[3]);
+            maintenances.add(maintenance);
+        }
+        CarMaintenanceService.getInstance().saveMaintenanceList(maintenances);
     }
 
     private static boolean existsInModelList(List<Model> models, String name) {
