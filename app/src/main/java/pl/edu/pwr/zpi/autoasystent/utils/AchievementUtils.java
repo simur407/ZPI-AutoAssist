@@ -2,8 +2,6 @@ package pl.edu.pwr.zpi.autoasystent.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.CoordinatorLayout;
 import android.view.View;
 import android.widget.Toast;
 
