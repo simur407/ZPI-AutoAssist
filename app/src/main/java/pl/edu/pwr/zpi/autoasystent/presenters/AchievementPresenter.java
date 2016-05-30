@@ -18,6 +18,6 @@ public class AchievementPresenter {
 
     public void onGridItemClick(AdapterView<?> parent, View view, int position, long id) {
         Achievement achievement = Achievement.values()[position];
-        panel.openDialog(achievement.id);
+        panel.openDialog(achievement.getId());
     }
 }

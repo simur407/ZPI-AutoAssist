@@ -9,7 +9,9 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import pl.edu.pwr.zpi.autoasystent.R;
+import pl.edu.pwr.zpi.autoasystent.model.Achievement;
 import pl.edu.pwr.zpi.autoasystent.presenters.AchievementPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.AchievementUtils;
 import pl.edu.pwr.zpi.autoasystent.view.AchievementPanel;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.AchievementAdapter;
 
@@ -19,6 +21,7 @@ import pl.edu.pwr.zpi.autoasystent.view.adapter.AchievementAdapter;
 public class AchievementActivity extends BaseActivity implements AchievementPanel {
     private AchievementAdapter adapter;
     private AchievementPresenter presenter;
+    private AchievementUtils achievementUtils;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +31,7 @@ public class AchievementActivity extends BaseActivity implements AchievementPane
         GridView gridView = (GridView) findViewById(R.id.achievements_gridview);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(onItemClickListener);
+        achievementUtils = new AchievementUtils(this, findViewById(android.R.id.content));
     }
 
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
@@ -42,5 +46,12 @@ public class AchievementActivity extends BaseActivity implements AchievementPane
         new AlertDialog.Builder(new ContextThemeWrapper(AchievementActivity.this, R.style.AppTheme_Dialog))
                 .setMessage(id)
                 .show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        achievementUtils.load();
+        adapter.notifyDataSetChanged();
     }
 }

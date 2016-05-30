@@ -1,6 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -44,7 +45,8 @@ public class AchievementAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(Achievement.values()[position].drawable);
+        imageView.setImageResource(Achievement.values()[position].getDrawable());
+        imageView.setColorFilter(Achievement.values()[position].isEarned() ? Color.GREEN : Color.DKGRAY);
         return imageView;
     }
 }
