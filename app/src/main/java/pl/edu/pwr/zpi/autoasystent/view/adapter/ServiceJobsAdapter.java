@@ -49,7 +49,7 @@ public class ServiceJobsAdapter extends ArrayAdapter<ServiceJobs> {
         if (serviceJobs.getServiceDate() != null) {
             holder.dateTextView.setText(DateUtils.dateToString(serviceJobs.getServiceDate()));
         }
-        holder.costTextView.setText(String.format("%s %s", String.valueOf(serviceJobs.getServiceCost()), context.getString(R.string.currency_symbol)));
+        holder.costTextView.setText(String.format("%.2f %s", serviceJobs.getServiceCost(), context.getString(R.string.currency_symbol)));
         holder.mileageTextView.setText(String.format("%s %s", String.valueOf(serviceJobs.getServiceMileage()), context.getString(R.string.mileage_symbol)));
 
         return convertView;
