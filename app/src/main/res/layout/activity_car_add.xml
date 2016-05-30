@@ -10,7 +10,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <!--<ImageView-->
                 <!--android:id="@+id/car_image"-->
@@ -109,7 +109,8 @@
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:ems="13"
-                    android:hint="@string/vin_label" />
+                    android:hint="@string/vin_label"
+                    android:inputType="textCapCharacters" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -123,6 +124,7 @@
                     android:id="@+id/licence_plate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textCapCharacters"
                     android:hint="@string/plate_label"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin" />
