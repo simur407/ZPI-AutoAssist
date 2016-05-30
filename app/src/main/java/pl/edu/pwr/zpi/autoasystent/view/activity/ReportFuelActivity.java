@@ -63,14 +63,14 @@ public class ReportFuelActivity extends BaseActivity implements ReportFuelPanel 
             if (maxMileage == minMileage) {
                 fuelAverage.setText(getString(R.string.no_data_entered));
             } else {
-                fuelAverage.setText(String.format("%s %s/100%s", String.valueOf(Math.round(100 * quantityOverall / ((maxMileage - minMileage) / 100)) / 100.0), getString(R.string.quantity_symbol), getString(R.string.mileage_symbol)));
+                fuelAverage.setText(String.format("%.2f %s/100%s", quantityOverall / ((maxMileage - minMileage) / 100), getString(R.string.quantity_symbol), getString(R.string.mileage_symbol)));
             }
-            fuelPerDay.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall / daysCount)), getString(R.string.quantity_symbol)));
-            fuelPerMonth.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall * 30 / daysCount)), getString(R.string.quantity_symbol)));
+            fuelPerDay.setText(String.format("%.2f %s", quantityOverall / daysCount, getString(R.string.quantity_symbol)));
+            fuelPerMonth.setText(String.format("%.2f %s", quantityOverall * 30 / daysCount, getString(R.string.quantity_symbol)));
             fuelOverall.setText(String.format("%s %s", String.valueOf(Math.round(quantityOverall)), getString(R.string.quantity_symbol)));
-            fuelCostPerDay.setText(String.format("%s %s", String.valueOf(Math.round(fCosts / daysCount)), getString(R.string.currency_symbol)));
-            fuelCostPerMonth.setText(String.format("%s %s", String.valueOf(Math.round(30 * fCosts / daysCount)), getString(R.string.currency_symbol)));
-            fuelCostOverall.setText(String.format("%s %s", String.valueOf(Math.round(fCosts)), getString(R.string.currency_symbol)));
+            fuelCostPerDay.setText(String.format("%.2f %s", fCosts / daysCount, getString(R.string.currency_symbol)));
+            fuelCostPerMonth.setText(String.format("%.2f %s", 30 * fCosts / daysCount, getString(R.string.currency_symbol)));
+            fuelCostOverall.setText(String.format("%.2f %s", fCosts, getString(R.string.currency_symbol)));
         } else {
             fuelAverage.setText(getString(R.string.no_data_entered));
             fuelPerDay.setText(getString(R.string.no_data_entered));

@@ -87,7 +87,7 @@
     <string name="load_file">Wczytaj z pliku</string>
     <string name="delete_database">Usuń baze</string>
     <string name="memory_card">Karta pamięci</string>
-    <string name="no_data_entered">Nieznana</string>
+    <string name="no_data_entered">Brak danych</string>
     <string name="end_date">Data końca ważności</string>
     <string name="expired">Upłynał termin</string>
     <string name="settings">Ustawienia</string>

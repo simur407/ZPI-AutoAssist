@@ -48,9 +48,9 @@ public class ReportServicesActivity extends BaseActivity implements ReportServic
                 oCost += s.getServiceCost();
             }
             servicesCount.setText(String.valueOf(serviceJobses.size()));
-            servicesCostOverall.setText(String.format("%s %s", String.valueOf((int) oCost), getString(R.string.currency_symbol)));
-            servicesCostAverage.setText(String.format("%s %s", String.valueOf((int) oCost / serviceJobses.size()), getString(R.string.currency_symbol)));
-            servicesCostPerMonth.setText(String.format("%s %s", String.valueOf(Math.round(oCost / daysCount * 30)), getString(R.string.currency_symbol)));
+            servicesCostOverall.setText(String.format("%.2f %s", oCost, getString(R.string.currency_symbol)));
+            servicesCostAverage.setText(String.format("%.2f %s", oCost / serviceJobses.size(), getString(R.string.currency_symbol)));
+            servicesCostPerMonth.setText(String.format("%.2f %s", oCost / daysCount * 30, getString(R.string.currency_symbol)));
         } else {
             servicesCount.setText(getString(R.string.no_data_entered));
             servicesCostOverall.setText(getString(R.string.no_data_entered));
