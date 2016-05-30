@@ -43,4 +43,11 @@ public class DateUtils {
         DateFormat df = new SimpleDateFormat(pattern);
         return df.parse(dateString);
     }
+
+    /**
+     * Konwertuje format HHmm zapisany jako int na String {@value TIME_FORMAT}.
+     */
+    public static String timeToString(int time) {
+        return String.format("%d:%d", time/100, time%100);
+    }
 }

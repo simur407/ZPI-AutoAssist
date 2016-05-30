@@ -14,6 +14,8 @@ import com.rafalzajfert.androidlogger.Logger;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Language;
 import pl.edu.pwr.zpi.autoasystent.presenters.SettingsPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
+import pl.edu.pwr.zpi.autoasystent.utils.SettingsUtils;
 import pl.edu.pwr.zpi.autoasystent.view.SettingsPanel;
 
 /**
@@ -26,6 +28,7 @@ public class SettingsActivity extends BaseActivity implements SettingsPanel {
 
     private Button changeTime, exportButton, importButton, deleteButton;
     private Spinner languageSpinner;
+    private ArrayAdapter<Language> adapter;
     private TextView currentReminderTime;
     private SettingsPresenter presenter;
     private AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener() {
@@ -55,7 +58,19 @@ public class SettingsActivity extends BaseActivity implements SettingsPanel {
 
         presenter = new SettingsPresenter(this);
 
-        languageSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Language.values()));
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Language.values());
+        languageSpinner.setAdapter(adapter);
         languageSpinner.setOnItemSelectedListener(onItemSelectedListener);
+
+        Language language = SettingsUtils.getLanguage(this);
+        languageSpinner.setSelection(adapter.getPosition(language));
+
+        int time = SettingsUtils.getReminderTime(this);
+        currentReminderTime.setText(DateUtils.timeToString(time));
+    }
+
+    @Override
+    public void saveLanguageToPref(Language language) {
+        SettingsUtils.putLanguage(this, language);
     }
 }

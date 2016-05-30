@@ -18,6 +18,6 @@ public class SettingsPresenter {
     }
 
     public void changeLanguage(Language language) {
-
+        panel.saveLanguageToPref(language);
     }
 }

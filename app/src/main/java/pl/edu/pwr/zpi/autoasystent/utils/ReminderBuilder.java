@@ -67,8 +67,9 @@ public class ReminderBuilder {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         Logger.debug(calendar.getTimeZone());
-        calendar.set(Calendar.HOUR_OF_DAY, 12);
-        calendar.set(Calendar.MINUTE, 0);
+        int time = SettingsUtils.getReminderTime(context);
+        calendar.set(Calendar.HOUR_OF_DAY, time/100);
+        calendar.set(Calendar.MINUTE, time%100);
         manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pIntent);
 
     }
