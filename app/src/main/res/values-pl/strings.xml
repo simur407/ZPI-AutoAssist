@@ -104,4 +104,5 @@
     <string name="settings_change_time">Zmień</string>
     <string name="reminder_time_label">Godzina powiadomień</string>
     <string name="database_label">Baza danych</string>
+    <string name="dialog_please_wait">Proszę czekać, przygotowywanie bazy</string>
 </resources>

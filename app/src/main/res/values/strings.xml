@@ -105,5 +105,6 @@
     <string name="settings_change_time">Change</string>
     <string name="settings_export">Export</string>
     <string name="settings_import">Import</string>
+    <string name="dialog_please_wait">Please wait, preparing database</string>
 
 </resources>
