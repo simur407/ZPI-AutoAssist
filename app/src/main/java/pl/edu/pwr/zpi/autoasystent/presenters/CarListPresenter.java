@@ -8,6 +8,7 @@ import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
+import pl.edu.pwr.zpi.autoasystent.service.MakeService;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 import pl.edu.pwr.zpi.autoasystent.view.activity.AchievementActivity;
 import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
@@ -64,5 +65,11 @@ public class CarListPresenter {
 
     public void showConfirmDialog(Car car) {
         panel.showConfirmDialog(car);
+    }
+
+    public void prepareDatabase() {
+        if(MakeService.getInstance().isEmpty()) {
+            panel.prepareDatabase();
+        }
     }
 }

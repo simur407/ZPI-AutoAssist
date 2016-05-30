@@ -1,5 +1,6 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,8 +20,11 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarListPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.MakeModelLoader;
+import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.CarAdapter;
+import pl.edu.pwr.zpi.autoasystent.view.dialog.DialogDismissListener;
 
 public class MainActivity extends BaseActivity implements CarListPanel {
 
@@ -33,6 +37,8 @@ public class MainActivity extends BaseActivity implements CarListPanel {
 
         presenter = new CarListPresenter(this);
         adapter = new CarAdapter(this);
+
+        presenter.prepareDatabase();
 
         setContentView(R.layout.fragment_car_list);
 
@@ -92,7 +98,7 @@ public class MainActivity extends BaseActivity implements CarListPanel {
     @Override
     public void startActivity(Class<?> clazz, Uri additionalData) {
         Intent intent = new Intent(this, clazz);
-        if(additionalData != null) {
+        if (additionalData != null) {
             intent.setData(additionalData);
         }
         startActivity(intent);
@@ -105,7 +111,7 @@ public class MainActivity extends BaseActivity implements CarListPanel {
 
     @Override
     public void showDeleteMenu(final Car car) {
-        View view = getLayoutInflater().inflate( R.layout.menu_car_edit, null);
+        View view = getLayoutInflater().inflate(R.layout.menu_car_edit, null);
         Button editButton = (Button) view.findViewById(R.id.edit_button);
         Button deleteButton = (Button) view.findViewById(R.id.delete_button);
         final AlertDialog dialog = new AlertDialog.Builder(this).setView(view).show();
@@ -139,6 +145,22 @@ public class MainActivity extends BaseActivity implements CarListPanel {
                 })
                 .setNegativeButton(R.string.abort, null)
                 .show();
+    }
+
+    @Override
+    public void prepareDatabase() {
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage(StringUtils.getStringFromId(this, R.string.dialog_please_wait));
+        dialog.setCancelable(false);
+        dialog.show();
+
+        MakeModelLoader.startAsyncLoad(getResources(), new DialogDismissListener() {
+            @Override
+            public void dismissDialog() {
+                dialog.dismiss();
+            }
+        });
     }
 
     private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
