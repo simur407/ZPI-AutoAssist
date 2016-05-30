@@ -27,8 +27,6 @@ public class RefuelPresenter {
     }
 
     public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //TODO implement
-        //  panel.startActivity(RefuelActivity.class, null);
         panel.startActivity(RefuelViewActivity.class, Uri.parse(((Refueling) parent.getItemAtPosition(position)).getId().toString()));
     }
 

@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -26,6 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/date_label"
+                    android:focusable="false"
                     android:inputType="date" />
 
             </android.support.design.widget.TextInputLayout>

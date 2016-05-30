@@ -42,9 +42,18 @@ public class RefuelingService {
         return Refueling.find(Refueling.class, "car = ?", String.valueOf(carId));
     }
 
-    public List<Refueling> getRefuelingsByDate(Date from, Date to) {
-        return Refueling.find(Refueling.class, "refueling_date BETWEEN ? AND ?",
+    public List<Refueling> getRefuelingsByCarAndDate(long carId, Date from, Date to) {
+        return Refueling.find(Refueling.class, "car = ? AND refueling_date BETWEEN ? AND ?", String.valueOf(carId),
                 String.valueOf(from.getTime()), String.valueOf(to.getTime()));
+    }
+
+    public int getRefuelingMaxMileage(long carId) {
+        List<Refueling> refuelings =
+                Refueling.find(Refueling.class, "car = ?", new String[]{String.valueOf(carId)}, null, "refueling_mileage DESC", "1");
+        if (!refuelings.isEmpty()) {
+            return refuelings.get(0).getRefuelingMileage();
+        }
+        return 0;
     }
 
     public void saveRefueling(Refueling refueling) {

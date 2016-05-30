@@ -87,5 +87,18 @@
     <string name="type_filename_plz">Enter the filename </string>
     <string name="no_data_entered">No data</string>
     <string name="end_date">End date</string>
+    <string name="expired">Expired</string>
+    <string name="abort">No</string>
+    <string name="achievements">Achievements</string>
+    <string name="car_add_label">Car add</string>
+    <string name="confirm">Yes</string>
+    <string name="language">Language</string>
+    <string name="mot_add_label">Adding MOT</string>
+    <string name="settings">Settings</string>
+    <string name="insurance_add_label">Insurance adding</string>
+    <string name="delete_confirm_message">Delete this vehicle?</string>
+    <string name="wrong_date">Wrong order of dates</string>
+    <string name="delete_button_label">Delete</string>
+    <string name="edit_button_label">Edit</string>
 
 </resources>

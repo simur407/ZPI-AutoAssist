@@ -87,12 +87,16 @@
     <string name="load_file">Wczytaj z pliku</string>
     <string name="delete_database">Usuń baze</string>
     <string name="memory_card">Karta pamięci</string>
-    <string name="no_data_entered">Nieznana</string>
+    <string name="no_data_entered">Brak danych</string>
     <string name="end_date">Data końca ważności</string>
+    <string name="expired">Upłynał termin</string>
     <string name="settings">Ustawienia</string>
     <string name="achievements">Osiągnięcia</string>
     <string name="language">Język</string>
     <string name="delete_confirm_message">Czy usunąć ten pojazd?</string>
     <string name="confirm">Tak</string>
     <string name="abort">Nie</string>
+    <string name="wrong_date">Zła kolejność dat</string>
+    <string name="edit_button_label">Edytuj</string>
+    <string name="delete_button_label">Usuń</string>
 </resources>

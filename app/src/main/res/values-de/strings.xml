@@ -87,5 +87,18 @@
     <string name="save_file">Speichern ins Datei</string>
     <string name="no_data_entered">unbekannt</string>
     <string name="end_date">Enddatum</string>
+    <string name="expired">Ungültig</string>
+    <string name="abort">Nein</string>
+    <string name="achievements">Erfolge</string>
+    <string name="car_add_label">Fahrzeug hinzufügen</string>
+    <string name="confirm">Ja</string>
+    <string name="delete_confirm_message">Fahrzeug löschen</string>
+    <string name="language">Sprache</string>
+    <string name="mot_add_label">Hauptuntersuchung hinzufügen</string>
+    <string name="settings">Einstellungen</string>
+    <string name="insurance_add_label">Versicherung hinzufügen</string>
+    <string name="wrong_date">Falschen Reihenfolge</string>
+    <string name="delete_button_label">Löschen</string>
+    <string name="edit_button_label">Bearbeiten</string>
 
 </resources>

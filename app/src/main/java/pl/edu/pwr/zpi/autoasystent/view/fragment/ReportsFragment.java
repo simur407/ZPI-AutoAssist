@@ -3,7 +3,6 @@ package pl.edu.pwr.zpi.autoasystent.view.fragment;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,12 +14,17 @@ import android.widget.DatePicker;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.rafalzajfert.androidlogger.Logger;
+
+import java.text.ParseException;
 import java.util.Date;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.presenters.ReportsPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
 import pl.edu.pwr.zpi.autoasystent.view.ReportsPanel;
+import pl.edu.pwr.zpi.autoasystent.view.activity.CarActivity;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
 /**
@@ -30,14 +34,20 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     private ReportsPresenter presenter;
     private TextView fromDate;
     private TextView toDate;
+    private long carId;
+    private Date fDate, tDate;
+    public static final String ID_KEY = "id";
+    public static final String DATE_FROM = "from";
+    public static final String DATE_TO = "to";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reports, container, false);
-        presenter = new ReportsPresenter(this);
+        carId = getArguments().getLong(CarActivity.ID_KEY);
+        presenter = new ReportsPresenter(this, carId);
 
         fromDate = (TextView) view.findViewById(R.id.report_from_field);
         toDate = (TextView) view.findViewById(R.id.report_to_field);
-        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.report_list);
+        final RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.report_list);
         Button button = (Button) view.findViewById(R.id.report_make_button);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -45,22 +55,35 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
                 presenter.onRadioButtonClicked(checkedId);
             }
         });
+        fromDate.setText(DateUtils.dateToString(new Date()));
         fromDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showFromDatePicker(new Date());//TODO temp date
+                try {
+                    presenter.showFromDatePicker(DateUtils.stringToDate(fromDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
+
+        toDate.setText(DateUtils.dateToString(new Date()));
         toDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.showToDatePicker(new Date()); //TODO temp date
+                try {
+                    presenter.showToDatePicker(DateUtils.stringToDate(toDate.getText().toString(), DateUtils.DATE_FORMAT_DEF));
+                } catch (ParseException e) {
+                    Logger.error(e);
+                }
             }
         });
 
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                presenter.onGenerateButtonClick(v);
+                if (dates()) {
+                    presenter.onGenerateButtonClick(v, presenter.onRadioButtonClicked(radioGroup.getCheckedRadioButtonId()));
+                }
             }
         });
 
@@ -72,10 +95,10 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     }
 
 
-    public void startActivity(Class<?> clazz, Uri additionalData) {
+    public void startActivity(Class<?> clazz, Bundle args) {
         Intent intent = new Intent(this.getContext(), clazz);
-        if (additionalData != null) {
-            intent.setData(additionalData);
+        if (args != null) {
+            intent.putExtras(args);
         }
         startActivity(intent);
     }
@@ -83,10 +106,11 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     @Override
     public void showFromDatePicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                fromDate.setText(dayOfMonth + "." + monthOfYear + "." + year);
+                fromDate.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 
@@ -97,14 +121,37 @@ public class ReportsFragment extends Fragment implements ReportsPanel, TabFragme
     @Override
     public void showToDatePicker(Date date) {
         DateDialog dialog = new DateDialog();
+        dialog.setDate(date);
         dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                toDate.setText(dayOfMonth + "." + monthOfYear + "." + year);
+                toDate.setText(DateDialog.convertToString(year, monthOfYear, dayOfMonth));
             }
         });
 
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         dialog.show(ft, null);
+    }
+
+    public boolean dates() {
+        boolean b = false;
+        try {
+            fDate = DateUtils.stringToDate(fromDate.getText().toString(), DateUtils.DATE_FORMAT_DEF);
+            tDate = DateUtils.stringToDate(toDate.getText().toString(), DateUtils.DATE_FORMAT_DEF);
+            if (!tDate.before(fDate)) {
+                presenter.setToDate(tDate);
+                presenter.setFromDate(fDate);
+                fromDate.setError(null);
+                toDate.setError(null);
+                b = true;
+            } else {
+
+                fromDate.setError(getString(R.string.wrong_date));
+                toDate.setError(getString(R.string.wrong_date));
+            }
+        } catch (ParseException e) {
+            Logger.error(e);
+        }
+        return b;
     }
 }

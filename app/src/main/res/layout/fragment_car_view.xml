@@ -63,6 +63,7 @@
 
 				</LinearLayout>
 			</RelativeLayout>
+
 			<View
 				android:id="@+id/color_viewer"
 				android:layout_below="@id/image_overlay"
@@ -74,7 +75,7 @@
 				android:layout_marginTop="-30dp"
 				android:layout_alignParentRight="true"
 
-				android:background="@drawable/rounded_edge"/>
+				android:background="@drawable/rounded_edge" />
 
 			<View
 				android:id="@+id/car_color_shadow"
@@ -84,7 +85,7 @@
 				android:layout_below="@id/image_overlay"
 				android:layout_marginTop="-44dp"
 				android:layout_marginRight="3dp"
-				android:layout_alignParentRight="true"/>
+				android:layout_alignParentRight="true" />
 
 			<RelativeLayout
 				android:layout_width="match_parent"

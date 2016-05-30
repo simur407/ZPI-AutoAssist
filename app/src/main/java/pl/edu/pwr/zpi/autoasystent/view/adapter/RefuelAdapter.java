@@ -51,8 +51,8 @@ public class RefuelAdapter extends ArrayAdapter<Refueling> {
         if (refueling.getRefuelingDate() != null) {
             holder.dateTextView.setText(DateUtils.dateToString(refueling.getRefuelingDate()));
         }
-        holder.quantityTextView.setText(String.format("%s %s", String.valueOf(refueling.getQuantity()), context.getString(R.string.quantity_symbol)));
-        holder.costTextView.setText(String.format("%s %s", ((Double) refueling.getRefuelingCost()).toString(), context.getString(R.string.currency_symbol)));
+        holder.quantityTextView.setText(String.format("%.2f %s", refueling.getQuantity(), context.getString(R.string.quantity_symbol)));
+        holder.costTextView.setText(String.format("%.2f %s", refueling.getRefuelingCost(), context.getString(R.string.currency_symbol)));
 
 
         return convertView;
