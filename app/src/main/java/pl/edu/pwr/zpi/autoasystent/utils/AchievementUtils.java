@@ -32,9 +32,7 @@ public class AchievementUtils
         sharedPreferences=context.getSharedPreferences("pl.edu.pwr.zpi.autoasystent", 0);
         gson = new Gson();
     }
-
-    //TODO: Dodać brakujący acziw
-    //TODO: Dodać wyświetlanie acziwów
+    
     //TODO: Dodać snackbary
 
     public void save()
