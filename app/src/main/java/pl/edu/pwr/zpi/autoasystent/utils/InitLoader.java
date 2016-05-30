@@ -79,9 +79,9 @@ public class InitLoader {
             String row = scanner.nextLine();
             String[] columns = row.split(",");
             maintenance = new CarMaintenance();
-            maintenance.setMaintenanceNameEng(columns[1]);
-            maintenance.setMaintenanceNameDeu(columns[2]);
-            maintenance.setMaintenanceNamePol(columns[3]);
+            maintenance.setMaintenanceNameEng(columns[0]);
+            maintenance.setMaintenanceNameDeu(columns[1]);
+            maintenance.setMaintenanceNamePol(columns[2]);
             maintenances.add(maintenance);
         }
         CarMaintenanceService.getInstance().saveMaintenanceList(maintenances);

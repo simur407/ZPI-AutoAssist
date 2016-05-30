@@ -23,6 +23,7 @@ import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.presenters.AddServicePresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarAddServicePanel;
+import pl.edu.pwr.zpi.autoasystent.view.adapter.CarMaintenanceAdapter;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
 public class AddServiceActivity extends BaseActivity implements CarAddServicePanel {
@@ -31,6 +32,8 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
     protected EditText date, mileage, cost, garage, description;
     protected ListView maintenancesList;
     protected long carId;
+    protected CarMaintenanceAdapter adapter;
+    //  protected View listLayout;
 
     protected AddServicePresenter presenter;
 
@@ -38,7 +41,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_add);
-
+        adapter = new CarMaintenanceAdapter(this);
         carId = Long.valueOf(getIntent().getData().toString());
         date = (EditText) findViewById(R.id.service_date);
         mileage = (EditText) findViewById(R.id.service_mileage);
@@ -58,11 +61,15 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
             }
         });
 
+        //    listLayout=(View) findViewById(R.id.service_add_layout);
+
         maintenancesList = (ListView) findViewById(R.id.service_add_list);
+        maintenancesList.setAdapter(adapter);
 
         presenter = new AddServicePresenter(this, carId);
 
         setToolbarTitle(R.string.service_add_label);
+        presenter.setList();
     }
 
     @Override
@@ -81,6 +88,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         }
         return true;
     }
+
 
     private void saveService() {
         ServiceJobs service = new ServiceJobs();
@@ -144,6 +152,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
     @Override
     public void setMaintanaceList(List<CarMaintenance> maintenances) {
+        adapter.setItems(maintenances);
 
     }
 

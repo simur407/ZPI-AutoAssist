@@ -1,8 +1,11 @@
 package pl.edu.pwr.zpi.autoasystent.presenters;
 
 import java.util.Date;
+import java.util.List;
 
+import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
+import pl.edu.pwr.zpi.autoasystent.service.CarMaintenanceService;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
 import pl.edu.pwr.zpi.autoasystent.service.ServiceJobsService;
 import pl.edu.pwr.zpi.autoasystent.view.CarAddServicePanel;
@@ -30,4 +33,8 @@ public class AddServicePresenter {
     }
 
 
+    public void setList() {
+        List<CarMaintenance> maintenances = CarMaintenanceService.getInstance().getMaintenancesList();
+        panel.setMaintanaceList(maintenances);
+    }
 }

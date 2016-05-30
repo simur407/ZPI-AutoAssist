@@ -27,6 +27,10 @@ public class CarMaintenanceService {
         CarMaintenance.saveInTx(maintenances);
     }
 
+    public List<CarMaintenance> getMaintenancesList() {
+        return CarMaintenance.listAll(CarMaintenance.class);
+    }
+
     public void saveMaintenance (CarMaintenance maintenance) {
         CarMaintenance.save(maintenance);
     }

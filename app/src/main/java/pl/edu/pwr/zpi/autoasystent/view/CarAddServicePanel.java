@@ -21,4 +21,6 @@ public interface CarAddServicePanel {
      * Ustawia aktualną datę na samym początku.
      */
     void setCurrentData();
+
+
 }
