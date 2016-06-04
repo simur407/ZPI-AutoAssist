@@ -20,9 +20,9 @@ import java.util.List;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarListPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.AchievementUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.InitLoader;
 import pl.edu.pwr.zpi.autoasystent.utils.StringUtils;
-import pl.edu.pwr.zpi.autoasystent.utils.AchievementUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarListPanel;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.CarAdapter;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DialogDismissListener;
@@ -59,7 +59,7 @@ public class MainActivity extends BaseActivity implements CarListPanel {
             }
         });
 
-        achievementUtils=new AchievementUtils(this,findViewById(android.R.id.content));
+        achievementUtils = new AchievementUtils(this, findViewById(android.R.id.content));
     }
 
 

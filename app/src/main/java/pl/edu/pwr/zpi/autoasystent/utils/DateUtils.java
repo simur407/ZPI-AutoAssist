@@ -48,6 +48,6 @@ public class DateUtils {
      * Konwertuje format HHmm zapisany jako int na String {@value TIME_FORMAT}.
      */
     public static String timeToString(int time) {
-        return String.format("%d:%02d", time/100, time%100);
+        return String.format("%d:%02d", time / 100, time % 100);
     }
 }

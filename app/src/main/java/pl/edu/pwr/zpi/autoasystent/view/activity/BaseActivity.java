@@ -41,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity implements SharedPr
         super.onResume();
         Logger.debug("On Resume");
         Language newLanguage = SettingsUtils.getLanguage(this);
-        if(language != newLanguage) {
+        if (language != newLanguage) {
             changeLanguage();
         }
     }

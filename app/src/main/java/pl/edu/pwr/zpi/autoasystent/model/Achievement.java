@@ -22,7 +22,6 @@ public enum Achievement {
     TWENTIETH_SERVICE(R.string.twentieth_service, R.drawable.pump_icon);
 
 
-
     Achievement(@StringRes int id, @DrawableRes int drawable) {
         this.id = id;
         this.drawable = drawable;
@@ -42,7 +41,7 @@ public enum Achievement {
     }
 
     public void makeEarned() {
-        earned=true;
+        earned = true;
     }
 
     public int getId() {

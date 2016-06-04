@@ -50,6 +50,20 @@ public class CarMaintenanceAdapter extends ArrayAdapter<CarMaintenance> {
         CarMaintenance maintenance = getItem(position);
 
         //TODO languages
+
+/*        String language = SettingsUtils.getLanguage(context).toString();
+
+        switch(language){
+            case "English":
+                holder.maintenanceTextView.setText(maintenance.getMaintenanceNameEng());
+                break;
+            case "Deutsch":
+                holder.maintenanceTextView.setText(maintenance.getMaintenanceNameDeu());
+                break;
+            case "Polski":
+                holder.maintenanceTextView.setText(maintenance.getMaintenanceNamePol());
+                break;
+        }*/
         holder.maintenanceTextView.setText(maintenance.getMaintenanceNamePol());
         // holder.maintenanceTextView.setText(maintenance.getMaintenanceNameEng());
         // holder.maintenanceTextView.setText(maintenance.getMaintenanceNameDeu());

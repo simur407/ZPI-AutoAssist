@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import pl.edu.pwr.zpi.autoasystent.R;
-import pl.edu.pwr.zpi.autoasystent.model.Achievement;
 import pl.edu.pwr.zpi.autoasystent.presenters.AchievementPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.AchievementUtils;
 import pl.edu.pwr.zpi.autoasystent.view.AchievementPanel;

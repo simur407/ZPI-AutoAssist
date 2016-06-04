@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.RefersTo;
@@ -57,12 +58,31 @@ public class ServiceJobsActivity extends BaseActivity implements ServiceViewPane
 
     public void setMaintenances(List<RefersTo> refersTos) {
         //TODO languages
-        String text = "";
+        Locale current = getResources().getConfiguration().locale;
+        String language = current.getDisplayLanguage();
 
-        for (RefersTo r : refersTos) {
-            text += r.getMaintenance().getMaintenanceNamePol();
-            text += "\n";
+        String text = "";
+        switch (language) {
+            case "English":
+                for (RefersTo r : refersTos) {
+                    text += r.getMaintenance().getMaintenanceNameEng();
+                    text += "\n";
+                }
+                break;
+            case "Deutsch":
+                for (RefersTo r : refersTos) {
+                    text += r.getMaintenance().getMaintenanceNameDeu();
+                    text += "\n";
+                }
+                break;
+            case "Polski":
+                for (RefersTo r : refersTos) {
+                    text += r.getMaintenance().getMaintenanceNamePol();
+                    text += "\n";
+                }
+                break;
         }
+
         if (text == "") {
             servicesDone.setText("-");
         } else {
