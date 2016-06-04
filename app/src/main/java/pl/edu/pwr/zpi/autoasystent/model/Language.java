@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.model;
 
+import com.orm.dsl.NotNull;
+
 import java.util.Locale;
 
 /**
@@ -28,5 +30,13 @@ public enum Language {
         return language;
     }
 
+    public static Language getLanguageByLocale(@NotNull Locale locale) {
+        for (Language l : Language.values()) {
+            if(l != DEFAULT && l.locale.getLanguage().equals(locale.getLanguage())) {
+                return l;
+            }
+        }
+        return DEFAULT;
+    }
 
 }
