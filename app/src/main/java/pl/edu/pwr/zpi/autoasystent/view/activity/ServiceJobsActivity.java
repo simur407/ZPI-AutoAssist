@@ -63,12 +63,12 @@ public class ServiceJobsActivity extends BaseActivity implements ServiceViewPane
     }
 
     public void setMaintenances(List<RefersTo> refersTos) {
-        //TODO languages
         Language currentLang = Language.getLanguageByLocale(language.locale);
         Logger.debug(currentLang, language.locale.getLanguage());
         String text = "";
         switch (currentLang) {
-            case ENGLISH: case DEFAULT:
+            case ENGLISH:
+            case DEFAULT:
                 for (RefersTo r : refersTos) {
                     text += r.getMaintenance().getMaintenanceNameEng();
                     text += "\n";

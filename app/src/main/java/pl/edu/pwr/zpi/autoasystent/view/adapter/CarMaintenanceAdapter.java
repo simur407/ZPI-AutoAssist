@@ -13,7 +13,9 @@ import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
+import pl.edu.pwr.zpi.autoasystent.model.Language;
 import pl.edu.pwr.zpi.autoasystent.utils.NonScrollListView;
+import pl.edu.pwr.zpi.autoasystent.utils.SettingsUtils;
 
 /**
  * Created by Marek on 30.05.2016.
@@ -49,24 +51,19 @@ public class CarMaintenanceAdapter extends ArrayAdapter<CarMaintenance> {
 
         CarMaintenance maintenance = getItem(position);
 
-        //TODO languages
-
-/*        String language = SettingsUtils.getLanguage(context).toString();
-
-        switch(language){
-            case "English":
+        Language currentLanguage = Language.getLanguageByLocale(SettingsUtils.getLanguage(context).locale);
+        switch (currentLanguage) {
+            case ENGLISH:
+            case DEFAULT:
                 holder.maintenanceTextView.setText(maintenance.getMaintenanceNameEng());
                 break;
-            case "Deutsch":
+            case GERMAN:
                 holder.maintenanceTextView.setText(maintenance.getMaintenanceNameDeu());
                 break;
-            case "Polski":
+            case POLISH:
                 holder.maintenanceTextView.setText(maintenance.getMaintenanceNamePol());
                 break;
-        }*/
-        holder.maintenanceTextView.setText(maintenance.getMaintenanceNamePol());
-        // holder.maintenanceTextView.setText(maintenance.getMaintenanceNameEng());
-        // holder.maintenanceTextView.setText(maintenance.getMaintenanceNameDeu());
+        }
 
 
         holder.maintenanceCheckBox.setOnClickListener(new View.OnClickListener() {
