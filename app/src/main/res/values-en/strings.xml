@@ -92,7 +92,7 @@
     <string name="achievements">Achievements</string>
     <string name="car_add_label">Car add</string>
     <string name="confirm">Yes</string>
-    <string name="language">Language</string>
+    <string name="language_label">Language</string>
     <string name="mot_add_label">Adding MOT</string>
     <string name="settings">Settings</string>
     <string name="insurance_add_label">Insurance adding</string>
@@ -100,5 +100,11 @@
     <string name="wrong_date">Wrong order of dates</string>
     <string name="delete_button_label">Delete</string>
     <string name="edit_button_label">Edit</string>
+    <string name="database_label">Database</string>
+    <string name="reminder_time_label">Reminder time</string>
+    <string name="settings_change_time">Change</string>
+    <string name="settings_export">Export</string>
+    <string name="settings_import">Import</string>
+    <string name="dialog_please_wait">Please wait, preparing database</string>
 
 </resources>

@@ -25,6 +25,7 @@ import pl.edu.pwr.zpi.autoasystent.model.Car;
 import pl.edu.pwr.zpi.autoasystent.model.Make;
 import pl.edu.pwr.zpi.autoasystent.model.Model;
 import pl.edu.pwr.zpi.autoasystent.presenters.CarModifyPresenter;
+import pl.edu.pwr.zpi.autoasystent.utils.AchievementUtils;
 import pl.edu.pwr.zpi.autoasystent.view.CarModifyPanel;
 
 /**
@@ -45,6 +46,8 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
 
     private Make selectedMake;
     private Model selectedModel;
+
+    private AchievementUtils achievementUtils;
 
     //Używany przy edycji.
     private Car car;
@@ -92,6 +95,7 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
             presenter.setInitialData(Long.valueOf(getIntent().getData().toString()));
         }
         this.color = 0xff000000;
+        achievementUtils = new AchievementUtils(this, findViewById(android.R.id.content));
     }
 
     @Override
@@ -180,6 +184,7 @@ public class CarModifyActivity extends BaseActivity implements CarModifyPanel {
         }
         if (!error) {
             presenter.saveCar(car, selectedMake, selectedModel);
+            achievementUtils.checkCar();
             finish();
         }
     }

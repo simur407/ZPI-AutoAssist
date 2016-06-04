@@ -26,4 +26,12 @@
         <item name="android:colorBackground">@color/white</item>
     </style>
 
+    <style name="AppTheme.Button" parent="AppTheme">
+        <item name="android:background">?attr/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
