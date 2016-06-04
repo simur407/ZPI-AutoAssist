@@ -1,119 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:focusableInTouchMode="true">
 
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_service_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/service_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="@string/date_label"
+                android:inputType="date" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_service_mileage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin">
+            android:layout_below="@+id/input_service_date">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_service_date"
+            <EditText
+                android:id="@+id/service_mileage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/mileage_label"
+                android:inputType="number" />
 
-                <EditText
-                    android:id="@+id/service_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/date_label"
-                    android:focusable="false"
-                    android:inputType="date" />
+        </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_service_cost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_service_mileage">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_service_mileage"
-                android:layout_below="@+id/input_service_date"
+            <EditText
+                android:id="@+id/service_cost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/cost_label"
+                android:inputType="numberDecimal" />
 
-                <EditText
-                    android:id="@+id/service_mileage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/mileage_label"
-                    android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_service_garage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_service_cost">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_service_cost"
-                android:layout_below="@+id/input_service_mileage"
+            <EditText
+                android:id="@+id/service_garage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:hint="@string/garage_label" />
 
-                <EditText
-                    android:id="@+id/service_cost"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/cost_label"
-                    android:inputType="numberDecimal" />
+        </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_service_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_service_garage">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_service_garage"
-                android:layout_below="@+id/input_service_cost"
+            <EditText
+                android:id="@+id/service_description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/service_garage"
+                android:gravity="top"
+                android:hint="@string/service_description_label"
+                android:inputType="textMultiLine"
+                android:lines="3" />
 
-                <EditText
-                    android:id="@+id/service_garage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/garage_label" />
+        </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/service_servicesdone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_service_description"
+            android:layout_centerHorizontal="true"
+            android:text="@string/servicesdone_label"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/input_service_description"
-                android:layout_below="@+id/input_service_garage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <pl.edu.pwr.zpi.autoasystent.utils.NonScrollListView
+            android:id="@+id/service_add_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/service_servicesdone"
+            tools:listitem="@layout/item_service_done_jobs" />
 
-                <EditText
-                    android:id="@+id/service_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/service_garage"
-                    android:gravity="top"
-                    android:hint="@string/service_description_label"
-                    android:inputType="textMultiLine"
-                    android:lines="3" />
 
-            </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/service_servicesdone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/input_service_description"
-                    android:layout_centerHorizontal="true"
-                    android:text="@string/servicesdone_label"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <ListView
-                    android:id="@+id/service_add_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_service_done_jobs"
-                    android:layout_below="@+id/service_servicesdone" />
-
-            <!--     <LinearLayout
-                     android:id="@+id/service_add_layout"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     tools:listitem="@layout/item_service_done_jobs"
-                     android:layout_below="@+id/service_add_list"
-                     android:orientation="horizontal" /> -->
-        </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
+</ScrollView>
 

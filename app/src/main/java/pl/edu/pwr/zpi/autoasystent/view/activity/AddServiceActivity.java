@@ -22,6 +22,7 @@ import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.presenters.AddServicePresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
+import pl.edu.pwr.zpi.autoasystent.utils.NonScrollListView;
 import pl.edu.pwr.zpi.autoasystent.view.CarAddServicePanel;
 import pl.edu.pwr.zpi.autoasystent.view.adapter.CarMaintenanceAdapter;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
@@ -30,7 +31,7 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
 
 
     protected EditText date, mileage, cost, garage, description;
-    protected ListView maintenancesList;
+    protected NonScrollListView maintenancesList;
     protected long carId;
     protected CarMaintenanceAdapter adapter;
     //  protected View listLayout;
@@ -61,9 +62,8 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
             }
         });
 
-        //    listLayout=(View) findViewById(R.id.service_add_layout);
-
-        maintenancesList = (ListView) findViewById(R.id.service_add_list);
+        maintenancesList = (NonScrollListView) findViewById(R.id.service_add_list);
+        maintenancesList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         maintenancesList.setAdapter(adapter);
 
         presenter = new AddServicePresenter(this, carId);
@@ -93,7 +93,6 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
     private void saveService() {
         ServiceJobs service = new ServiceJobs();
         boolean error = false;
-//        RefersTo refersTo = new RefersTo();
 
         //TODO Obsługa przekroczenia wartości zmiennych
 
@@ -138,14 +137,12 @@ public class AddServiceActivity extends BaseActivity implements CarAddServicePan
         service.setServiceGarage(garage.getText().toString());
         service.setServiceDescription(description.getText().toString());
 
-        //TODO Lista napraw
-//        ArrayList<String> serviceList = new ArrayList<String>();
-//
-//        for(String element : serviceList)
-//            refersTo.getMaintenance().setMaintenanceName(element.toString());
-//        }
+
+        List<CarMaintenance> checked = adapter.getChecked(maintenancesList);
+
+
         if (!error) {
-            presenter.saveService(service);
+            presenter.saveService(service, checked);
             finish();
         }
     }

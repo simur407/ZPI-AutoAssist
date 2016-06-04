@@ -120,4 +120,10 @@
         android:text="@string/servicesdone_label"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <TextView
+        android:id="@+id/service_servicesdonelist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/service_servicesdone" />
+
 </RelativeLayout>

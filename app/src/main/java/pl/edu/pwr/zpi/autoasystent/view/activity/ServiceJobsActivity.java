@@ -3,7 +3,10 @@ package pl.edu.pwr.zpi.autoasystent.view.activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.List;
+
 import pl.edu.pwr.zpi.autoasystent.R;
+import pl.edu.pwr.zpi.autoasystent.model.RefersTo;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.presenters.ServiceJobsViewPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
@@ -30,8 +33,9 @@ public class ServiceJobsActivity extends BaseActivity implements ServiceViewPane
         mileage = (TextView) findViewById(R.id.service_mileage_field);
         garage = (TextView) findViewById(R.id.garage_field);
         description = (TextView) findViewById(R.id.service_description_field);
-        //TODO servicesDone
+        servicesDone = (TextView) findViewById(R.id.service_servicesdonelist);
         presenter.setServiceJob(Long.parseLong(getIntent().getData().toString()));
+
     }
 
     public void setServiceJob(ServiceJobs serviceJobs) {
@@ -47,6 +51,22 @@ public class ServiceJobsActivity extends BaseActivity implements ServiceViewPane
             description.setText("-");
         } else {
             description.setText(serviceJobs.getServiceDescription());
+        }
+
+    }
+
+    public void setMaintenances(List<RefersTo> refersTos) {
+        //TODO languages
+        String text = "";
+
+        for (RefersTo r : refersTos) {
+            text += r.getMaintenance().getMaintenanceNamePol();
+            text += "\n";
+        }
+        if (text == "") {
+            servicesDone.setText("-");
+        } else {
+            servicesDone.setText(text);
         }
     }
 }

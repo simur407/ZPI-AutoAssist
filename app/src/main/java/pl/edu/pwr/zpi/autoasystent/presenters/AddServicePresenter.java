@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import pl.edu.pwr.zpi.autoasystent.model.CarMaintenance;
+import pl.edu.pwr.zpi.autoasystent.model.RefersTo;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 import pl.edu.pwr.zpi.autoasystent.service.CarMaintenanceService;
 import pl.edu.pwr.zpi.autoasystent.service.CarService;
@@ -23,9 +24,10 @@ public class AddServicePresenter {
         this.carId = carId;
     }
 
-    public void saveService(ServiceJobs service) {
+    public void saveService(ServiceJobs service, List<CarMaintenance> chcecked) {
         service.setCar(CarService.getInstance().findCarById(carId));
         ServiceJobsService.getInstance().saveService(service);
+        saveMaintenances(chcecked, service);
     }
 
     public void dateBoxClicked(Date date) {
@@ -37,4 +39,14 @@ public class AddServicePresenter {
         List<CarMaintenance> maintenances = CarMaintenanceService.getInstance().getMaintenancesList();
         panel.setMaintanaceList(maintenances);
     }
+
+    public void saveMaintenances(List<CarMaintenance> checked, ServiceJobs service) {
+
+        for (CarMaintenance m : checked) {
+            RefersTo rT = new RefersTo(service, m);
+            rT.save();
+        }
+    }
+
+
 }

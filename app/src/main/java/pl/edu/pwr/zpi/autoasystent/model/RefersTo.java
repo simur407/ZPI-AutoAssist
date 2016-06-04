@@ -35,4 +35,5 @@ public class RefersTo extends SugarRecord {
     public void setMaintenance(CarMaintenance maintenance) {
         this.maintenance = maintenance;
     }
+
 }

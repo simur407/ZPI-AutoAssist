@@ -1,5 +1,8 @@
 package pl.edu.pwr.zpi.autoasystent.view;
 
+import java.util.List;
+
+import pl.edu.pwr.zpi.autoasystent.model.RefersTo;
 import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
 
 /**
@@ -7,4 +10,6 @@ import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
  */
 public interface ServiceViewPanel {
     void setServiceJob(ServiceJobs serviceJob);
+
+    void setMaintenances(List<RefersTo> refersTos);
 }
