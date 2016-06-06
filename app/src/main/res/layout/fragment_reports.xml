@@ -74,18 +74,6 @@
             android:layout_height="match_parent"
             android:text="@string/report_summary" />
 
-        <RadioButton
-            android:id="@+id/report_radio_fuel_chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/report_fuel_chart" />
-
-        <RadioButton
-            android:id="@+id/report_radio_summary_chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/report_summary_chart" />
-
     </RadioGroup>
 
     <Button

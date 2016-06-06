@@ -41,16 +41,22 @@ public class ReportServicesActivity extends BaseActivity implements ReportServic
     }
 
     public void setReportData(List<ServiceJobs> serviceJobses) {
+
         if (serviceJobses.size() > 0) {
             double oCost = 0;
-            long daysCount = 1 + (toDate.getTime() - fromDate.getTime()) / 86400000;
+            int daysCount = (int) (1 + ((toDate.getTime() - fromDate.getTime()) / 86400000));
             for (ServiceJobs s : serviceJobses) {
                 oCost += s.getServiceCost();
+            }
+            double costPerMonth=oCost;
+            if (daysCount > 25) {
+
+                costPerMonth = oCost * 30 / daysCount;
             }
             servicesCount.setText(String.valueOf(serviceJobses.size()));
             servicesCostOverall.setText(String.format("%.2f %s", oCost, getString(R.string.currency_symbol)));
             servicesCostAverage.setText(String.format("%.2f %s", oCost / serviceJobses.size(), getString(R.string.currency_symbol)));
-            servicesCostPerMonth.setText(String.format("%.2f %s", oCost / daysCount * 30, getString(R.string.currency_symbol)));
+            servicesCostPerMonth.setText(String.format("%.2f %s", costPerMonth, getString(R.string.currency_symbol)));
         } else {
             servicesCount.setText(getString(R.string.no_data_entered));
             servicesCostOverall.setText(getString(R.string.no_data_entered));

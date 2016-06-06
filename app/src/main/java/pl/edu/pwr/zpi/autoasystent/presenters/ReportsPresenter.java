@@ -32,34 +32,12 @@ public class ReportsPresenter {
         switch (checkedId) {
             case R.id.report_radio_fuel:
                 idA = 1;
-                //TODO implement
-                //   args=new Bundle();
-                //   args.putLong(ReportsFragment.ID_KEY,id);
-                //   panel.startActivity(ReportFuelActivity.class, args);
                 break;
             case R.id.report_radio_services:
                 idA = 2;
-                //   args=new Bundle();
-                //   args.putLong(ReportsFragment.ID_KEY,id);
-                //   panel.startActivity(ReportServicesActivity.class, args);
-                // TODO implement
                 break;
             case R.id.report_radio_summary:
                 idA = 3;
-                //   args=new Bundle();
-                //   args.putLong(ReportsFragment.ID_KEY,id);
-                //   panel.startActivity(ReportSummaryActivity.class, args);
-                // TODO implement
-                break;
-            case R.id.report_radio_fuel_chart:
-                idA = 4;
-                //  if (checked)
-                // TODO implement
-                break;
-            case R.id.report_radio_summary_chart:
-                idA = 5;
-                //  if (checked)
-                // TODO implement
                 break;
         }
         return idA;
@@ -83,15 +61,8 @@ public class ReportsPresenter {
             case 3:
                 panel.startActivity(ReportSummaryActivity.class, args);
                 break;
-            case 4:
-                //  panel.startActivity(ReportFuelActivity.class, args);
-                break;
-            case 5:
-                //  panel.startActivity(ReportFuelActivity.class, args);
-                break;
         }
 
-        //TODO implement
     }
 
     public void showFromDatePicker(Date date) {
