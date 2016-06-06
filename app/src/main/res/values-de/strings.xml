@@ -106,5 +106,6 @@
     <string name="settings_export">Export</string>
     <string name="settings_import">Import</string>
     <string name="dialog_please_wait">Bitte warten, datenbank vorbereitung</string>
+    <string name="new_reminder_time_set">Zukunft Erinnerungen wird in diesem Zeitpunkt geliefert werden</string>
 
 </resources>

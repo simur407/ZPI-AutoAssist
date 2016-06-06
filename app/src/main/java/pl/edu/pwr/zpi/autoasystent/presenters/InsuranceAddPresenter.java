@@ -23,6 +23,7 @@ public class InsuranceAddPresenter {
     public void saveInsurance(Insurance insurance) {
         insurance.setCar(CarService.getInstance().findCarById(carId));
         InsuranceService.getInstance().saveInsurance(insurance);
+        panel.createReminder();
     }
 
     public void showDatePicker(Date date) {

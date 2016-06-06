@@ -106,5 +106,6 @@
     <string name="settings_export">Export</string>
     <string name="settings_import">Import</string>
     <string name="dialog_please_wait">Please wait, preparing database</string>
+    <string name="new_reminder_time_set">Future reminders will be delivered in this time</string>
 
 </resources>

@@ -1,5 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view;
 
+import android.support.annotation.StringRes;
+
 import pl.edu.pwr.zpi.autoasystent.model.Language;
 
 /**
@@ -10,4 +12,10 @@ import pl.edu.pwr.zpi.autoasystent.model.Language;
  */
 public interface SettingsPanel {
     void saveLanguageToPref(Language language);
+
+    void showTimePickerDialog();
+
+    void setCurrentReminderTime();
+
+    void showToast(@StringRes int message);
 }

@@ -5,9 +5,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 
 import com.orm.dsl.NotNull;
-import com.rafalzajfert.androidlogger.Logger;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -42,8 +42,18 @@ public class ReminderBuilder {
         return this;
     }
 
+    public ReminderBuilder setTitle(@StringRes int title) {
+        this.title = StringUtils.getStringFromId(context, title);
+        return this;
+    }
+
     public ReminderBuilder setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public ReminderBuilder setDescription(@StringRes int description) {
+        this.description = StringUtils.getStringFromId(context, description);
         return this;
     }
 
@@ -66,7 +76,6 @@ public class ReminderBuilder {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        Logger.debug(calendar.getTimeZone());
         int time = SettingsUtils.getReminderTime(context);
         calendar.set(Calendar.HOUR_OF_DAY, time / 100);
         calendar.set(Calendar.MINUTE, time % 100);

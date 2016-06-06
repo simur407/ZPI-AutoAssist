@@ -45,6 +45,6 @@ public class SettingsUtils {
     }
 
     public static void putReminderTime(Context context, int time) {
-        getSharedPrefs(context).edit().putLong(REMINDER_TIME_KEY, time).commit();
+        getSharedPrefs(context).edit().putInt(REMINDER_TIME_KEY, time).commit();
     }
 }
