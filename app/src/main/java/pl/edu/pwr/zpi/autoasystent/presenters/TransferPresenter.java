@@ -32,7 +32,7 @@ import pl.edu.pwr.zpi.autoasystent.model.ServiceJobs;
  */
 public class TransferPresenter {
 
-    private final static String fileDirName = "/dane";
+    public final static String FILE_DIR_NAME = "/autoasystent";
     private final static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static boolean isThereExternal() {
@@ -93,7 +93,6 @@ public class TransferPresenter {
     {
         RefersTo.deleteAll(RefersTo.class);
         ServiceJobs.deleteAll(ServiceJobs.class);
-        CarMaintenance.deleteAll(CarMaintenance.class);
         Reminder.deleteAll(Reminder.class);
         Mot.deleteAll(Mot.class);
         Refueling.deleteAll(Refueling.class);
@@ -108,11 +107,14 @@ public class TransferPresenter {
             if (!external || isThereExternal()) {
                 File file;
                 if (external) {
-                    file = new File(context.getExternalFilesDir(null), fileDirName);
+                    file = new File(context.getExternalFilesDir(null), FILE_DIR_NAME);
                 } else {
-                    file = new File(context.getFilesDir(), fileDirName);
+                    file = new File(context.getFilesDir(), FILE_DIR_NAME);
                 }
                 file = new File(file, filename);
+                if(!file.exists()) {
+                    return;
+                }
                 BufferedReader reader = new BufferedReader(new FileReader(file));
                 if (overwrite)
                 {
@@ -244,11 +246,11 @@ public class TransferPresenter {
                 File file;
                 if(external)
                 {
-                    file = new File(context.getExternalFilesDir(null), fileDirName);
+                    file = new File(context.getExternalFilesDir(null), FILE_DIR_NAME);
                 }
                 else
                 {
-                    file = new File(context.getFilesDir(), fileDirName);
+                    file = new File(context.getFilesDir(), FILE_DIR_NAME);
                 }
                 if(!file.exists()) file.mkdirs();
                 file = new File(file, filename);

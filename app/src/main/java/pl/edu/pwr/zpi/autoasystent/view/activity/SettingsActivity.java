@@ -19,6 +19,7 @@ import com.rafalzajfert.androidlogger.Logger;
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Language;
 import pl.edu.pwr.zpi.autoasystent.presenters.SettingsPresenter;
+import pl.edu.pwr.zpi.autoasystent.presenters.TransferPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.SettingsUtils;
 import pl.edu.pwr.zpi.autoasystent.view.SettingsPanel;
@@ -78,6 +79,34 @@ public class SettingsActivity extends BaseActivity implements SettingsPanel {
         setCurrentReminderTime();
 
         changeTime.setOnClickListener(onChangeTimeClickListener);
+
+        exportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransferPresenter.saveFile(SettingsActivity.this, true, "exp1");
+            }
+        });
+
+        importButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                FileDialog dialog = new FileDialog(SettingsActivity.this, new File(Environment.getExternalStorageDirectory(),
+//                        TransferPresenter.FILE_DIR_NAME));
+                TransferPresenter.loadFile(SettingsActivity.this, true, "exp1", false);
+//                dialog.addFileListener(new FileDialog.FileSelectedListener() {
+//                    public void fileSelected(File file) {
+//                        Logger.debug(getClass().getName(), "selected file " + file.toString());
+//                    }
+//                });
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransferPresenter.deleteDatabase();
+            }
+        });
     }
 
     @Override
