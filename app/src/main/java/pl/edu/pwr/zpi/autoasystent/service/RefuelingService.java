@@ -43,8 +43,8 @@ public class RefuelingService {
     }
 
     public List<Refueling> getRefuelingsByCarAndDate(long carId, Date from, Date to) {
-        return Refueling.find(Refueling.class, "car = ? AND refueling_date BETWEEN ? AND ?", String.valueOf(carId),
-                String.valueOf(from.getTime()), String.valueOf(to.getTime()));
+        return Refueling.find(Refueling.class, "car = ? AND refueling_date BETWEEN ? AND ?", new String[]{String.valueOf(carId),
+                String.valueOf(from.getTime()), String.valueOf(to.getTime())}, null, "refueling_mileage ASC", null);
     }
 
     public int getRefuelingMaxMileage(long carId) {

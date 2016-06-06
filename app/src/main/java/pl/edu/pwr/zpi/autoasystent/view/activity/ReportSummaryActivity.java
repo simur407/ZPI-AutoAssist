@@ -61,6 +61,9 @@ public class ReportSummaryActivity extends BaseActivity implements ReportSummary
     public void setReportData(List<Refueling> refuelings, List<ServiceJobs> serviceJobses, List<Mot> mots, List<Insurance> insurances, Car car) {
         int maxMileage = car.getStartMileage();
         int minFuelMileage = 1;
+        int maxFuelMileage = 1;
+
+        int minMileage = car.getStartMileage();
         String sAverageFuelConsumption = getString(R.string.no_data_entered);
         double averageFuelConsumption = 0.00;
         long daysCount = 1 + ((toDate.getTime() - fromDate.getTime()) / 86400000);
@@ -88,10 +91,17 @@ public class ReportSummaryActivity extends BaseActivity implements ReportSummary
 
         double fCosts = 0.00;
         double fuelConsumed = 0.00;
-        for (Refueling r : refuelings) {
-            if (r.getRefuelingMileage() > maxMileage) {
-                maxMileage = r.getRefuelingMileage();
+        if (refuelings.size() > 0) {
+            maxFuelMileage = refuelings.get(refuelings.size() - 1).getRefuelingMileage();
+            minFuelMileage = refuelings.get(0).getRefuelingMileage();
+
+            if (maxFuelMileage > maxMileage) {
+                maxMileage = maxFuelMileage;
             }
+            minMileage = minFuelMileage;
+        }
+
+        for (Refueling r : refuelings) {
             fCosts += r.getRefuelingCost();
             fuelConsumed += r.getQuantity();
         }
@@ -100,6 +110,9 @@ public class ReportSummaryActivity extends BaseActivity implements ReportSummary
         for (ServiceJobs s : serviceJobses) {
             if (s.getServiceMileage() > maxMileage) {
                 maxMileage = s.getServiceMileage();
+            }
+            if (s.getServiceMileage() < minMileage) {
+                minMileage = s.getServiceMileage();
             }
             sCosts += s.getServiceCost();
         }
@@ -110,24 +123,26 @@ public class ReportSummaryActivity extends BaseActivity implements ReportSummary
             }
         }
         double oCosts = fCosts + sCosts + iCosts;
-        double oCostMonth = oCosts / daysCount * 30;
+        double oCostMonth = oCosts;
+        int mPerMonth = (maxMileage - minMileage);
+        if (daysCount > 25) {
+            oCostMonth = oCosts * 30 / daysCount;
+            mPerMonth = mPerMonth / (int) daysCount * 30;
+        }
 
         if (refuelings.size() > 1) {
-            minFuelMileage = refuelings.get(0).getRefuelingMileage();
-            averageFuelConsumption = (Math.round(100 * fuelConsumed / ((maxMileage - minFuelMileage) / 100))) / 100.0;
+            averageFuelConsumption = (fuelConsumed - refuelings.get(0).getQuantity()) / ((double) (maxFuelMileage - minFuelMileage) / 100);
             sAverageFuelConsumption = String.format("%.2f %s/100%s", averageFuelConsumption, getString(R.string.quantity_symbol), getString(R.string.mileage_symbol));
         }
 
         overallCost.setText(String.format("%.2f %s", oCosts, getString(R.string.currency_symbol)));
         costPerMonth.setText(String.format("%.2f %s", oCostMonth, getString(R.string.currency_symbol)));
-
         fuelAverage.setText(sAverageFuelConsumption);
         fuelOverall.setText(String.format("%s %s", String.valueOf(Math.round(fuelConsumed)), getString(R.string.quantity_symbol)));
-
         fuelOverallCost.setText(String.format("%.2f %s", fCosts, getString(R.string.currency_symbol)));
         servicesOverall.setText(String.format("%.2f %s", sCosts, getString(R.string.currency_symbol)));
-        mileageOverall.setText(String.format("%s %s", String.valueOf(maxMileage - car.getStartMileage()), getString(R.string.mileage_symbol)));
-        mileagePerMonth.setText(String.format("%s %s", String.valueOf((maxMileage - car.getStartMileage()) / daysCount * 30), getString(R.string.mileage_symbol)));
+        mileageOverall.setText(String.format("%s %s", String.valueOf(maxMileage - minMileage), getString(R.string.mileage_symbol)));
+        mileagePerMonth.setText(String.format("%s %s", String.valueOf(mPerMonth), getString(R.string.mileage_symbol)));
 
         toMot.setText(sTimeToMot);
         toInsurance.setText(sTimetoInsurance);
