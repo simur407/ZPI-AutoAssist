@@ -39,7 +39,6 @@ public abstract class BaseActivity extends AppCompatActivity implements SharedPr
     @Override
     protected void onResume() {
         super.onResume();
-        Logger.debug("On Resume");
         Language newLanguage = SettingsUtils.getLanguage(this);
         if (language != newLanguage) {
             changeLanguage();
@@ -62,7 +61,6 @@ public abstract class BaseActivity extends AppCompatActivity implements SharedPr
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         android.content.res.Configuration conf = res.getConfiguration();
-        Logger.debug("Change language");
         conf.locale = language.locale;
         res.updateConfiguration(conf, dm);
         this.language = language;

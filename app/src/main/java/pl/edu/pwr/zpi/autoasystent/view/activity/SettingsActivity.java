@@ -1,19 +1,25 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.rafalzajfert.androidlogger.Logger;
 
 import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Language;
 import pl.edu.pwr.zpi.autoasystent.presenters.SettingsPresenter;
+import pl.edu.pwr.zpi.autoasystent.presenters.TransferPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
 import pl.edu.pwr.zpi.autoasystent.utils.SettingsUtils;
 import pl.edu.pwr.zpi.autoasystent.view.SettingsPanel;
@@ -34,13 +40,18 @@ public class SettingsActivity extends BaseActivity implements SettingsPanel {
     private AdapterView.OnItemSelectedListener onItemSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Logger.debug(parent.getItemAtPosition(position));
             presenter.changeLanguage((Language) parent.getItemAtPosition(position));
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
 
+        }
+    };
+    private View.OnClickListener onChangeTimeClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            presenter.changeReminderTime();
         }
     };
 
@@ -65,12 +76,66 @@ public class SettingsActivity extends BaseActivity implements SettingsPanel {
         Language language = SettingsUtils.getLanguage(this);
         languageSpinner.setSelection(adapter.getPosition(language));
 
+        setCurrentReminderTime();
+
+        changeTime.setOnClickListener(onChangeTimeClickListener);
+
+        exportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransferPresenter.saveFile(SettingsActivity.this, true, "exp1");
+            }
+        });
+
+        importButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                FileDialog dialog = new FileDialog(SettingsActivity.this, new File(Environment.getExternalStorageDirectory(),
+//                        TransferPresenter.FILE_DIR_NAME));
+                TransferPresenter.loadFile(SettingsActivity.this, true, "exp1", false);
+//                dialog.addFileListener(new FileDialog.FileSelectedListener() {
+//                    public void fileSelected(File file) {
+//                        Logger.debug(getClass().getName(), "selected file " + file.toString());
+//                    }
+//                });
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransferPresenter.deleteDatabase();
+            }
+        });
+    }
+
+    @Override
+    public void setCurrentReminderTime() {
         int time = SettingsUtils.getReminderTime(this);
         currentReminderTime.setText(DateUtils.timeToString(time));
     }
 
     @Override
+    public void showToast(@StringRes int message) {
+        Toast.makeText(SettingsActivity.this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void saveLanguageToPref(Language language) {
         SettingsUtils.putLanguage(this, language);
+    }
+
+    @Override
+    public void showTimePickerDialog() {
+        int time = SettingsUtils.getReminderTime(this);
+        TimePickerDialog dialog = new TimePickerDialog(new ContextThemeWrapper(this, R.style.AppTheme_Dialog), new TimePickerDialog
+                .OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                presenter.saveReminderTime(SettingsActivity.this, hourOfDay, minute);
+                Logger.debug(hourOfDay, minute);
+            }
+        }, time/100, time%100, true);
+        dialog.show();
     }
 }

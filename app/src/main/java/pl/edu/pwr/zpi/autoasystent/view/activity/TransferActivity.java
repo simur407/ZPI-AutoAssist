@@ -1,7 +1,7 @@
 package pl.edu.pwr.zpi.autoasystent.view.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Switch;
@@ -26,7 +26,7 @@ public class TransferActivity extends AppCompatActivity {
     {
         String filename=editText.getText().toString();
         Boolean checked=switch1.isChecked();
-        TransferPresenter.saveFile(this, checked, filename);
+
     }
 
     public void loadFromFile(View view)

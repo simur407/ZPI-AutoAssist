@@ -7,4 +7,6 @@ import java.util.Date;
  */
 public interface InsuranceAddPanel {
     void showDatePicker(Date date);
+
+    void createReminder();
 }

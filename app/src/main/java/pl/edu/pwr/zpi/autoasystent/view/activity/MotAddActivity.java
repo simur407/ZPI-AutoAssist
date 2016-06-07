@@ -104,12 +104,13 @@ public class MotAddActivity extends BaseActivity implements MotAddPanel {
         dialog.show(ft, null);
     }
 
+    @Override
     public void createReminder() {
         try {
             new ReminderBuilder(this)
                     .setDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF))
-                    .setTitle("Testowo")
-                    .setDescription("Z buildera!")
+                    .setTitle(R.string.app_name)
+                    .setDescription(R.string.mot_reminder_message)
                     .set();
         } catch (ParseException e) {
             e.printStackTrace();

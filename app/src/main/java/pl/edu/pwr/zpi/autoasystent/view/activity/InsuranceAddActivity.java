@@ -19,6 +19,7 @@ import pl.edu.pwr.zpi.autoasystent.R;
 import pl.edu.pwr.zpi.autoasystent.model.Insurance;
 import pl.edu.pwr.zpi.autoasystent.presenters.InsuranceAddPresenter;
 import pl.edu.pwr.zpi.autoasystent.utils.DateUtils;
+import pl.edu.pwr.zpi.autoasystent.utils.ReminderBuilder;
 import pl.edu.pwr.zpi.autoasystent.view.InsuranceAddPanel;
 import pl.edu.pwr.zpi.autoasystent.view.dialog.DateDialog;
 
@@ -117,5 +118,18 @@ public class InsuranceAddActivity extends BaseActivity implements InsuranceAddPa
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         dialog.show(ft, null);
+    }
+
+    @Override
+    public void createReminder() {
+        try {
+            new ReminderBuilder(this)
+                    .setDate(DateUtils.stringToDate(date.getText().toString(), DateUtils.DATE_FORMAT_DEF))
+                    .setTitle(R.string.app_name)
+                    .setDescription(R.string.insurance_reminder_message)
+                    .set();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 }
